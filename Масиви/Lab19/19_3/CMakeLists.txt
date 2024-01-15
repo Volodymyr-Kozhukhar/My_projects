@@ -1,14 +1,21 @@
-cmake_minimum_required(VERSION 3.5)
+﻿# CMakeList.txt: проект CMake для 19_3; включите исходный код и определения,
+# укажите здесь логику для конкретного проекта.
+#
+cmake_minimum_required (VERSION 3.8)
 
-project(16_1 LANGUAGES CXX)
+# Включение горячей перезагрузки для компиляторов MSVC, если поддерживается.
+if (POLICY CMP0141)
+  cmake_policy(SET CMP0141 NEW)
+  set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
+endif()
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+project ("19_3")
 
-add_executable(16_1 main.cpp)
+# Добавьте источник в исполняемый файл этого проекта.
+add_executable (19_3 "19_3.cpp" "19_3.h")
 
-include(GNUInstallDirs)
-install(TARGETS 16_1
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-)
+if (CMAKE_VERSION VERSION_GREATER 3.12)
+  set_property(TARGET 19_3 PROPERTY CXX_STANDARD 20)
+endif()
+
+# TODO: Добавьте тесты и целевые объекты, если это необходимо.
