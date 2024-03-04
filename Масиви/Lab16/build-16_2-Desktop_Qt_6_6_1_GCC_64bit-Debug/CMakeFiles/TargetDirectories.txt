@@ -1,7 +1,0 @@
-/home/kozhu/Документи/Dev/Qt_repo/Масиви/Lab16/build-16_2-Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/16_2.dir
-/home/kozhu/Документи/Dev/Qt_repo/Масиви/Lab16/build-16_2-Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/edit_cache.dir
-/home/kozhu/Документи/Dev/Qt_repo/Масиви/Lab16/build-16_2-Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/rebuild_cache.dir
-/home/kozhu/Документи/Dev/Qt_repo/Масиви/Lab16/build-16_2-Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/list_install_components.dir
-/home/kozhu/Документи/Dev/Qt_repo/Масиви/Lab16/build-16_2-Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/install.dir
-/home/kozhu/Документи/Dev/Qt_repo/Масиви/Lab16/build-16_2-Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/install/local.dir
-/home/kozhu/Документи/Dev/Qt_repo/Масиви/Lab16/build-16_2-Desktop_Qt_6_6_1_GCC_64bit-Debug/CMakeFiles/install/strip.dir
