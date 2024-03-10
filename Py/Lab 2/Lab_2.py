@@ -2,10 +2,6 @@
 from math import cos
 
 #2.1
-from math import cos
-from turtle import distance
-
-
 first_catheter = int(input("¬вед≥ть перший катет трикутника: "))
 second_catheter = int(input("¬вед≥ть другий катет трикутника: "))
 hypotinase = (first_catheter ** 2 + second_catheter ** 2) ** 0.5
