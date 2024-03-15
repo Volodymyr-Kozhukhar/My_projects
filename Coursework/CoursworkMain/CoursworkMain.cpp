@@ -1,5 +1,12 @@
 ﻿// CoursworkMain 
 
+#include <iostream>
+#include <cstring>
+#include <map>
+
+
+using namespace std;
+
 /*          8 варіант таблиця 1
 а) Обчислити кількість показників вимірювань датчиків (елементів матриці), більших за 1.
 б) * Елемент матриці називається локальним мінімумом, якщо він строго менше всіх сусідів нього (ліворуч, праворуч, зверху і знизу), які є у нього. Підрахувати кількість локальних мінімумів заданої матриці.
@@ -7,13 +14,6 @@
 г) * Створити динамічний масив із ненульових показників усіх датчиків.
 д) ** Характеристикою рядка матриці назвемо квадрат суми його елементів. Переставляючи рядки заданої матриці, розташувати їх відповідно до зростання характеристик.
 */
-
-#include <iostream>
-#include <string.h>
-#include <map>
-
-using namespace std;
-
 void view_file(char* name);
 void array_RowsColumns(char* name, int& n ,int& m);
 void make_array(char* name, int** matrix);
@@ -24,6 +24,13 @@ void VectorNegativeNumbersColumns(char* name1, int** matrix, int& n, int& m, int
 void DynamicArrayNonZero(char* name1, int** matrix, int& n, int& m);
 void SortBySumSquares(char* name1, int** matrix, int& n, int& m);
 
+/*      8 варіант таблиці 2,3
+    2) Визначити, чи є у рядках цифри. Якщо так, то вивести їх
+    3) Відсортувати слова за абеткою у кожному рядку
+*/
+void NumsInRows(char* name2, char* name3);
+void SortByAlphabet(char* name2, char* name3);
+
 
 int main()
 {   
@@ -31,31 +38,50 @@ int main()
     system("chcp 1251 > null");
     char name[] = "d:\\Лабораторні, проекти, інше\\My_repo_proj\\Coursework\\F1.txt";
     char name1[] = "d:\\Лабораторні, проекти, інше\\My_repo_proj\\Coursework\\F2.txt";
+    char name2[] = "d:\\Лабораторні, проекти, інше\\My_repo_proj\\Coursework\\F3.txt";
+    char name3[] = "d:\\Лабораторні, проекти, інше\\My_repo_proj\\Coursework\\F4.txt";
  
     view_file(name);
     cout << "\n\n";
 
     array_RowsColumns(name, n, m);
 
-    int** matrix = new int* [n];             // Створення динамічного
-    for (int i = 0; i < n; i++)              // двомірного масиву
-        matrix[i] = new int[m];              // за допомогою new та (n,m)
+    int** matrix = new int* [n];                                    // Створення динамічного
+    for (int i = 0; i < n; i++)                                     // двомірного масиву
+        matrix[i] = new int[m];                                     // за допомогою new та (n,m)
     make_array(name, matrix);
 
     make_output3(name1, matrix, n, m);
     
     int AmountOfBiggerThanOne = BiggerThanOne(matrix, name1, n, m);
-    cout << "\n\nКількість елементів більших за 1: " << AmountOfBiggerThanOne << "\n\n";
+    cout << "\n\nКількість елементів більших за 1: " << AmountOfBiggerThanOne << "\n";
 
     int LocalMinimumAmount = LocalMinimum(name1, matrix, n, m);
-    cout << "\n\nКількість локальних мінімумів по вертикалі та горизонталі матриці: " << LocalMinimumAmount << "\n\n";
+    cout << "\nКількість локальних мінімумів по вертикалі та горизонталі матриці: " << LocalMinimumAmount << "\n";
 
-    int* vector = new int[m];                // Створення динамічного масиву для вектора
+    int* vector = new int[m];                                       // Створення динамічного масиву для вектора
     VectorNegativeNumbersColumns(name1, matrix, n, m, vector);
+    delete[] vector;                                                // Видалення динамічного масиву вектора для звільнення використанної пам'яті
 
     DynamicArrayNonZero(name1, matrix, n, m);
 
     SortBySumSquares(name1, matrix, n, m);
+
+    for (int i = 0; i < n; i++)                                     // Видалення динамічного масиву матриці для звільнення використанної пам'яті
+        delete[] matrix[i];
+    delete[] matrix;
+
+    cout << "\n\n";
+    view_file(name2);
+    cout << "\n\n";
+
+    NumsInRows(name2, name3);
+
+    SortByAlphabet(name2, name3);
+
+    view_file(name3);
+
+    cout << "\n\n";
 }
 
 
@@ -71,11 +97,12 @@ void view_file(char* name)      //функція для виведення вм�
         cout << "Cannot open file to veiw\n"; 
         return; 
     }
-    cout << "\nПерегляд файлу " << name << endl;
+    cout << "\nПерегляд файлу " << name << "\n--------------------------------------------------------------------------------------\n";
     while (fgets(s, 100, f))
     {
-        puts(s);
+        cout << s;
     }
+    cout << "\n--------------------------------------------------------------------------------------\n";
     fclose(f);
 }
 
@@ -163,7 +190,7 @@ void make_output3(char* name1, int** matrix, int& n, int& m)            //фун
             cout << matrix[i][j] << "\t\t";
         }
         fprintf(f, "\n");
-        cout << "\n\n";
+        cout << "\n";
     }
     fclose(f);
 }
@@ -179,7 +206,7 @@ int BiggerThanOne(int** matrix, char* name1,int& n, int& m)           //функ
         cout << "Cannot open file to veiw\n";
         return -1;
     }
-    fprintf(f,"\n Кількість показників вимірювань датчиків (елементів матриці), більших за 1: ");
+    fprintf(f,"\nКількість показників вимірювань датчиків (елементів матриці), більших за 1: ");
     for(int i = 0; i < n; i++)
         for(int j = 0; j < m; j++)
         {
@@ -202,7 +229,7 @@ int LocalMinimum(char* name1, int** matrix, int& n, int& m)             //фун
         cout << "Cannot open file to veiw\n";
         return -1;
     }
-    fprintf(f, "\n Кількість локальних мінімумів: ");
+    fprintf(f, "\nКількість локальних мінімумів: ");
     for (int i = 0; i < n; i++)
         for (int j = 0; j < m; j++)
         {
@@ -360,4 +387,106 @@ void SortBySumSquares(char* name1, int** matrix, int& n, int& m)            //ф
         it++;
     }
     fclose(f);
+}
+
+
+void NumsInRows(char* name2, char* name3)       //функція визначає, чи є у рядках цифри, виводить їх та записує результат у файл F4
+{
+    char s[200] = { '\0' };
+    int k = 0;
+    FILE* f1, *f2;
+    fopen_s(&f1, name2, "r");
+    fopen_s(&f2, name3, "w");
+    if (f1 == NULL || f2 == NULL)
+    {
+        cout << "Cannot open file to veiw\n";
+        return;
+    }
+    //cout << "Цифри у файлі " << name2 << " -> ";
+    fprintf(f2, "Цифри у файлі %s -> ", name2);
+    while (fgets(s, 200, f1))
+    {
+        for (int i = 0; s[i] != '\0'; i++)
+        {
+            if (s[i] >= '0' && s[i] <= '9')
+            {
+                fprintf(f2, "%c ", s[i]);
+                //cout << s[i] << " ";
+                k++;
+            }
+        }
+    }
+    if (k == 0)
+    {
+        cout << "Немає жодної цифри у файлі" << "\n\n";
+        fprintf(f2, "Немає жодної цифри у файлі\n");
+    }
+    else
+        //cout << "\n\n";
+        fprintf(f2, "\n");
+    fclose(f1);
+    fclose(f2);
+}
+
+
+void SortByAlphabet(char* name2, char* name3)           //функція, що сортує слова за алфавітом в кожному рядку та записує результат у файл F4
+{
+    char s[200] = { '\0' };
+    char tmp[100] = { '\0' };
+    map <string, int> words;               //створення map для записування слів у ключі та їх автоматичне сортування за алфавітом
+    map <string, int> ::iterator it;
+    FILE* f1, * f2;
+    fopen_s(&f1, name2, "r");
+    fopen_s(&f2, name3, "a");
+    if (f1 == NULL || f2 == NULL)
+    {
+        cout << "Cannot open file to veiw\n";
+        return;
+    }
+    //cout << "Відсортовані рядки за алфавітом:\n\n";
+    fprintf(f2, "\nВідсортовані рядки за алфавітом:\n\n");
+    while (fgets(s, 200, f1))
+    {
+        int amount = 0;
+        for (int i = 0; s[i] != '\0'; i++)
+        {
+            if (s[i] >= 'а' && s[i] <= 'я' || s[i] >= 'А' && s[i] <= 'Я' || s[i] == 'і' || s[i] == 'І' || s[i] == 'ї' || s[i] == 'Ї' || s[i] == 'є' || s[i] == 'Є' || s[i] == 'ґ' || s[i] == 'Ґ')
+            {
+                int k;
+                for (k = 0; s[i] != ' '; k++) 
+                {
+                    if (s[i] != '\0' && s[i] != '\n' && s[i] != '.' && s[i] != ',' && s[i] != '!' && s[i] != '?' && s[i] != ';' && s[i] != ':')
+                        tmp[k] = s[i++];
+                    else
+                    {
+                        break;
+                    }
+                }
+                if (k > 0)
+                    tmp[k] = '\0';
+                    amount++;
+                words[tmp]++;
+            }
+        }
+        it = words.begin();
+        for (int i = 0; i < amount; i++)
+        {
+            int tmp = it->second;
+            char word[50] = { '\0' };
+            for (int j = 0; it->first[j] != '\0'; j++)
+                word[j] = it->first[j];
+            for (int j = 0; j < tmp; j++)
+            {
+                //cout << it->first << ' ';
+                fprintf(f2, "%s ", word);
+            }
+            it++;
+        }
+        words.clear();
+        //cout << "\n";
+        fprintf(f2, "\n");
+    }
+    cout << "\n";
+    fclose(f1);
+    fclose(f2);
 }
