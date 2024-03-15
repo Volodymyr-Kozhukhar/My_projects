@@ -36,10 +36,10 @@ int main()
 {   
     int n, m;
     system("chcp 1251 > null");
-    char name[] = "d:\\Лабораторні, проекти, інше\\My_repo_proj\\Coursework\\F1.txt";
-    char name1[] = "d:\\Лабораторні, проекти, інше\\My_repo_proj\\Coursework\\F2.txt";
-    char name2[] = "d:\\Лабораторні, проекти, інше\\My_repo_proj\\Coursework\\F3.txt";
-    char name3[] = "d:\\Лабораторні, проекти, інше\\My_repo_proj\\Coursework\\F4.txt";
+    char name[] = "c:\\Prog\\Py_labs\\Coursework\\F1.txt";
+    char name1[] = "c:\\Prog\\Py_labs\\Coursework\\F2.txt";
+    char name2[] = "c:\\Prog\\Py_labs\\Coursework\\F3.txt";
+    char name3[] = "c:\\Prog\\Py_labs\\Coursework\\F4.txt";
  
     view_file(name);
     cout << "\n\n";
