@@ -472,11 +472,13 @@ void SortByAlphabet(char* name2, char* name3)           //функція, що �
                     }
                 }
                 if (k > 0)
+                {
                     tmp[k] = '\0';
-                    amount++;
+                }
                 words[tmp]++;
             }
         }
+        amount = words.size();
         it = words.begin();
         for (int i = 0; i < amount; i++)
         {
