@@ -383,7 +383,7 @@ void SortBySumSquares(char* name1, int** matrix, int& n, int& m)            //ф
             fprintf(f, "%i\t", matrix[j][k]);
         }
         fprintf(f, "\n");
-        cout << "\n\n";
+        cout << "\n";
         it++;
     }
     fclose(f);
