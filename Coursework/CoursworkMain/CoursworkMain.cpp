@@ -31,6 +31,12 @@ void SortBySumSquares(char* name1, int** matrix, int& n, int& m);
 void NumsInRows(char* name2, char* name3);
 void SortByAlphabet(char* name2, char* name3);
 
+void PrintRowByNum(char* name2);
+void PrintRowByText(char* name2);
+void DeleteRowByNum(char* name2);
+void DeleteRowByText(char* name2);
+
+
 
 int main()
 {
@@ -90,6 +96,18 @@ int main()
 
     view_file(name3);
 
+    PrintRowByNum(name2);
+    view_file(name2);
+
+    PrintRowByText(name2);
+    view_file(name2);
+
+    DeleteRowByNum(name2);
+    view_file(name2);
+
+    DeleteRowByText(name2);
+    view_file(name2);
+
     cout << "\n\n";
 }
 
@@ -106,12 +124,12 @@ void view_file(char* name)      //функція для виведення вм�
         cout << "Cannot open file to veiw\n"; 
         return; 
     }
-    cout << "\nПерегляд файлу " << name << "\n--------------------------------------------------------------------------------------\n";
+    cout << "\nПерегляд файлу " << name << "\n------------------------------------------------------------------------------------------------\n";
     while (fgets(s, 100, f))
     {
         cout << s;
     }
-    cout << "\n--------------------------------------------------------------------------------------\n";
+    cout << "\n------------------------------------------------------------------------------------------------\n";
     fclose(f);
 }
 
@@ -442,7 +460,7 @@ void SortByAlphabet(char* name2, char* name3)           //функція, що �
 {
     char s[200] = { '\0' };
     char tmp[100] = { '\0' };
-    map <string, int> words;               //створення map для записування слів у ключі та їх автоматичне сортування за алфавітом
+    map <string, int> words;                            //створення map для записування слів у ключі та їх автоматичне сортування за алфавітом
     map <string, int> ::iterator it;
     FILE* f1, * f2;
     fopen_s(&f1, name2, "r");
@@ -456,8 +474,10 @@ void SortByAlphabet(char* name2, char* name3)           //функція, що �
     fprintf(f2, "\nВідсортовані рядки за алфавітом:\n\n");
     while (fgets(s, 200, f1))
     {
+        memset(tmp, 0, 100);
         int amount = 0;
-        for (int i = 0; s[i] != '\0'; i++)
+        int size = strlen(s);
+        for (int i = 0; i < size; i++)
         {
             if (s[i] >= 'а' && s[i] <= 'я' || s[i] >= 'А' && s[i] <= 'Я' || s[i] == 'і' || s[i] == 'І' || s[i] == 'ї' || s[i] == 'Ї' || s[i] == 'є' || s[i] == 'Є' || s[i] == 'ґ' || s[i] == 'Ґ')
             {
@@ -492,6 +512,7 @@ void SortByAlphabet(char* name2, char* name3)           //функція, що �
                 fprintf(f2, "%s ", word);
             }
             it++;
+            memset(word, 0, 50);
         }
         words.clear();
         //cout << "\n";
@@ -499,5 +520,237 @@ void SortByAlphabet(char* name2, char* name3)           //функція, що �
     }
     cout << "\n";
     fclose(f1);
+    fclose(f2);
+}
+
+
+void PrintRowByNum(char* name2)               //функція, що замінює введений рядок на введений текст у файлі F3
+{   
+    int InputRow;
+    char InputText[200];
+    cout << "\n\nВведіть номер рядка для заміни: ";
+    cin >> InputRow;
+    cout << "\nВведіть текст для заміни -> ";
+    cin.ignore();
+    cin.getline(InputText, 200);
+
+    map <int, char[200]> words;               //створення map для записування речень у значення та їх номери у ключі
+    map <int, char[200]> ::iterator it;
+    
+    char s[200];
+    FILE* f1, * f2;
+    fopen_s(&f1, name2, "r");
+    if (f1 == NULL)
+    {
+        cout << "Cannot open file to veiw\n";
+        return;
+    }
+    int k = 1;
+    while (fgets(s, 200, f1))
+    {
+        strcpy_s(words[k],200, s);
+        k++;
+    }
+    fclose(f1);
+    fopen_s(&f2, name2, "w");
+    it = words.begin();
+    for (int i = 0; i < k - 1; i++)
+    {
+        if (it->first == InputRow)
+        {
+            fprintf(f2, "%s\n", InputText);
+            it++;
+        }
+        else
+        {
+            fprintf(f2, "%s", it->second);
+            it++;
+        }
+    }
+    fclose(f2);
+}
+
+
+void PrintRowByText(char* name2)              //функція, що замінює введений текст у рядку іншим введеним текстом у файлі F3
+{
+    char InputText[200];
+    char SearchText[200];
+    cout << "\n\nВведіть текс для пошуку у файлі: ";
+    
+    cin.getline(SearchText, 200);
+    cout << "\nВведіть текст для заміни -> ";
+    
+    cin.getline(InputText, 200);
+    char firstlet = SearchText[0];
+
+    map <int, char[200]> words;               //створення map для записування речень у значення та їх номери у ключі
+    map <int, char[200]> ::iterator it;
+
+    char s[200];
+    FILE* f1, * f2;
+    fopen_s(&f1, name2, "r");
+    if (f1 == NULL)
+    {
+        cout << "Cannot open file to veiw\n";
+        return;
+    }
+    int k = 1;
+    while (fgets(s, 200, f1))
+    {
+        strcpy_s(words[k], 200, s);
+        k++;
+    }
+    fclose(f1);
+    fopen_s(&f2, name2, "w");
+    it = words.begin();
+    bool compared = true;
+    for (int i = 0; i < k - 1; i++)
+    {
+        for (int j = 0; j < strlen(it->second); j++)
+        {
+            if (it->second[j] == firstlet)
+            {
+                int n = j;
+                int size = 0;
+                compared = true;
+                for (int t = 0; t < strlen(SearchText); t++)
+                {
+                    if (it->second[n] != SearchText[t])
+                    {
+                        compared = false;
+                        break;
+                    }
+                    n++;
+                    size++;
+                }
+                char tmpstart[200] = { '\0' };
+                char tmpend[200] = { '\0' };
+                if (compared)
+                {   
+                    int t;
+                    if (j != 0)
+                    {
+                        for (n = 0, t = 0; n < j; n++)
+                        {
+                            tmpstart[n] = it->second[t++];
+                        }
+                    }
+                    for (n = 0, t = j + size; it->second[t] != '\0'; n++)
+                    {
+                        tmpend[n] = it->second[t++];
+                    }
+                    //tmpend[n] = '\0';
+                    strcat_s(tmpstart, 200, InputText);
+                    strcat_s(tmpstart, 200, tmpend);
+                    strcpy_s(it->second, 200, tmpstart);
+                }
+            }
+        }
+        fprintf(f2, "%s", it->second);
+        it++;
+    }
+    fclose(f2);
+}
+
+
+void DeleteRowByNum(char* name2)              //функція, що видаляє введений рядок у файлі F3
+{
+    int InputRow;
+    cout << "\n\nВведіть номер рядка для видалення: ";
+    cin >> InputRow;
+
+    map <int, char[200]> words;               //створення map для записування речень у значення та їх номери у ключі
+    map <int, char[200]> ::iterator it;
+
+    char s[200];
+    FILE* f1, * f2;
+    fopen_s(&f1, name2, "r");
+    if (f1 == NULL)
+    {
+        cout << "Cannot open file to veiw\n";
+        return;
+    }
+    int k = 1;
+    while (fgets(s, 200, f1))
+    {
+        strcpy_s(words[k], 200, s);
+        k++;
+    }
+    fclose(f1);
+    fopen_s(&f2, name2, "w");
+    it = words.begin();
+    for (int i = 0; i < k - 1; i++)
+    {
+        if (it->first == InputRow)
+        {
+            it++;
+        }
+        else
+        {
+            fprintf(f2, "%s", it->second);
+            it++;
+        }
+    }
+    fclose(f2);
+}
+
+
+void DeleteRowByText(char* name2)             //функція, що видаляє рядок з введеним текстом у файлі F3
+{
+    char SearchText[200];
+    cout << "\n\nВведіть текс для пошуку у файлі: ";
+
+    cin.ignore();
+    cin.getline(SearchText, 200);
+    
+    char firstlet = SearchText[0];
+
+    map <int, char[200]> words;               //створення map для записування речень у значення та їх номери у ключі
+    map <int, char[200]> ::iterator it;
+
+    char s[200];
+    FILE* f1, * f2;
+    fopen_s(&f1, name2, "r");
+    if (f1 == NULL)
+    {
+        cout << "Cannot open file to veiw\n";
+        return;
+    }
+    int k = 1;
+    while (fgets(s, 200, f1))
+    {
+        strcpy_s(words[k], 200, s);
+        k++;
+    }
+    fclose(f1);
+    fopen_s(&f2, name2, "w");
+    it = words.begin();
+    bool compared = true;
+    for (int i = 0; i < k - 1; i++)
+    {
+        for (int j = 0; j < strlen(it->second); j++)
+        {
+            if (it->second[j] == firstlet)
+            {
+                int n = j;
+                compared = true;
+                for (int t = 0; t < strlen(SearchText); t++)
+                {
+                    if (it->second[n] != SearchText[t])
+                    {
+                        compared = false;
+                        break;
+                    }
+                    n++;
+                }
+                if (compared)
+                {   
+                    it->second[0] = '\0';
+                }
+            }
+        }
+        fprintf(f2, "%s", it->second);
+        it++;
+    }
     fclose(f2);
 }
