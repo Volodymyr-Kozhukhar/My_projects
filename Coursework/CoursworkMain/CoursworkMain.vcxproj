@@ -135,6 +135,12 @@
       <Project>{e31efc05-26b0-497a-84eb-3bb485148ed0}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="F1.txt" />
+    <Text Include="F2.txt" />
+    <Text Include="F3.txt" />
+    <Text Include="F4.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

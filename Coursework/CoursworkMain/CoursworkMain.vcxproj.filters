@@ -19,4 +19,18 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="F1.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="F2.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="F3.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+    <Text Include="F4.txt">
+      <Filter>Файлы ресурсов</Filter>
+    </Text>
+  </ItemGroup>
 </Project>
