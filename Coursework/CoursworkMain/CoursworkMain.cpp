@@ -43,10 +43,6 @@ int main()
 
     SortBySumSquares(name1, matrix, n, m);
 
-    for (int i = 0; i < n; i++)                                     // Видалення динамічного масиву матриці для звільнення використанної пам'яті
-        delete[] matrix[i];
-    delete[] matrix;
-
     cout << "\n\n";
     view_file(name2);
     cout << "\n\n";

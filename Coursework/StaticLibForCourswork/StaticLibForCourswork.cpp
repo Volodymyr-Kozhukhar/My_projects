@@ -137,63 +137,39 @@ int BiggerThanOne(int** matrix, char* name1, int& n, int& m)           //фун�
 }
 
 
-int LocalMinimum(char* name1, int** matrix, int& n, int& m)             //функція, що обчислює кількість локальних мінімумів матриці по вертикалі та горизонталі і записує результат у файл F2
-{
+int LocalMinimum(char* name1, int** matrix, int& n, int& m) {
     int amount = 0;
     FILE* f;
     fopen_s(&f, name1, "at");
-    if (f == NULL)
-    {
-        cout << "Cannot open file to veiw\n";
+    if (f == NULL) {
+        cout << "Cannot open file to view\n";
         return -1;
     }
     fprintf(f, "\nКількість локальних мінімумів: ");
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < m; j++)
-        {
-            if (i == 0 && j == 0)
-            {
-                if (matrix[i][j] < matrix[i + 1][j] && matrix[i][j] < matrix[i][j + 1])
-                    amount++;
+
+    // Масиви для перевірки умов
+    int dx[] = { 0, 1, 0, -1 };
+    int dy[] = { 1, 0, -1, 0 };
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            bool is_min = true;
+            for (int k = 0; k < 4; k++) {
+                int ni = i + dx[k];
+                int nj = j + dy[k];
+                if (ni >= 0 && ni < n && nj >= 0 && nj < m) {
+                    if (matrix[ni][nj] <= matrix[i][j]) {
+                        is_min = false;
+                        break;
+                    }
+                }
             }
-            else if (i == 0 && j > 0 && j < m - 1)
-            {
-                if (matrix[i][j] < matrix[i + 1][j] && matrix[i][j] < matrix[i][j - 1] && matrix[i][j] < matrix[i][j + 1])
-                    amount++;
-            }
-            else if (i == 0 && j == m - 1)
-            {
-                if (matrix[i][j] < matrix[i + 1][j] && matrix[i][j] < matrix[i][j - 1])
-                    amount++;
-            }
-            else if (i > 0 && i < n - 1 && j == 0)
-            {
-                if (matrix[i][j] < matrix[i + 1][j] && matrix[i][j] < matrix[i - 1][j] && matrix[i][j] < matrix[i][j + 1])
-                    amount++;
-            }
-            else if (i == n - 1 && j == 0)
-            {
-                if (matrix[i][j] < matrix[i - 1][j] && matrix[i][j] < matrix[i][j + 1])
-                    amount++;
-            }
-            else if (i == n - 1 && j > 0 && j < m - 1)
-            {
-                if (matrix[i][j] < matrix[i][j - 1] && matrix[i][j] < matrix[i - 1][j] && matrix[i][j] < matrix[i][j + 1])
-                    amount++;
-            }
-            else if (i == n - 1 && j == m - 1)
-            {
-                if (matrix[i][j] < matrix[i - 1][j] && matrix[i][j] < matrix[i][j - 1])
-                    amount++;
-            }
-            else if (i > 0 && i < n - 1 && j == m - 1)
-            {
-                if (matrix[i][j] < matrix[i + 1][j] && matrix[i][j] < matrix[i - 1][j] && matrix[i][j] < matrix[i][j - 1])
-                    amount++;
-            }
-            else if (matrix[i][j] < matrix[i - 1][j] && matrix[i][j] < matrix[i + 1][j] && matrix[i][j] < matrix[i][j - 1] && matrix[i][j] < matrix[i][j + 1])
+            if (is_min) {
                 amount++;
+            }
         }
+    }
+
     fprintf(f, "%i\n", amount);
     fclose(f);
     return amount;
@@ -304,6 +280,9 @@ void SortBySumSquares(char* name1, int** matrix, int& n, int& m)            //ф
         cout << "\n";
         it++;
     }
+    for (int i = 0; i < n; i++)                                     // Видалення динамічного масиву матриці для звільнення використанної пам'яті
+        delete[] matrix[i];
+    delete[] matrix;
     fclose(f);
 }
 
