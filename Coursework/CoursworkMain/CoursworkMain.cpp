@@ -1,8 +1,6 @@
 ﻿// CoursworkMain 
 
 #include <iostream>
-#include <cstring>
-#include <map>
 #include "MyFunctions.h"
 
 using namespace std;

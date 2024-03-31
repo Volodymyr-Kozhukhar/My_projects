@@ -7,8 +7,9 @@ using namespace std;
 
 int main()
 {
+    char name[] = "F3.txt";
     system("chcp 1251 > null");
-    ifstream f1("d:\\Лабораторні, проекти, інше\\My_repo_proj\\stringtest\\F3.txt");
+    ifstream f1(name);
     string toFind;
     string change;
     string s;
@@ -20,9 +21,9 @@ int main()
         words[k] = s;
         k++;
     }
-    cout << "Enter line to search: ";
+    cout << "\n\nВведіть текст для пошуку у файлі: ";
     getline(cin, toFind);
-    cout << "Enter line to change: ";
+    cout << "\nВведіть текст для заміни -> ";
     getline(cin, change);
     int len = toFind.length();
     bool x;
@@ -42,7 +43,7 @@ int main()
         }
     }
     f1.close();
-    ofstream f2("d:\\Лабораторні, проекти, інше\\My_repo_proj\\stringtest\\F3.txt");
+    ofstream f2(name);
     for (int i = 0; i < k; i++)
     {
         f2 << words[i];

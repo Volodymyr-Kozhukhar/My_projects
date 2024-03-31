@@ -1,6 +1,8 @@
 ﻿#include <iostream>
 #include <cstring>
 #include <map>
+#include <string>
+#include <fstream>
 #include "MyFunctions.h"
 
 using namespace std;
@@ -47,8 +49,7 @@ void array_RowsColumns(char* name, int& n, int& m)      //функція, що �
             else if ((i + 1) >= len && isdigit(s[i]))
                 m++;
         }
-        if (s[len] == '\0' || s[len] == '\n')
-            n++;
+        n++;
     }
     fclose(f);
 }
@@ -263,7 +264,7 @@ void SortBySumSquares(char* name1, int** matrix, int& n, int& m)            //ф
         {
             sum += matrix[i][j];
         }
-        sum *= sum;
+        sum *= 2;
         sums[sum] = i;
         sum = 0;
     }
@@ -340,7 +341,6 @@ void SortByAlphabet(char* name2, char* name3)           //функція, що �
         cout << "Cannot open file to veiw\n";
         return;
     }
-    //cout << "Відсортовані рядки за алфавітом:\n\n";
     fprintf(f2, "\nВідсортовані рядки за алфавітом:\n\n");
     while (fgets(s, 200, f1))
     {
@@ -378,14 +378,12 @@ void SortByAlphabet(char* name2, char* name3)           //функція, що �
                 word[j] = it->first[j];
             for (int j = 0; j < tmp; j++)
             {
-                //cout << it->first << ' ';
                 fprintf(f2, "%s ", word);
             }
             it++;
             memset(word, 0, 50);
         }
         words.clear();
-        //cout << "\n";
         fprintf(f2, "\n");
     }
     cout << "\n";
@@ -423,6 +421,11 @@ void PrintRowByNum(char* name2)               //функція, що замін�
     }
     fclose(f1);
     fopen_s(&f2, name2, "w");
+    if (f2 == NULL)
+    {
+        cout << "Cannot open file to veiw\n";
+        return;
+    }
     it = words.begin();
     for (int i = 0; i < k - 1; i++)
     {
@@ -443,83 +446,49 @@ void PrintRowByNum(char* name2)               //функція, що замін�
 
 void PrintRowByText(char* name2)              //функція, що замінює введений текст у рядку іншим введеним текстом у файлі F3
 {
-    char InputText[200];
-    char SearchText[200];
-    cout << "\n\nВведіть текст для пошуку у файлі: ";
-
-    cin.getline(SearchText, 200);
-    cout << "\nВведіть текст для заміни -> ";
-
-    cin.getline(InputText, 200);
-    char firstlet = SearchText[0];
-
-    map <int, char[200]> words;               //створення map для записування речень у значення та їх номери у ключі
-    map <int, char[200]> ::iterator it;
-
-    char s[200];
-    FILE* f1, * f2;
-    fopen_s(&f1, name2, "r");
-    if (f1 == NULL)
+    char name[] = "F3.txt";
+    system("chcp 1251 > null");
+    ifstream f1(name);
+    string toFind;
+    string change;
+    string s;
+    map <int, string> words;
+    map <int, string> ::iterator it;
+    int k = 0;
+    while (getline(f1, s))
     {
-        cout << "Cannot open file to veiw\n";
-        return;
-    }
-    int k = 1;
-    while (fgets(s, 200, f1))
-    {
-        strcpy_s(words[k], 200, s);
+        words[k] = s;
         k++;
     }
-    fclose(f1);
-    fopen_s(&f2, name2, "w");
-    it = words.begin();
-    bool compared = true;
-    for (int i = 0; i < k - 1; i++)
+    cout << "\n\nВведіть текст для пошуку у файлі: ";
+    getline(cin, toFind);
+    cout << "\nВведіть текст для заміни -> ";
+    getline(cin, change);
+    int len = toFind.length();
+    bool x;
+    for (int i = 0; i < k; i++)
     {
-        for (int j = 0; j < strlen(it->second); j++)
+        x = true;
+        while (x)
         {
-            if (it->second[j] == firstlet)
+            int index = words[i].find(toFind);
+            if (index == -1)
             {
-                int n = j;
-                int size = 0;
-                compared = true;
-                for (int t = 0; t < strlen(SearchText); t++)
-                {
-                    if (it->second[n] != SearchText[t])
-                    {
-                        compared = false;
-                        break;
-                    }
-                    n++;
-                    size++;
-                }
-                char tmpstart[200] = { '\0' };
-                char tmpend[200] = { '\0' };
-                if (compared)
-                {
-                    int t;
-                    if (j != 0)
-                    {
-                        for (n = 0, t = 0; n < j; n++)
-                        {
-                            tmpstart[n] = it->second[t++];
-                        }
-                    }
-                    for (n = 0, t = j + size; it->second[t] != '\0'; n++)
-                    {
-                        tmpend[n] = it->second[t++];
-                    }
-                    //tmpend[n] = '\0';
-                    strcat_s(tmpstart, 200, InputText);
-                    strcat_s(tmpstart, 200, tmpend);
-                    strcpy_s(it->second, 200, tmpstart);
-                }
+                x = false;
+                break;
             }
+            words[i].erase(index, len);
+            words[i].insert(index, change);
         }
-        fprintf(f2, "%s", it->second);
-        it++;
     }
-    fclose(f2);
+    f1.close();
+    ofstream f2(name);
+    for (int i = 0; i < k; i++)
+    {
+        f2 << words[i];
+        f2 << "\n";
+    }
+    f2.close();
 }
 
 
@@ -548,6 +517,11 @@ void DeleteRowByNum(char* name2)              //функція, що видал�
     }
     fclose(f1);
     fopen_s(&f2, name2, "w");
+    if (f2 == NULL)
+    {
+        cout << "Cannot open file to veiw\n";
+        return;
+    }
     it = words.begin();
     for (int i = 0; i < k - 1; i++)
     {
@@ -594,6 +568,11 @@ void DeleteRowByText(char* name2)             //функція, що видал�
     }
     fclose(f1);
     fopen_s(&f2, name2, "w");
+    if (f2 == NULL)
+    {
+        cout << "Cannot open file to veiw\n";
+        return;
+    }
     it = words.begin();
     bool compared = true;
     for (int i = 0; i < k - 1; i++)
