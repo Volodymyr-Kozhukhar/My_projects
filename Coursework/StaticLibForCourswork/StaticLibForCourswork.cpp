@@ -263,7 +263,7 @@ void SortBySumSquares(char* name1, int** matrix, int& n, int& m)            //ф
         {
             sum += matrix[i][j];
         }
-        sum *= sum;
+        sum *= 2;
         sums[sum] = i;
         sum = 0;
     }
