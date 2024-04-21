@@ -51,6 +51,8 @@ int main()
 
     view_file(name3);
 
+    view_file(name2);
+
     PrintRowByNum(name2);
     view_file(name2);
 

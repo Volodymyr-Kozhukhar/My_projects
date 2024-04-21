@@ -343,6 +343,11 @@ void SortByAlphabet(char* name2, char* name3)           //функція, що �
     fprintf(f2, "\nВідсортовані рядки за алфавітом:\n\n");
     while (fgets(s, 200, f1))
     {
+        for (int i = 0; i < strlen(s); i++)
+        {
+            if (s[i] >= 'А' && s[i] <= 'Я')
+                s[i] += 32;
+        }
         memset(tmp, 0, 100);
         int amount = 0;
         int size = strlen(s);
