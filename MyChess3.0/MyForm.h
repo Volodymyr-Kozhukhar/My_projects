@@ -1875,11 +1875,11 @@ private: System::Windows::Forms::Button^ button2;
             static array<int, 2>^ StartBoardPosition;
 	int clickcount = 0;
     private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-        
-        if (clickcount == 0)
+        clickcount++;
+        if (clickcount == 1)
         {
             this->button1->BackColor = Color::Red;
-            this->button1->Text = "CANCEL";
+            this->button1->Text = "EXIT";
             StartBoardPosition = gcnew array<int, 2>(8, 8)
             {
                 { 41, 21, 31, 51, 61, 32, 22, 42 },
@@ -1903,57 +1903,68 @@ private: System::Windows::Forms::Button^ button2;
                         pictureBox->BackgroundImage = Image::FromFile(ImagePath);
                 }
         }
-        if (clickcount == 1)
+        if (clickcount == 2)
         {
             Close();
         }
-        clickcount++;
     }
            int clickcountboard = 0;
+
 
            String^ cellName;
            PictureBox^ Oldcell;
            Color OldColor;
-
+           int OldCoordinatesX = -2;
+           int OldCoordinatesY = -2;
+           int PieceToMove;
 private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) {
+    if (clickcount == 0)
+        return;
         clickcountboard++;
         PictureBox^ cell = safe_cast<PictureBox^>(sender);
         cellName = cell->Name;
         int cellCoordinatesX = -1;
         int cellCoordinatesY = -1;
-        for (int i = 0; cellName != "\0"; i++)
+        
+        std::string tmp1 = "0";
+        std::string tmp2 = "0";
+        tmp1 = cellName[1];
+        tmp2 = cellName[2];
+        cellCoordinatesX = std::stoi(tmp1);
+        cellCoordinatesY = std::stoi(tmp2);
+        
+        if (StartBoardPosition[cellCoordinatesX, cellCoordinatesY] == 0 && clickcountboard == 1) 
         {
-            std::string tmp1 = "0";
-            std::string tmp2 = "0";
-            tmp1 = cellName[1];
-            tmp2 = cellName[2];
-            cellCoordinatesX = std::stoi(tmp1);
-            cellCoordinatesY = std::stoi(tmp2);;
+            clickcountboard = 0;
+            return;
         }
-        int OldCoordinatesX = -2;
-        int OldCoordinatesY = -2;
         if (clickcountboard == 2 && OldCoordinatesX == cellCoordinatesX && OldCoordinatesY == cellCoordinatesY)
         {
             clickcountboard = 0;
-            cellCoordinatesX = -1;
-            cellCoordinatesY = -1;
             Oldcell->BackColor = OldColor;
+            Oldcell = nullptr;
             return;
         }
         else if (clickcountboard == 2)
         {
-            int PieceToMove = StartBoardPosition[cellCoordinatesX, cellCoordinatesY];
             ImagePath = nullptr;
             ImagePath = FindPiece(PieceToMove);
-            if (ImagePath != nullptr)
-            {
-                
-            }
+            cell->BackgroundImage = Image::FromFile(ImagePath);
+            Oldcell->BackgroundImage = nullptr;
+            Oldcell->BackColor = OldColor;
+            //StartBoardPosition->Find(StartBoardPosition[OldCoordinatesX, OldCoordinatesY],);
+            int tmp = StartBoardPosition[OldCoordinatesX, OldCoordinatesY];
+            StartBoardPosition[OldCoordinatesX, OldCoordinatesY] = 0;
+            StartBoardPosition[cellCoordinatesX, cellCoordinatesY] = tmp;
+            clickcountboard = 0;
+            Oldcell = nullptr;
+            return;
         }
+        PieceToMove = StartBoardPosition[cellCoordinatesX, cellCoordinatesY];
         OldCoordinatesX = cellCoordinatesX;
         OldCoordinatesY = cellCoordinatesY;
-        cell->BackColor = Color::Blue;
         OldColor = cell->BackColor;
+        cell->BackColor = Color::Teal;
         Oldcell = cell;
 }
 };
