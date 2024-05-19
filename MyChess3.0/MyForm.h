@@ -205,8 +205,10 @@ private: System::Windows::Forms::Label^ label14;
 private: System::Windows::Forms::Label^ label15;
 private: System::Windows::Forms::Label^ label16;
 private: System::Windows::Forms::Button^ button1;
-private: System::Windows::Forms::Label^ label17;
-private: System::Windows::Forms::PictureBox^ pictureBox1;
+private: System::Windows::Forms::Label^ ColorToMoveLable;
+private: System::Windows::Forms::PictureBox^ ColorToMoveBox;
+
+
 
 
 private: System::Windows::Forms::PictureBox^ pictureBox2;
@@ -351,8 +353,8 @@ private: System::Windows::Forms::Button^ button2;
             this->label15 = (gcnew System::Windows::Forms::Label());
             this->label16 = (gcnew System::Windows::Forms::Label());
             this->button1 = (gcnew System::Windows::Forms::Button());
-            this->label17 = (gcnew System::Windows::Forms::Label());
-            this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+            this->ColorToMoveLable = (gcnew System::Windows::Forms::Label());
+            this->ColorToMoveBox = (gcnew System::Windows::Forms::PictureBox());
             this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
             this->CapturedWhitePawns = (gcnew System::Windows::Forms::Label());
             this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
@@ -440,7 +442,7 @@ private: System::Windows::Forms::Button^ button2;
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B42))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B41))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B40))->BeginInit();
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ColorToMoveBox))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
@@ -457,8 +459,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B00
             // 
-            this->B00->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B00->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B00->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B00->Location = System::Drawing::Point(341, 91);
             this->B00->Name = L"B00";
@@ -481,8 +483,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B02
             // 
-            this->B02->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B02->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B02->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B02->Location = System::Drawing::Point(461, 91);
             this->B02->Name = L"B02";
@@ -517,8 +519,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B06
             // 
-            this->B06->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B06->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B06->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B06->Location = System::Drawing::Point(701, 91);
             this->B06->Name = L"B06";
@@ -541,8 +543,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B04
             // 
-            this->B04->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B04->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B04->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B04->Location = System::Drawing::Point(581, 91);
             this->B04->Name = L"B04";
@@ -565,8 +567,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B17
             // 
-            this->B17->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B17->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B17->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B17->Location = System::Drawing::Point(761, 151);
             this->B17->Name = L"B17";
@@ -589,8 +591,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B15
             // 
-            this->B15->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B15->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B15->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B15->Location = System::Drawing::Point(641, 151);
             this->B15->Name = L"B15";
@@ -613,8 +615,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B13
             // 
-            this->B13->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B13->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B13->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B13->Location = System::Drawing::Point(521, 151);
             this->B13->Name = L"B13";
@@ -637,8 +639,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B11
             // 
-            this->B11->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B11->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B11->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B11->Location = System::Drawing::Point(401, 151);
             this->B11->Name = L"B11";
@@ -661,8 +663,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B37
             // 
-            this->B37->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B37->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B37->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B37->Location = System::Drawing::Point(761, 271);
             this->B37->Name = L"B37";
@@ -685,8 +687,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B35
             // 
-            this->B35->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B35->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B35->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B35->Location = System::Drawing::Point(641, 271);
             this->B35->Name = L"B35";
@@ -709,8 +711,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B33
             // 
-            this->B33->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B33->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B33->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B33->Location = System::Drawing::Point(521, 271);
             this->B33->Name = L"B33";
@@ -733,8 +735,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B31
             // 
-            this->B31->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B31->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B31->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B31->Location = System::Drawing::Point(401, 271);
             this->B31->Name = L"B31";
@@ -757,8 +759,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B26
             // 
-            this->B26->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B26->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B26->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B26->Location = System::Drawing::Point(701, 211);
             this->B26->Name = L"B26";
@@ -781,8 +783,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B24
             // 
-            this->B24->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B24->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B24->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B24->Location = System::Drawing::Point(581, 211);
             this->B24->Name = L"B24";
@@ -805,8 +807,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B22
             // 
-            this->B22->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B22->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B22->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B22->Location = System::Drawing::Point(461, 211);
             this->B22->Name = L"B22";
@@ -829,8 +831,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B20
             // 
-            this->B20->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B20->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B20->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B20->Location = System::Drawing::Point(341, 211);
             this->B20->Name = L"B20";
@@ -853,8 +855,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B77
             // 
-            this->B77->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B77->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B77->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B77->Location = System::Drawing::Point(761, 511);
             this->B77->Name = L"B77";
@@ -877,8 +879,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B75
             // 
-            this->B75->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B75->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B75->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B75->Location = System::Drawing::Point(641, 511);
             this->B75->Name = L"B75";
@@ -901,8 +903,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B73
             // 
-            this->B73->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B73->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B73->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B73->Location = System::Drawing::Point(521, 511);
             this->B73->Name = L"B73";
@@ -925,8 +927,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B71
             // 
-            this->B71->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B71->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B71->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B71->Location = System::Drawing::Point(401, 511);
             this->B71->Name = L"B71";
@@ -949,8 +951,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B66
             // 
-            this->B66->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B66->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B66->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B66->Location = System::Drawing::Point(701, 451);
             this->B66->Name = L"B66";
@@ -973,8 +975,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B64
             // 
-            this->B64->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B64->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B64->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B64->Location = System::Drawing::Point(581, 451);
             this->B64->Name = L"B64";
@@ -997,8 +999,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B62
             // 
-            this->B62->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B62->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B62->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B62->Location = System::Drawing::Point(461, 451);
             this->B62->Name = L"B62";
@@ -1021,8 +1023,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B60
             // 
-            this->B60->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B60->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B60->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B60->Location = System::Drawing::Point(341, 451);
             this->B60->Name = L"B60";
@@ -1045,8 +1047,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B57
             // 
-            this->B57->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B57->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B57->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B57->Location = System::Drawing::Point(761, 391);
             this->B57->Name = L"B57";
@@ -1069,8 +1071,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B55
             // 
-            this->B55->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B55->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B55->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B55->Location = System::Drawing::Point(641, 391);
             this->B55->Name = L"B55";
@@ -1093,8 +1095,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B53
             // 
-            this->B53->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B53->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B53->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B53->Location = System::Drawing::Point(521, 391);
             this->B53->Name = L"B53";
@@ -1117,8 +1119,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B51
             // 
-            this->B51->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B51->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B51->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B51->Location = System::Drawing::Point(401, 391);
             this->B51->Name = L"B51";
@@ -1141,8 +1143,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B46
             // 
-            this->B46->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B46->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B46->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B46->Location = System::Drawing::Point(701, 331);
             this->B46->Name = L"B46";
@@ -1165,8 +1167,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B44
             // 
-            this->B44->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B44->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B44->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B44->Location = System::Drawing::Point(581, 331);
             this->B44->Name = L"B44";
@@ -1189,8 +1191,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B42
             // 
-            this->B42->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B42->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B42->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B42->Location = System::Drawing::Point(461, 331);
             this->B42->Name = L"B42";
@@ -1213,8 +1215,8 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // B40
             // 
-            this->B40->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-                static_cast<System::Int32>(static_cast<System::Byte>(0)));
+            this->B40->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->B40->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
             this->B40->Location = System::Drawing::Point(341, 331);
             this->B40->Name = L"B40";
@@ -1405,7 +1407,7 @@ private: System::Windows::Forms::Button^ button2;
                 static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
             this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->button1->Location = System::Drawing::Point(404, 632);
+            this->button1->Location = System::Drawing::Point(87, 476);
             this->button1->Name = L"button1";
             this->button1->Size = System::Drawing::Size(117, 58);
             this->button1->TabIndex = 86;
@@ -1413,26 +1415,26 @@ private: System::Windows::Forms::Button^ button2;
             this->button1->UseVisualStyleBackColor = false;
             this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
             // 
-            // label17
+            // ColorToMoveLable
             // 
-            this->label17->BackColor = System::Drawing::Color::Transparent;
-            this->label17->Font = (gcnew System::Drawing::Font(L"Times New Roman", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+            this->ColorToMoveLable->BackColor = System::Drawing::Color::Transparent;
+            this->ColorToMoveLable->Font = (gcnew System::Drawing::Font(L"Times New Roman", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(204)));
-            this->label17->Location = System::Drawing::Point(424, 29);
-            this->label17->Name = L"label17";
-            this->label17->Size = System::Drawing::Size(197, 42);
-            this->label17->TabIndex = 87;
-            this->label17->Text = L"Waiting for start";
-            this->label17->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            this->ColorToMoveLable->Location = System::Drawing::Point(442, 29);
+            this->ColorToMoveLable->Name = L"ColorToMoveLable";
+            this->ColorToMoveLable->Size = System::Drawing::Size(217, 42);
+            this->ColorToMoveLable->TabIndex = 87;
+            this->ColorToMoveLable->Text = L"Waiting for start";
+            this->ColorToMoveLable->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
             // 
-            // pictureBox1
+            // ColorToMoveBox
             // 
-            this->pictureBox1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-            this->pictureBox1->Location = System::Drawing::Point(667, 29);
-            this->pictureBox1->Name = L"pictureBox1";
-            this->pictureBox1->Size = System::Drawing::Size(57, 42);
-            this->pictureBox1->TabIndex = 88;
-            this->pictureBox1->TabStop = false;
+            this->ColorToMoveBox->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->ColorToMoveBox->Location = System::Drawing::Point(641, 19);
+            this->ColorToMoveBox->Name = L"ColorToMoveBox";
+            this->ColorToMoveBox->Size = System::Drawing::Size(60, 60);
+            this->ColorToMoveBox->TabIndex = 88;
+            this->ColorToMoveBox->TabStop = false;
             // 
             // pictureBox2
             // 
@@ -1683,12 +1685,13 @@ private: System::Windows::Forms::Button^ button2;
             this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
                 static_cast<System::Int32>(static_cast<System::Byte>(64)));
             this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->button2->Location = System::Drawing::Point(633, 631);
+            this->button2->Location = System::Drawing::Point(938, 476);
             this->button2->Name = L"button2";
             this->button2->Size = System::Drawing::Size(117, 58);
             this->button2->TabIndex = 103;
             this->button2->Text = L"RESTART";
             this->button2->UseVisualStyleBackColor = false;
+            this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
             // 
             // MyForm
             // 
@@ -1699,8 +1702,8 @@ private: System::Windows::Forms::Button^ button2;
             this->Controls->Add(this->button2);
             this->Controls->Add(this->groupBox2);
             this->Controls->Add(this->groupBox1);
-            this->Controls->Add(this->pictureBox1);
-            this->Controls->Add(this->label17);
+            this->Controls->Add(this->ColorToMoveBox);
+            this->Controls->Add(this->ColorToMoveLable);
             this->Controls->Add(this->button1);
             this->Controls->Add(this->label16);
             this->Controls->Add(this->label15);
@@ -1853,7 +1856,7 @@ private: System::Windows::Forms::Button^ button2;
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B42))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B41))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B40))->EndInit();
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ColorToMoveBox))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
@@ -1869,13 +1872,16 @@ private: System::Windows::Forms::Button^ button2;
             this->ResumeLayout(false);
 
         }
-#pragma endregion
+#pragma endregion 
+        int colorNumber = 1;
         String^ ImagePath;
         private:
             static array<int, 2>^ StartBoardPosition;
 	int clickcount = 0;
     private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
         clickcount++;
+        ColorToMoveLable->Text = "Move for: ";
+        ColorToMoveBox->BackColor = Color::White;
         if (clickcount == 1)
         {
             this->button1->BackColor = Color::Red;
@@ -1901,6 +1907,8 @@ private: System::Windows::Forms::Button^ button2;
                     ImagePath = FindPiece(StartBoardPosition[i, j]);
                     if (ImagePath != nullptr)
                         pictureBox->BackgroundImage = Image::FromFile(ImagePath);
+                    else
+                        pictureBox->BackgroundImage = nullptr;
                 }
         }
         if (clickcount == 2)
@@ -1938,6 +1946,7 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
             clickcountboard = 0;
             return;
         }
+
         if (clickcountboard == 2 && OldCoordinatesX == cellCoordinatesX && OldCoordinatesY == cellCoordinatesY)
         {
             clickcountboard = 0;
@@ -1945,17 +1954,32 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
             Oldcell = nullptr;
             return;
         }
-        else if (clickcountboard == 2)
+
+        else if (clickcountboard == 2 && (StartBoardPosition[OldCoordinatesX, OldCoordinatesY] > 100 && StartBoardPosition[cellCoordinatesX, cellCoordinatesY] < 100 || StartBoardPosition[OldCoordinatesX, OldCoordinatesY] < 100 && (StartBoardPosition[cellCoordinatesX, cellCoordinatesY] > 100 || StartBoardPosition[cellCoordinatesX, cellCoordinatesY] == 0)))
         {
             ImagePath = nullptr;
             ImagePath = FindPiece(PieceToMove);
             cell->BackgroundImage = Image::FromFile(ImagePath);
             Oldcell->BackgroundImage = nullptr;
             Oldcell->BackColor = OldColor;
-            //StartBoardPosition->Find(StartBoardPosition[OldCoordinatesX, OldCoordinatesY],);
+
             int tmp = StartBoardPosition[OldCoordinatesX, OldCoordinatesY];
             StartBoardPosition[OldCoordinatesX, OldCoordinatesY] = 0;
             StartBoardPosition[cellCoordinatesX, cellCoordinatesY] = tmp;
+
+            clickcountboard = 0;
+            Oldcell = nullptr;
+
+            colorNumber++;
+            if (colorNumber % 2 == 0)
+                ColorToMoveBox->BackColor = Color::Black;
+            else 
+                ColorToMoveBox->BackColor = Color::White;
+            return;
+        } 
+        else if(clickcountboard == 2)
+        {
+            Oldcell->BackColor = OldColor;
             clickcountboard = 0;
             Oldcell = nullptr;
             return;
@@ -1963,9 +1987,17 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
         PieceToMove = StartBoardPosition[cellCoordinatesX, cellCoordinatesY];
         OldCoordinatesX = cellCoordinatesX;
         OldCoordinatesY = cellCoordinatesY;
+
         OldColor = cell->BackColor;
-        cell->BackColor = Color::Teal;
+        cell->BackColor = Color::Linen;
         Oldcell = cell;
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+    clickcount = 0;
+    if(clickcountboard == 1)
+        Oldcell->BackColor = OldColor;
+    clickcountboard = 0;
+    button1_Click(sender, e);
 }
 };
 }
