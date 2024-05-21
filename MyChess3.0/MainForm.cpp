@@ -14,5 +14,4 @@ int main(array<String^>^ args) {
 	Application::EnableVisualStyles();
 	MyChess30::MyForm form;
 	Application::Run(% form);
-
 }

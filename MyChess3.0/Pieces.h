@@ -1,85 +1,84 @@
 #pragma once
 #include "MyForm.h"
+#include "Board.h"
+#include <string>
 
-System::String ^ FindPiece(int piece_number)
-{
-    if (piece_number < 100)
-    {
-        if (piece_number > 10 && piece_number < 19)
-        {
-            return ".\\Pieces\\BlackPawn.png";
-        }
-        else if (piece_number == 42 || piece_number == 41)
-        {
-            return ".\\Pieces\\BlackRook.png"; //BlackRooks
-        }
-        else if (piece_number == 21 || piece_number == 22)
-        {
-            return ".\\Pieces\\BlackKnight.png"; //BlackKnights
-        }
-        else if (piece_number == 31 || piece_number == 32)
-        {
-            return ".\\Pieces\\BlackBishop.png"; //BlackBishops
-        }
-        else if (piece_number == 51)
-        {
-            return ".\\Pieces\\BlackQueen.png"; //BlackQueen
-        }
-        else if (piece_number == 61)
-        {
-            return ".\\Pieces\\BlackKing.png"; //BlackKing
-        }
-    }
-    else
-    {
-        if (piece_number > 110 && piece_number < 119)
-        {
-            return ".\\Pieces\\WhitePawn.png"; //WhitePawns
-        }
-        else if (piece_number == 142 || piece_number == 141)
-        {
-            return ".\\Pieces\\WhiteRook.png"; //WhiteRooks
-        }
-        else if (piece_number == 121 || piece_number == 122)
-        {
-            return ".\\Pieces\\WhiteKnight.png"; //WhiteKnights
-        }
-        else if (piece_number == 131 || piece_number == 132)
-        {
-            return ".\\Pieces\\WhiteBishop.png"; //WhiteBishops
-        }
-        else if (piece_number == 151)
-        {
-            return ".\\Pieces\\WhiteQueen.png"; //WhiteQueen
-        }
-        else if (piece_number == 161)
-        {
-            return ".\\Pieces\\WhiteKing.png"; //WhiteKing
-        }
-    }
-}
+typedef int color;			// 1 - white; 0 - black;
 
+ref class Pawn {
+public:
+	color pawn;
+	bool CheckForPossibleMove(int OldPieceNumber, static array<int, 2>^ StartBoardPosition, int X, int Y, int OldX, int OldY, System::String^% CaptureCellName)
+	{
+		if (OldPieceNumber > 100 && OldPieceNumber < 120)
+		{
+			pawn = 1;
+			if (OldX == 6 && pawn == 1)
+			{
+				for (int i = OldX, j = OldY; i >= OldX - 2; i--)
+				{
+					if (StartBoardPosition[X, Y] == 0 && X == i && Y == j)
+						return true;
+				}
+			}
+			if (pawn == 1)
+			{
+				if(StartBoardPosition[X, Y] != 0 && (X == OldX - 1 && Y == OldY + 1 || X == OldX - 1 && Y == OldY - 1))
+				{
+					CaptureCellName = CellNameForCapture(StartBoardPosition[X, Y]);
+					return true;
+				}
+				else if (StartBoardPosition[X, Y] == 0 && X == OldX - 1 && Y == OldY)
+						return true;
+				return false;
+			}
+		}
+		else if(OldPieceNumber > 10 && OldPieceNumber < 20)
+		{
+			pawn = 0;
+			if (pawn == 0 && OldX == 1)
+			{
+				for (int i = OldX, j = OldY; i <= OldX + 2; i++)
+				{
+					if (StartBoardPosition[X, Y] == 0 && X == i && Y == j)
+						return true;
+				}
+			}
+			if (pawn == 0)
+			{
+				if (StartBoardPosition[X, Y] != 0 && (X == OldX + 1 && Y == OldY + 1 || X == OldX + 1 && Y == OldY - 1))
+				{
+					CaptureCellName = CellNameForCapture(StartBoardPosition[X, Y]);
+					return true;
+				}
+				else if (StartBoardPosition[X, Y] == 0 && X == OldX + 1 && Y == OldY)
+					return true;
+				return false;
+			}
+		}
+	}
+};
 
-class Pawn {
+ref class Knight {
+	color knight;
 
 };
 
-class Knight {
+ref class Bishop {
+	color bishop;
 
 };
 
-class Bishop {
+ref class Rook {
+	color rook;
 
 };
 
-class Rook {
-
+ref class Queen {
+	color queen;
 };
 
-class Queen {
-
-};
-
-class King {
+ref class King {
+	color king;
 
 };

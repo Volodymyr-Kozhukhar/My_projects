@@ -1413,7 +1413,7 @@ private: System::Windows::Forms::Button^ button2;
             this->button1->TabIndex = 86;
             this->button1->Text = L"START";
             this->button1->UseVisualStyleBackColor = false;
-            this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+            this->button1->Click += gcnew System::EventHandler(this, &MyForm::Start_Click);
             // 
             // ColorToMoveLable
             // 
@@ -1455,6 +1455,7 @@ private: System::Windows::Forms::Button^ button2;
             this->CapturedWhitePawns->TabIndex = 92;
             this->CapturedWhitePawns->Text = L"0";
             this->CapturedWhitePawns->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            this->CapturedWhitePawns->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
             // 
             // pictureBox3
             // 
@@ -1505,6 +1506,7 @@ private: System::Windows::Forms::Button^ button2;
             this->CapturedWhiteKnights->TabIndex = 97;
             this->CapturedWhiteKnights->Text = L"0";
             this->CapturedWhiteKnights->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            this->CapturedWhiteKnights->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
             // 
             // CapturedWhiteBishops
             // 
@@ -1515,6 +1517,7 @@ private: System::Windows::Forms::Button^ button2;
             this->CapturedWhiteBishops->TabIndex = 98;
             this->CapturedWhiteBishops->Text = L"0";
             this->CapturedWhiteBishops->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            this->CapturedWhiteBishops->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
             // 
             // CapturedWhiteRooks
             // 
@@ -1525,6 +1528,7 @@ private: System::Windows::Forms::Button^ button2;
             this->CapturedWhiteRooks->TabIndex = 99;
             this->CapturedWhiteRooks->Text = L"0";
             this->CapturedWhiteRooks->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            this->CapturedWhiteRooks->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
             // 
             // CapturedWhiteQueens
             // 
@@ -1535,6 +1539,7 @@ private: System::Windows::Forms::Button^ button2;
             this->CapturedWhiteQueens->TabIndex = 100;
             this->CapturedWhiteQueens->Text = L"0";
             this->CapturedWhiteQueens->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            this->CapturedWhiteQueens->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
             // 
             // groupBox1
             // 
@@ -1589,6 +1594,7 @@ private: System::Windows::Forms::Button^ button2;
             this->CapturedBlackQueens->TabIndex = 100;
             this->CapturedBlackQueens->Text = L"0";
             this->CapturedBlackQueens->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            this->CapturedBlackQueens->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
             // 
             // CapturedBlackRooks
             // 
@@ -1599,6 +1605,7 @@ private: System::Windows::Forms::Button^ button2;
             this->CapturedBlackRooks->TabIndex = 99;
             this->CapturedBlackRooks->Text = L"0";
             this->CapturedBlackRooks->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            this->CapturedBlackRooks->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
             // 
             // CapturedBlackBishops
             // 
@@ -1609,6 +1616,7 @@ private: System::Windows::Forms::Button^ button2;
             this->CapturedBlackBishops->TabIndex = 98;
             this->CapturedBlackBishops->Text = L"0";
             this->CapturedBlackBishops->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            this->CapturedBlackBishops->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
             // 
             // CapturedBlackKnights
             // 
@@ -1619,6 +1627,7 @@ private: System::Windows::Forms::Button^ button2;
             this->CapturedBlackKnights->TabIndex = 97;
             this->CapturedBlackKnights->Text = L"0";
             this->CapturedBlackKnights->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            this->CapturedBlackKnights->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
             // 
             // pictureBox7
             // 
@@ -1669,6 +1678,7 @@ private: System::Windows::Forms::Button^ button2;
             this->CapturedBlackPawns->TabIndex = 92;
             this->CapturedBlackPawns->Text = L"0";
             this->CapturedBlackPawns->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            this->CapturedBlackPawns->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
             // 
             // pictureBox11
             // 
@@ -1691,11 +1701,11 @@ private: System::Windows::Forms::Button^ button2;
             this->button2->TabIndex = 103;
             this->button2->Text = L"RESTART";
             this->button2->UseVisualStyleBackColor = false;
-            this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
+            this->button2->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
             // 
             // MyForm
             // 
-            this->AutoScaleDimensions = System::Drawing::SizeF(7, 13);
+            this->AutoScaleDimensions = System::Drawing::SizeF(9, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->BackColor = System::Drawing::SystemColors::ControlDark;
             this->ClientSize = System::Drawing::Size(1134, 711);
@@ -1873,13 +1883,15 @@ private: System::Windows::Forms::Button^ button2;
 
         }
 #pragma endregion 
+
         int colorNumber = 1;
         String^ ImagePath;
         private:
             static array<int, 2>^ StartBoardPosition;
+
 	int clickcount = 0;
-    private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-        clickcount++;
+    private: System::Void Start_Click(System::Object^ sender, System::EventArgs^ e) {   //Board start, drawing pieces
+        clickcount++;                                                                   // Buttons Start & Exit
         ColorToMoveLable->Text = "Move for: ";
         ColorToMoveBox->BackColor = Color::White;
         if (clickcount == 1)
@@ -1916,15 +1928,24 @@ private: System::Windows::Forms::Button^ button2;
             Close();
         }
     }
-           int clickcountboard = 0;
-
+           bool moveSide = true;
 
            String^ cellName;
            PictureBox^ Oldcell;
            Color OldColor;
+
+           int clickcountboard = 0;
            int OldCoordinatesX = -2;
            int OldCoordinatesY = -2;
            int PieceToMove;
+
+           Pawn NewPawn;
+           Knight NewKnight;
+           Bishop NewBishop;
+           Rook NewRook;
+           Queen NewQueen;
+           King NewKing;
+
 private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) {
     if (clickcount == 0)
         return;
@@ -1955,10 +1976,32 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
             return;
         }
 
-        else if (clickcountboard == 2 && (StartBoardPosition[OldCoordinatesX, OldCoordinatesY] > 100 && StartBoardPosition[cellCoordinatesX, cellCoordinatesY] < 100 || StartBoardPosition[OldCoordinatesX, OldCoordinatesY] < 100 && (StartBoardPosition[cellCoordinatesX, cellCoordinatesY] > 100 || StartBoardPosition[cellCoordinatesX, cellCoordinatesY] == 0)))
+        else if (clickcountboard == 2 && (StartBoardPosition[OldCoordinatesX, OldCoordinatesY] > 100 && StartBoardPosition[cellCoordinatesX, cellCoordinatesY] < 100 && moveSide == true || StartBoardPosition[OldCoordinatesX, OldCoordinatesY] < 100 && (StartBoardPosition[cellCoordinatesX, cellCoordinatesY] > 100 || StartBoardPosition[cellCoordinatesX, cellCoordinatesY] == 0) && moveSide == false))
         {
             ImagePath = nullptr;
             ImagePath = FindPiece(PieceToMove);
+
+            String^ tmpString = nullptr;
+
+            if (ImagePath->IndexOf("Pawn") != 0) //Pawns moves
+            {
+                if (NewPawn.CheckForPossibleMove(StartBoardPosition[OldCoordinatesX, OldCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY, OldCoordinatesX, OldCoordinatesY, tmpString) != true) 
+                {
+                    Oldcell->BackColor = OldColor;
+                    clickcountboard = 0;
+                    Oldcell = nullptr;
+                    return;
+                }
+            }
+
+            if (tmpString != nullptr)
+            {
+                Label^ Temp = dynamic_cast<Label^>(this->Controls->Find(tmpString, true)[0]);
+                int temp = System::Convert::ToInt64(Temp->Text);
+                temp += 1;
+                Temp->Text = System::Convert::ToString(temp);
+            }
+
             cell->BackgroundImage = Image::FromFile(ImagePath);
             Oldcell->BackgroundImage = nullptr;
             Oldcell->BackColor = OldColor;
@@ -1969,6 +2012,7 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
 
             clickcountboard = 0;
             Oldcell = nullptr;
+            moveSide = !moveSide;
 
             colorNumber++;
             if (colorNumber % 2 == 0)
@@ -1987,17 +2031,39 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
         PieceToMove = StartBoardPosition[cellCoordinatesX, cellCoordinatesY];
         OldCoordinatesX = cellCoordinatesX;
         OldCoordinatesY = cellCoordinatesY;
-
-        OldColor = cell->BackColor;
-        cell->BackColor = Color::Linen;
-        Oldcell = cell;
+        if (StartBoardPosition[cellCoordinatesX, cellCoordinatesY] > 100 && moveSide == true || StartBoardPosition[cellCoordinatesX, cellCoordinatesY] < 100 && moveSide == false)
+        {
+            OldColor = cell->BackColor;
+            cell->BackColor = Color::Linen;
+            Oldcell = cell;
+        }
+        else
+        {
+            clickcountboard = 0;
+            Oldcell = nullptr;
+            return;
+        }
 }
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-    clickcount = 0;
-    if(clickcountboard == 1)
-        Oldcell->BackColor = OldColor;
-    clickcountboard = 0;
-    button1_Click(sender, e);
+private: System::Void Restart_Click(System::Object^ sender, System::EventArgs^ e) { // Button Restart
+    if (clickcount == 1)
+    {
+        this->CapturedWhiteKnights->Text = "0";
+        this->CapturedWhiteBishops->Text = "0";
+        this->CapturedWhiteRooks->Text = "0";
+        this->CapturedWhiteQueens->Text = "0";
+        this->CapturedBlackQueens->Text = "0";
+        this->CapturedBlackRooks->Text = "0";
+        this->CapturedBlackBishops->Text = "0";
+        this->CapturedBlackKnights->Text = "0";
+        this->CapturedBlackPawns->Text = "0";
+        this->CapturedWhitePawns->Text = "0";
+        clickcount = 0;
+        if (clickcountboard == 1)
+            Oldcell->BackColor = OldColor;
+        clickcountboard = 0;
+        moveSide = true;
+        Start_Click(sender, e);
+    }
 }
 };
 }
