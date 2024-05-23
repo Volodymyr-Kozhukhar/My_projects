@@ -1565,6 +1565,7 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // groupBox2
             // 
+            this->groupBox2->BackColor = System::Drawing::Color::Transparent;
             this->groupBox2->Controls->Add(this->CapturedBlackQueens);
             this->groupBox2->Controls->Add(this->CapturedBlackRooks);
             this->groupBox2->Controls->Add(this->CapturedBlackBishops);
@@ -1693,7 +1694,7 @@ private: System::Windows::Forms::Button^ button2;
             // button2
             // 
             this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
-                static_cast<System::Int32>(static_cast<System::Byte>(64)));
+                static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
             this->button2->Location = System::Drawing::Point(938, 476);
             this->button2->Name = L"button2";
@@ -1705,9 +1706,10 @@ private: System::Windows::Forms::Button^ button2;
             // 
             // MyForm
             // 
-            this->AutoScaleDimensions = System::Drawing::SizeF(9, 16);
+            this->AutoScaleDimensions = System::Drawing::SizeF(7, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-            this->BackColor = System::Drawing::SystemColors::ControlDark;
+            this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(194)), static_cast<System::Int32>(static_cast<System::Byte>(162)),
+                static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->ClientSize = System::Drawing::Size(1134, 711);
             this->Controls->Add(this->button2);
             this->Controls->Add(this->groupBox2);
