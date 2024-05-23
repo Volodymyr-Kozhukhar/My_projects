@@ -1898,7 +1898,7 @@ private: System::Windows::Forms::Button^ button2;
         {
             this->button1->BackColor = Color::Red;
             this->button1->Text = "EXIT";
-            StartBoardPosition = gcnew array<int, 2>(8, 8)
+            StartBoardPosition = gcnew array<int, 2>(8, 8)      // Start board position in dynamic matrix in C# style
             {
                 { 41, 21, 31, 51, 61, 32, 22, 42 },
                 { 11, 12, 13, 14, 15, 16, 17, 18 },
@@ -1910,10 +1910,10 @@ private: System::Windows::Forms::Button^ button2;
                 { 141, 121, 131, 151, 161, 132, 122, 142 }
             };
                         
-            for(int i = 0; i < 8; i++)
+            for(int i = 0; i < 8; i++)      // Cycles for drawing every single piece from matrix
                 for (int j = 0; j < 8; j++)
                 {
-                    String^ cellName = String::Format("B{0}{1}", i, j);
+                    String^ cellName = String::Format("B{0}{1}", i, j); // Converting i and j to the cell name for changing BackgroundImage
                     PictureBox^ pictureBox = (PictureBox^)this->Controls[cellName];
                     ImagePath = nullptr;
                     ImagePath = FindPiece(StartBoardPosition[i, j]);
@@ -1928,17 +1928,20 @@ private: System::Windows::Forms::Button^ button2;
             Close();
         }
     }
-           bool moveSide = true;
+           bool moveSide = true;        // Changing color of moving pieces          true - white    false - black
 
            String^ cellName;
            PictureBox^ Oldcell;
            Color OldColor;
 
+           int PawnDoubleMoveSign = 0;
            int clickcountboard = 0;
            int OldCoordinatesX = -2;
            int OldCoordinatesY = -2;
            int PieceToMove;
-
+           int* SpecX = new int(0);
+           int* SpecY = new int(0);
+           
            Pawn NewPawn;
            Knight NewKnight;
            Bishop NewBishop;
@@ -1947,28 +1950,30 @@ private: System::Windows::Forms::Button^ button2;
            King NewKing;
 
 private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) {
-    if (clickcount == 0)
+
+    if (clickcount == 0)    // cheking start button state
         return;
+
         clickcountboard++;
-        PictureBox^ cell = safe_cast<PictureBox^>(sender);
+        PictureBox^ cell = safe_cast<PictureBox^>(sender);  // new temporary picterBox for clicked cell
         cellName = cell->Name;
         int cellCoordinatesX = -1;
         int cellCoordinatesY = -1;
         
-        std::string tmp1 = "0";
+        std::string tmp1 = "0";     // Name of cell converting to coordinates of matrix
         std::string tmp2 = "0";
         tmp1 = cellName[1];
         tmp2 = cellName[2];
         cellCoordinatesX = std::stoi(tmp1);
         cellCoordinatesY = std::stoi(tmp2);
         
-        if (StartBoardPosition[cellCoordinatesX, cellCoordinatesY] == 0 && clickcountboard == 1) 
+        if (StartBoardPosition[cellCoordinatesX, cellCoordinatesY] == 0 && clickcountboard == 1) // Cheking if cell empty or not at first click
         {
             clickcountboard = 0;
             return;
         }
 
-        if (clickcountboard == 2 && OldCoordinatesX == cellCoordinatesX && OldCoordinatesY == cellCoordinatesY)
+        if (clickcountboard == 2 && OldCoordinatesX == cellCoordinatesX && OldCoordinatesY == cellCoordinatesY) // Cheking if cell is same at second click
         {
             clickcountboard = 0;
             Oldcell->BackColor = OldColor;
@@ -1978,14 +1983,14 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
 
         else if (clickcountboard == 2 && (StartBoardPosition[OldCoordinatesX, OldCoordinatesY] > 100 && StartBoardPosition[cellCoordinatesX, cellCoordinatesY] < 100 && moveSide == true || StartBoardPosition[OldCoordinatesX, OldCoordinatesY] < 100 && (StartBoardPosition[cellCoordinatesX, cellCoordinatesY] > 100 || StartBoardPosition[cellCoordinatesX, cellCoordinatesY] == 0) && moveSide == false))
         {
-            ImagePath = nullptr;
+            ImagePath = nullptr;                    // If its second click and piece color is right finding piece image to change it
             ImagePath = FindPiece(PieceToMove);
 
             String^ tmpString = nullptr;
 
             if (ImagePath->IndexOf("Pawn") != 0) //Pawns moves
             {
-                if (NewPawn.CheckForPossibleMove(StartBoardPosition[OldCoordinatesX, OldCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY, OldCoordinatesX, OldCoordinatesY, tmpString) != true) 
+                if (NewPawn.CheckForPossibleMove(StartBoardPosition[OldCoordinatesX, OldCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY, OldCoordinatesX, OldCoordinatesY, tmpString, SpecX, SpecY) != true) 
                 {
                     Oldcell->BackColor = OldColor;
                     clickcountboard = 0;
@@ -1993,8 +1998,8 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                     return;
                 }
             }
-
-            if (tmpString != nullptr)
+            
+            if (tmpString != nullptr) //Captured piece calculating
             {
                 Label^ Temp = dynamic_cast<Label^>(this->Controls->Find(tmpString, true)[0]);
                 int temp = System::Convert::ToInt64(Temp->Text);
@@ -2002,11 +2007,19 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                 Temp->Text = System::Convert::ToString(temp);
             }
 
-            cell->BackgroundImage = Image::FromFile(ImagePath);
+            if ((cellCoordinatesX == *SpecX + 1 && cellCoordinatesY == *SpecY || cellCoordinatesX == *SpecX - 1 && cellCoordinatesY == *SpecY) && StartBoardPosition[cellCoordinatesX, cellCoordinatesY] == 0)
+            {
+                String^ tmpCellName = String::Format("B{0}{1}", *SpecX, *SpecY);    // Special takes for double pawn moves
+                PictureBox^ tmpcell = (PictureBox^)this->Controls[tmpCellName];
+                tmpcell->BackgroundImage = nullptr;
+                StartBoardPosition[*SpecX, *SpecY] = 0;
+            }
+
+            cell->BackgroundImage = Image::FromFile(ImagePath);     // Changing image of cell piece
             Oldcell->BackgroundImage = nullptr;
             Oldcell->BackColor = OldColor;
 
-            int tmp = StartBoardPosition[OldCoordinatesX, OldCoordinatesY];
+            int tmp = StartBoardPosition[OldCoordinatesX, OldCoordinatesY];     // Changing matrix after piece move or capture
             StartBoardPosition[OldCoordinatesX, OldCoordinatesY] = 0;
             StartBoardPosition[cellCoordinatesX, cellCoordinatesY] = tmp;
 
@@ -2014,25 +2027,36 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
             Oldcell = nullptr;
             moveSide = !moveSide;
 
+            if (*SpecX != 0)        // Changing special double pawn move sign after next move
+            {
+                PawnDoubleMoveSign++;
+                if (PawnDoubleMoveSign == 2)
+                {
+                    PawnDoubleMoveSign = 0;
+                    *SpecX = 0;
+                    *SpecY = 0;
+                }
+            }
+
             colorNumber++;
-            if (colorNumber % 2 == 0)
+            if (colorNumber % 2 == 0)                       // Changing color of PictureBox which indicate color of moving pieces
                 ColorToMoveBox->BackColor = Color::Black;
             else 
                 ColorToMoveBox->BackColor = Color::White;
             return;
         } 
-        else if(clickcountboard == 2)
+        else if(clickcountboard == 2)       // If move is not possible or no move after click at all
         {
             Oldcell->BackColor = OldColor;
             clickcountboard = 0;
             Oldcell = nullptr;
             return;
         }
-        PieceToMove = StartBoardPosition[cellCoordinatesX, cellCoordinatesY];
+        PieceToMove = StartBoardPosition[cellCoordinatesX, cellCoordinatesY];   
         OldCoordinatesX = cellCoordinatesX;
         OldCoordinatesY = cellCoordinatesY;
-        if (StartBoardPosition[cellCoordinatesX, cellCoordinatesY] > 100 && moveSide == true || StartBoardPosition[cellCoordinatesX, cellCoordinatesY] < 100 && moveSide == false)
-        {
+        if (StartBoardPosition[cellCoordinatesX, cellCoordinatesY] > 100 && moveSide == true || StartBoardPosition[cellCoordinatesX, cellCoordinatesY] < 100 && moveSide == false) 
+        {                                   // If first click and piece in cell is right color
             OldColor = cell->BackColor;
             cell->BackColor = Color::Linen;
             Oldcell = cell;
