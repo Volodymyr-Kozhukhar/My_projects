@@ -1925,6 +1925,8 @@ private: System::Windows::Forms::Button^ button2;
         }
         if (clickcount == 2)
         {
+            delete SpecX;
+            delete SpecY;
             Close();
         }
     }
