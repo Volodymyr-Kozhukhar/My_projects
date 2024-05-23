@@ -205,26 +205,27 @@ private: System::Windows::Forms::Label^ label14;
 private: System::Windows::Forms::Label^ label15;
 private: System::Windows::Forms::Label^ label16;
 private: System::Windows::Forms::Button^ button1;
-private: System::Windows::Forms::Label^ ColorToMoveLable;
-private: System::Windows::Forms::PictureBox^ ColorToMoveBox;
+
+private: System::Windows::Forms::PictureBox^ ColorToMoveBox1;
 
 
 
 
-private: System::Windows::Forms::PictureBox^ pictureBox2;
-private: System::Windows::Forms::Label^ CapturedWhitePawns;
 
-private: System::Windows::Forms::PictureBox^ pictureBox3;
-private: System::Windows::Forms::PictureBox^ pictureBox4;
-private: System::Windows::Forms::PictureBox^ pictureBox5;
-private: System::Windows::Forms::PictureBox^ pictureBox6;
-private: System::Windows::Forms::Label^ CapturedWhiteKnights;
-private: System::Windows::Forms::Label^ CapturedWhiteBishops;
-private: System::Windows::Forms::Label^ CapturedWhiteRooks;
 
-private: System::Windows::Forms::Label^ CapturedWhiteQueens;
-private: System::Windows::Forms::GroupBox^ groupBox1;
-private: System::Windows::Forms::GroupBox^ groupBox2;
+
+
+
+
+
+
+
+
+
+
+
+
+
 private: System::Windows::Forms::Label^ CapturedBlackQueens;
 private: System::Windows::Forms::Label^ CapturedBlackRooks;
 private: System::Windows::Forms::Label^ CapturedBlackBishops;
@@ -236,6 +237,23 @@ private: System::Windows::Forms::PictureBox^ pictureBox10;
 private: System::Windows::Forms::Label^ CapturedBlackPawns;
 private: System::Windows::Forms::PictureBox^ pictureBox11;
 private: System::Windows::Forms::Button^ button2;
+private: System::Windows::Forms::PictureBox^ ColorToMoveBox3;
+
+private: System::Windows::Forms::PictureBox^ ColorToMoveBox2;
+private: System::Windows::Forms::PictureBox^ ColorToMoveBox4;
+private: System::Windows::Forms::Label^ CapturedWhiteQueens;
+private: System::Windows::Forms::Label^ CapturedWhiteRooks;
+private: System::Windows::Forms::Label^ CapturedWhiteBishops;
+private: System::Windows::Forms::Label^ CapturedWhiteKnights;
+private: System::Windows::Forms::PictureBox^ pictureBox6;
+private: System::Windows::Forms::PictureBox^ pictureBox5;
+private: System::Windows::Forms::PictureBox^ pictureBox4;
+private: System::Windows::Forms::PictureBox^ pictureBox3;
+private: System::Windows::Forms::Label^ CapturedWhitePawns;
+private: System::Windows::Forms::PictureBox^ pictureBox2;
+
+
+
 
 
 
@@ -353,20 +371,7 @@ private: System::Windows::Forms::Button^ button2;
             this->label15 = (gcnew System::Windows::Forms::Label());
             this->label16 = (gcnew System::Windows::Forms::Label());
             this->button1 = (gcnew System::Windows::Forms::Button());
-            this->ColorToMoveLable = (gcnew System::Windows::Forms::Label());
-            this->ColorToMoveBox = (gcnew System::Windows::Forms::PictureBox());
-            this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
-            this->CapturedWhitePawns = (gcnew System::Windows::Forms::Label());
-            this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
-            this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
-            this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
-            this->pictureBox6 = (gcnew System::Windows::Forms::PictureBox());
-            this->CapturedWhiteKnights = (gcnew System::Windows::Forms::Label());
-            this->CapturedWhiteBishops = (gcnew System::Windows::Forms::Label());
-            this->CapturedWhiteRooks = (gcnew System::Windows::Forms::Label());
-            this->CapturedWhiteQueens = (gcnew System::Windows::Forms::Label());
-            this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-            this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+            this->ColorToMoveBox1 = (gcnew System::Windows::Forms::PictureBox());
             this->CapturedBlackQueens = (gcnew System::Windows::Forms::Label());
             this->CapturedBlackRooks = (gcnew System::Windows::Forms::Label());
             this->CapturedBlackBishops = (gcnew System::Windows::Forms::Label());
@@ -378,6 +383,19 @@ private: System::Windows::Forms::Button^ button2;
             this->CapturedBlackPawns = (gcnew System::Windows::Forms::Label());
             this->pictureBox11 = (gcnew System::Windows::Forms::PictureBox());
             this->button2 = (gcnew System::Windows::Forms::Button());
+            this->ColorToMoveBox3 = (gcnew System::Windows::Forms::PictureBox());
+            this->ColorToMoveBox2 = (gcnew System::Windows::Forms::PictureBox());
+            this->ColorToMoveBox4 = (gcnew System::Windows::Forms::PictureBox());
+            this->CapturedWhiteQueens = (gcnew System::Windows::Forms::Label());
+            this->CapturedWhiteRooks = (gcnew System::Windows::Forms::Label());
+            this->CapturedWhiteBishops = (gcnew System::Windows::Forms::Label());
+            this->CapturedWhiteKnights = (gcnew System::Windows::Forms::Label());
+            this->pictureBox6 = (gcnew System::Windows::Forms::PictureBox());
+            this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
+            this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
+            this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
+            this->CapturedWhitePawns = (gcnew System::Windows::Forms::Label());
+            this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B00))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B01))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B02))->BeginInit();
@@ -442,19 +460,20 @@ private: System::Windows::Forms::Button^ button2;
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B42))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B41))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B40))->BeginInit();
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ColorToMoveBox))->BeginInit();
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->BeginInit();
-            this->groupBox1->SuspendLayout();
-            this->groupBox2->SuspendLayout();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ColorToMoveBox1))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox9))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox10))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox11))->BeginInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ColorToMoveBox3))->BeginInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ColorToMoveBox2))->BeginInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ColorToMoveBox4))->BeginInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->BeginInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
             this->SuspendLayout();
             // 
             // B00
@@ -1407,7 +1426,7 @@ private: System::Windows::Forms::Button^ button2;
                 static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
             this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->button1->Location = System::Drawing::Point(87, 476);
+            this->button1->Location = System::Drawing::Point(123, 606);
             this->button1->Name = L"button1";
             this->button1->Size = System::Drawing::Size(117, 58);
             this->button1->TabIndex = 86;
@@ -1415,181 +1434,23 @@ private: System::Windows::Forms::Button^ button2;
             this->button1->UseVisualStyleBackColor = false;
             this->button1->Click += gcnew System::EventHandler(this, &MyForm::Start_Click);
             // 
-            // ColorToMoveLable
+            // ColorToMoveBox1
             // 
-            this->ColorToMoveLable->BackColor = System::Drawing::Color::Transparent;
-            this->ColorToMoveLable->Font = (gcnew System::Drawing::Font(L"Times New Roman", 20.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(204)));
-            this->ColorToMoveLable->Location = System::Drawing::Point(442, 29);
-            this->ColorToMoveLable->Name = L"ColorToMoveLable";
-            this->ColorToMoveLable->Size = System::Drawing::Size(217, 42);
-            this->ColorToMoveLable->TabIndex = 87;
-            this->ColorToMoveLable->Text = L"Waiting for start";
-            this->ColorToMoveLable->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            // 
-            // ColorToMoveBox
-            // 
-            this->ColorToMoveBox->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-            this->ColorToMoveBox->Location = System::Drawing::Point(641, 19);
-            this->ColorToMoveBox->Name = L"ColorToMoveBox";
-            this->ColorToMoveBox->Size = System::Drawing::Size(60, 60);
-            this->ColorToMoveBox->TabIndex = 88;
-            this->ColorToMoveBox->TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this->pictureBox2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.BackgroundImage")));
-            this->pictureBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->pictureBox2->Location = System::Drawing::Point(8, 29);
-            this->pictureBox2->Name = L"pictureBox2";
-            this->pictureBox2->Size = System::Drawing::Size(35, 35);
-            this->pictureBox2->TabIndex = 91;
-            this->pictureBox2->TabStop = false;
-            // 
-            // CapturedWhitePawns
-            // 
-            this->CapturedWhitePawns->BackColor = System::Drawing::Color::Transparent;
-            this->CapturedWhitePawns->Location = System::Drawing::Point(8, 67);
-            this->CapturedWhitePawns->Name = L"CapturedWhitePawns";
-            this->CapturedWhitePawns->Size = System::Drawing::Size(35, 33);
-            this->CapturedWhitePawns->TabIndex = 92;
-            this->CapturedWhitePawns->Text = L"0";
-            this->CapturedWhitePawns->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            this->CapturedWhitePawns->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
-            // 
-            // pictureBox3
-            // 
-            this->pictureBox3->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.BackgroundImage")));
-            this->pictureBox3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->pictureBox3->Location = System::Drawing::Point(58, 29);
-            this->pictureBox3->Name = L"pictureBox3";
-            this->pictureBox3->Size = System::Drawing::Size(35, 35);
-            this->pictureBox3->TabIndex = 93;
-            this->pictureBox3->TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this->pictureBox4->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.BackgroundImage")));
-            this->pictureBox4->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->pictureBox4->Location = System::Drawing::Point(109, 29);
-            this->pictureBox4->Name = L"pictureBox4";
-            this->pictureBox4->Size = System::Drawing::Size(35, 35);
-            this->pictureBox4->TabIndex = 94;
-            this->pictureBox4->TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this->pictureBox5->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.BackgroundImage")));
-            this->pictureBox5->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->pictureBox5->Location = System::Drawing::Point(162, 29);
-            this->pictureBox5->Name = L"pictureBox5";
-            this->pictureBox5->Size = System::Drawing::Size(35, 35);
-            this->pictureBox5->TabIndex = 95;
-            this->pictureBox5->TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this->pictureBox6->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox6.BackgroundImage")));
-            this->pictureBox6->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->pictureBox6->Location = System::Drawing::Point(211, 29);
-            this->pictureBox6->Name = L"pictureBox6";
-            this->pictureBox6->Size = System::Drawing::Size(35, 35);
-            this->pictureBox6->TabIndex = 96;
-            this->pictureBox6->TabStop = false;
-            // 
-            // CapturedWhiteKnights
-            // 
-            this->CapturedWhiteKnights->BackColor = System::Drawing::Color::Transparent;
-            this->CapturedWhiteKnights->Location = System::Drawing::Point(58, 67);
-            this->CapturedWhiteKnights->Name = L"CapturedWhiteKnights";
-            this->CapturedWhiteKnights->Size = System::Drawing::Size(35, 33);
-            this->CapturedWhiteKnights->TabIndex = 97;
-            this->CapturedWhiteKnights->Text = L"0";
-            this->CapturedWhiteKnights->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            this->CapturedWhiteKnights->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
-            // 
-            // CapturedWhiteBishops
-            // 
-            this->CapturedWhiteBishops->BackColor = System::Drawing::Color::Transparent;
-            this->CapturedWhiteBishops->Location = System::Drawing::Point(109, 67);
-            this->CapturedWhiteBishops->Name = L"CapturedWhiteBishops";
-            this->CapturedWhiteBishops->Size = System::Drawing::Size(35, 33);
-            this->CapturedWhiteBishops->TabIndex = 98;
-            this->CapturedWhiteBishops->Text = L"0";
-            this->CapturedWhiteBishops->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            this->CapturedWhiteBishops->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
-            // 
-            // CapturedWhiteRooks
-            // 
-            this->CapturedWhiteRooks->BackColor = System::Drawing::Color::Transparent;
-            this->CapturedWhiteRooks->Location = System::Drawing::Point(162, 67);
-            this->CapturedWhiteRooks->Name = L"CapturedWhiteRooks";
-            this->CapturedWhiteRooks->Size = System::Drawing::Size(35, 33);
-            this->CapturedWhiteRooks->TabIndex = 99;
-            this->CapturedWhiteRooks->Text = L"0";
-            this->CapturedWhiteRooks->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            this->CapturedWhiteRooks->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
-            // 
-            // CapturedWhiteQueens
-            // 
-            this->CapturedWhiteQueens->BackColor = System::Drawing::Color::Transparent;
-            this->CapturedWhiteQueens->Location = System::Drawing::Point(211, 67);
-            this->CapturedWhiteQueens->Name = L"CapturedWhiteQueens";
-            this->CapturedWhiteQueens->Size = System::Drawing::Size(35, 33);
-            this->CapturedWhiteQueens->TabIndex = 100;
-            this->CapturedWhiteQueens->Text = L"0";
-            this->CapturedWhiteQueens->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            this->CapturedWhiteQueens->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
-            // 
-            // groupBox1
-            // 
-            this->groupBox1->Controls->Add(this->CapturedWhiteQueens);
-            this->groupBox1->Controls->Add(this->CapturedWhiteRooks);
-            this->groupBox1->Controls->Add(this->CapturedWhiteBishops);
-            this->groupBox1->Controls->Add(this->CapturedWhiteKnights);
-            this->groupBox1->Controls->Add(this->pictureBox6);
-            this->groupBox1->Controls->Add(this->pictureBox5);
-            this->groupBox1->Controls->Add(this->pictureBox4);
-            this->groupBox1->Controls->Add(this->pictureBox3);
-            this->groupBox1->Controls->Add(this->CapturedWhitePawns);
-            this->groupBox1->Controls->Add(this->pictureBox2);
-            this->groupBox1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->groupBox1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(204)));
-            this->groupBox1->Location = System::Drawing::Point(29, 271);
-            this->groupBox1->Name = L"groupBox1";
-            this->groupBox1->Size = System::Drawing::Size(251, 120);
-            this->groupBox1->TabIndex = 101;
-            this->groupBox1->TabStop = false;
-            this->groupBox1->Text = L"Captured by Black";
-            // 
-            // groupBox2
-            // 
-            this->groupBox2->BackColor = System::Drawing::Color::Transparent;
-            this->groupBox2->Controls->Add(this->CapturedBlackQueens);
-            this->groupBox2->Controls->Add(this->CapturedBlackRooks);
-            this->groupBox2->Controls->Add(this->CapturedBlackBishops);
-            this->groupBox2->Controls->Add(this->CapturedBlackKnights);
-            this->groupBox2->Controls->Add(this->pictureBox7);
-            this->groupBox2->Controls->Add(this->pictureBox8);
-            this->groupBox2->Controls->Add(this->pictureBox9);
-            this->groupBox2->Controls->Add(this->pictureBox10);
-            this->groupBox2->Controls->Add(this->CapturedBlackPawns);
-            this->groupBox2->Controls->Add(this->pictureBox11);
-            this->groupBox2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->groupBox2->Font = (gcnew System::Drawing::Font(L"Times New Roman", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(204)));
-            this->groupBox2->Location = System::Drawing::Point(858, 271);
-            this->groupBox2->Name = L"groupBox2";
-            this->groupBox2->Size = System::Drawing::Size(251, 120);
-            this->groupBox2->TabIndex = 102;
-            this->groupBox2->TabStop = false;
-            this->groupBox2->Text = L"Captured by White";
+            this->ColorToMoveBox1->BackColor = System::Drawing::Color::Transparent;
+            this->ColorToMoveBox1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->ColorToMoveBox1->Location = System::Drawing::Point(29, 12);
+            this->ColorToMoveBox1->Name = L"ColorToMoveBox1";
+            this->ColorToMoveBox1->Size = System::Drawing::Size(1080, 10);
+            this->ColorToMoveBox1->TabIndex = 88;
+            this->ColorToMoveBox1->TabStop = false;
             // 
             // CapturedBlackQueens
             // 
             this->CapturedBlackQueens->BackColor = System::Drawing::Color::Transparent;
-            this->CapturedBlackQueens->Location = System::Drawing::Point(211, 67);
+            this->CapturedBlackQueens->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->CapturedBlackQueens->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->CapturedBlackQueens->Location = System::Drawing::Point(962, 193);
             this->CapturedBlackQueens->Name = L"CapturedBlackQueens";
             this->CapturedBlackQueens->Size = System::Drawing::Size(35, 33);
             this->CapturedBlackQueens->TabIndex = 100;
@@ -1600,7 +1461,10 @@ private: System::Windows::Forms::Button^ button2;
             // CapturedBlackRooks
             // 
             this->CapturedBlackRooks->BackColor = System::Drawing::Color::Transparent;
-            this->CapturedBlackRooks->Location = System::Drawing::Point(162, 67);
+            this->CapturedBlackRooks->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->CapturedBlackRooks->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->CapturedBlackRooks->Location = System::Drawing::Point(962, 264);
             this->CapturedBlackRooks->Name = L"CapturedBlackRooks";
             this->CapturedBlackRooks->Size = System::Drawing::Size(35, 33);
             this->CapturedBlackRooks->TabIndex = 99;
@@ -1611,7 +1475,10 @@ private: System::Windows::Forms::Button^ button2;
             // CapturedBlackBishops
             // 
             this->CapturedBlackBishops->BackColor = System::Drawing::Color::Transparent;
-            this->CapturedBlackBishops->Location = System::Drawing::Point(109, 67);
+            this->CapturedBlackBishops->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->CapturedBlackBishops->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->CapturedBlackBishops->Location = System::Drawing::Point(962, 335);
             this->CapturedBlackBishops->Name = L"CapturedBlackBishops";
             this->CapturedBlackBishops->Size = System::Drawing::Size(35, 33);
             this->CapturedBlackBishops->TabIndex = 98;
@@ -1622,7 +1489,10 @@ private: System::Windows::Forms::Button^ button2;
             // CapturedBlackKnights
             // 
             this->CapturedBlackKnights->BackColor = System::Drawing::Color::Transparent;
-            this->CapturedBlackKnights->Location = System::Drawing::Point(58, 67);
+            this->CapturedBlackKnights->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->CapturedBlackKnights->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->CapturedBlackKnights->Location = System::Drawing::Point(962, 407);
             this->CapturedBlackKnights->Name = L"CapturedBlackKnights";
             this->CapturedBlackKnights->Size = System::Drawing::Size(35, 33);
             this->CapturedBlackKnights->TabIndex = 97;
@@ -1634,7 +1504,7 @@ private: System::Windows::Forms::Button^ button2;
             // 
             this->pictureBox7->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox7.BackgroundImage")));
             this->pictureBox7->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->pictureBox7->Location = System::Drawing::Point(211, 29);
+            this->pictureBox7->Location = System::Drawing::Point(962, 158);
             this->pictureBox7->Name = L"pictureBox7";
             this->pictureBox7->Size = System::Drawing::Size(35, 35);
             this->pictureBox7->TabIndex = 96;
@@ -1644,7 +1514,7 @@ private: System::Windows::Forms::Button^ button2;
             // 
             this->pictureBox8->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox8.BackgroundImage")));
             this->pictureBox8->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->pictureBox8->Location = System::Drawing::Point(162, 29);
+            this->pictureBox8->Location = System::Drawing::Point(962, 229);
             this->pictureBox8->Name = L"pictureBox8";
             this->pictureBox8->Size = System::Drawing::Size(35, 35);
             this->pictureBox8->TabIndex = 95;
@@ -1654,7 +1524,7 @@ private: System::Windows::Forms::Button^ button2;
             // 
             this->pictureBox9->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox9.BackgroundImage")));
             this->pictureBox9->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->pictureBox9->Location = System::Drawing::Point(109, 29);
+            this->pictureBox9->Location = System::Drawing::Point(962, 300);
             this->pictureBox9->Name = L"pictureBox9";
             this->pictureBox9->Size = System::Drawing::Size(35, 35);
             this->pictureBox9->TabIndex = 94;
@@ -1664,7 +1534,7 @@ private: System::Windows::Forms::Button^ button2;
             // 
             this->pictureBox10->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox10.BackgroundImage")));
             this->pictureBox10->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->pictureBox10->Location = System::Drawing::Point(58, 29);
+            this->pictureBox10->Location = System::Drawing::Point(962, 372);
             this->pictureBox10->Name = L"pictureBox10";
             this->pictureBox10->Size = System::Drawing::Size(35, 35);
             this->pictureBox10->TabIndex = 93;
@@ -1673,7 +1543,10 @@ private: System::Windows::Forms::Button^ button2;
             // CapturedBlackPawns
             // 
             this->CapturedBlackPawns->BackColor = System::Drawing::Color::Transparent;
-            this->CapturedBlackPawns->Location = System::Drawing::Point(8, 67);
+            this->CapturedBlackPawns->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->CapturedBlackPawns->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->CapturedBlackPawns->Location = System::Drawing::Point(962, 479);
             this->CapturedBlackPawns->Name = L"CapturedBlackPawns";
             this->CapturedBlackPawns->Size = System::Drawing::Size(35, 33);
             this->CapturedBlackPawns->TabIndex = 92;
@@ -1685,7 +1558,7 @@ private: System::Windows::Forms::Button^ button2;
             // 
             this->pictureBox11->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox11.BackgroundImage")));
             this->pictureBox11->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->pictureBox11->Location = System::Drawing::Point(8, 29);
+            this->pictureBox11->Location = System::Drawing::Point(962, 444);
             this->pictureBox11->Name = L"pictureBox11";
             this->pictureBox11->Size = System::Drawing::Size(35, 35);
             this->pictureBox11->TabIndex = 91;
@@ -1696,13 +1569,155 @@ private: System::Windows::Forms::Button^ button2;
             this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(64)),
                 static_cast<System::Int32>(static_cast<System::Byte>(0)));
             this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-            this->button2->Location = System::Drawing::Point(938, 476);
+            this->button2->Location = System::Drawing::Point(918, 606);
             this->button2->Name = L"button2";
             this->button2->Size = System::Drawing::Size(117, 58);
             this->button2->TabIndex = 103;
             this->button2->Text = L"RESTART";
             this->button2->UseVisualStyleBackColor = false;
             this->button2->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
+            // 
+            // ColorToMoveBox3
+            // 
+            this->ColorToMoveBox3->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->ColorToMoveBox3->Location = System::Drawing::Point(29, 689);
+            this->ColorToMoveBox3->Name = L"ColorToMoveBox3";
+            this->ColorToMoveBox3->Size = System::Drawing::Size(1080, 10);
+            this->ColorToMoveBox3->TabIndex = 104;
+            this->ColorToMoveBox3->TabStop = false;
+            // 
+            // ColorToMoveBox2
+            // 
+            this->ColorToMoveBox2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->ColorToMoveBox2->Location = System::Drawing::Point(1115, 24);
+            this->ColorToMoveBox2->Name = L"ColorToMoveBox2";
+            this->ColorToMoveBox2->Size = System::Drawing::Size(10, 664);
+            this->ColorToMoveBox2->TabIndex = 105;
+            this->ColorToMoveBox2->TabStop = false;
+            // 
+            // ColorToMoveBox4
+            // 
+            this->ColorToMoveBox4->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->ColorToMoveBox4->Location = System::Drawing::Point(13, 24);
+            this->ColorToMoveBox4->Name = L"ColorToMoveBox4";
+            this->ColorToMoveBox4->Size = System::Drawing::Size(10, 664);
+            this->ColorToMoveBox4->TabIndex = 106;
+            this->ColorToMoveBox4->TabStop = false;
+            // 
+            // CapturedWhiteQueens
+            // 
+            this->CapturedWhiteQueens->BackColor = System::Drawing::Color::Transparent;
+            this->CapturedWhiteQueens->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->CapturedWhiteQueens->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->CapturedWhiteQueens->Location = System::Drawing::Point(165, 193);
+            this->CapturedWhiteQueens->Name = L"CapturedWhiteQueens";
+            this->CapturedWhiteQueens->Size = System::Drawing::Size(35, 33);
+            this->CapturedWhiteQueens->TabIndex = 116;
+            this->CapturedWhiteQueens->Text = L"0";
+            this->CapturedWhiteQueens->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // CapturedWhiteRooks
+            // 
+            this->CapturedWhiteRooks->BackColor = System::Drawing::Color::Transparent;
+            this->CapturedWhiteRooks->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->CapturedWhiteRooks->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->CapturedWhiteRooks->Location = System::Drawing::Point(165, 264);
+            this->CapturedWhiteRooks->Name = L"CapturedWhiteRooks";
+            this->CapturedWhiteRooks->Size = System::Drawing::Size(35, 33);
+            this->CapturedWhiteRooks->TabIndex = 115;
+            this->CapturedWhiteRooks->Text = L"0";
+            this->CapturedWhiteRooks->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // CapturedWhiteBishops
+            // 
+            this->CapturedWhiteBishops->BackColor = System::Drawing::Color::Transparent;
+            this->CapturedWhiteBishops->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->CapturedWhiteBishops->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->CapturedWhiteBishops->Location = System::Drawing::Point(165, 335);
+            this->CapturedWhiteBishops->Name = L"CapturedWhiteBishops";
+            this->CapturedWhiteBishops->Size = System::Drawing::Size(35, 33);
+            this->CapturedWhiteBishops->TabIndex = 114;
+            this->CapturedWhiteBishops->Text = L"0";
+            this->CapturedWhiteBishops->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // CapturedWhiteKnights
+            // 
+            this->CapturedWhiteKnights->BackColor = System::Drawing::Color::Transparent;
+            this->CapturedWhiteKnights->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->CapturedWhiteKnights->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->CapturedWhiteKnights->Location = System::Drawing::Point(165, 407);
+            this->CapturedWhiteKnights->Name = L"CapturedWhiteKnights";
+            this->CapturedWhiteKnights->Size = System::Drawing::Size(35, 33);
+            this->CapturedWhiteKnights->TabIndex = 113;
+            this->CapturedWhiteKnights->Text = L"0";
+            this->CapturedWhiteKnights->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // pictureBox6
+            // 
+            this->pictureBox6->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox6.BackgroundImage")));
+            this->pictureBox6->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+            this->pictureBox6->Location = System::Drawing::Point(165, 158);
+            this->pictureBox6->Name = L"pictureBox6";
+            this->pictureBox6->Size = System::Drawing::Size(35, 35);
+            this->pictureBox6->TabIndex = 112;
+            this->pictureBox6->TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this->pictureBox5->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.BackgroundImage")));
+            this->pictureBox5->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+            this->pictureBox5->Location = System::Drawing::Point(165, 229);
+            this->pictureBox5->Name = L"pictureBox5";
+            this->pictureBox5->Size = System::Drawing::Size(35, 35);
+            this->pictureBox5->TabIndex = 111;
+            this->pictureBox5->TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this->pictureBox4->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.BackgroundImage")));
+            this->pictureBox4->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+            this->pictureBox4->Location = System::Drawing::Point(165, 300);
+            this->pictureBox4->Name = L"pictureBox4";
+            this->pictureBox4->Size = System::Drawing::Size(35, 35);
+            this->pictureBox4->TabIndex = 110;
+            this->pictureBox4->TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this->pictureBox3->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.BackgroundImage")));
+            this->pictureBox3->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+            this->pictureBox3->Location = System::Drawing::Point(165, 372);
+            this->pictureBox3->Name = L"pictureBox3";
+            this->pictureBox3->Size = System::Drawing::Size(35, 35);
+            this->pictureBox3->TabIndex = 109;
+            this->pictureBox3->TabStop = false;
+            // 
+            // CapturedWhitePawns
+            // 
+            this->CapturedWhitePawns->BackColor = System::Drawing::Color::Transparent;
+            this->CapturedWhitePawns->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->CapturedWhitePawns->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->CapturedWhitePawns->Location = System::Drawing::Point(165, 479);
+            this->CapturedWhitePawns->Name = L"CapturedWhitePawns";
+            this->CapturedWhitePawns->Size = System::Drawing::Size(35, 33);
+            this->CapturedWhitePawns->TabIndex = 108;
+            this->CapturedWhitePawns->Text = L"0";
+            this->CapturedWhitePawns->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // pictureBox2
+            // 
+            this->pictureBox2->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.BackgroundImage")));
+            this->pictureBox2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+            this->pictureBox2->Location = System::Drawing::Point(165, 444);
+            this->pictureBox2->Name = L"pictureBox2";
+            this->pictureBox2->Size = System::Drawing::Size(35, 35);
+            this->pictureBox2->TabIndex = 107;
+            this->pictureBox2->TabStop = false;
             // 
             // MyForm
             // 
@@ -1711,11 +1726,31 @@ private: System::Windows::Forms::Button^ button2;
             this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(194)), static_cast<System::Int32>(static_cast<System::Byte>(162)),
                 static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->ClientSize = System::Drawing::Size(1134, 711);
+            this->Controls->Add(this->CapturedBlackPawns);
+            this->Controls->Add(this->CapturedBlackKnights);
+            this->Controls->Add(this->pictureBox11);
+            this->Controls->Add(this->CapturedBlackBishops);
+            this->Controls->Add(this->pictureBox10);
+            this->Controls->Add(this->CapturedBlackRooks);
+            this->Controls->Add(this->CapturedBlackQueens);
+            this->Controls->Add(this->pictureBox9);
+            this->Controls->Add(this->CapturedWhiteQueens);
+            this->Controls->Add(this->CapturedWhiteRooks);
+            this->Controls->Add(this->pictureBox8);
+            this->Controls->Add(this->CapturedWhiteBishops);
+            this->Controls->Add(this->CapturedWhiteKnights);
+            this->Controls->Add(this->pictureBox7);
+            this->Controls->Add(this->pictureBox6);
+            this->Controls->Add(this->pictureBox5);
+            this->Controls->Add(this->pictureBox4);
+            this->Controls->Add(this->pictureBox3);
+            this->Controls->Add(this->CapturedWhitePawns);
+            this->Controls->Add(this->pictureBox2);
+            this->Controls->Add(this->ColorToMoveBox4);
+            this->Controls->Add(this->ColorToMoveBox2);
+            this->Controls->Add(this->ColorToMoveBox3);
             this->Controls->Add(this->button2);
-            this->Controls->Add(this->groupBox2);
-            this->Controls->Add(this->groupBox1);
-            this->Controls->Add(this->ColorToMoveBox);
-            this->Controls->Add(this->ColorToMoveLable);
+            this->Controls->Add(this->ColorToMoveBox1);
             this->Controls->Add(this->button1);
             this->Controls->Add(this->label16);
             this->Controls->Add(this->label15);
@@ -1868,19 +1903,20 @@ private: System::Windows::Forms::Button^ button2;
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B42))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B41))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B40))->EndInit();
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ColorToMoveBox))->EndInit();
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
-            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->EndInit();
-            this->groupBox1->ResumeLayout(false);
-            this->groupBox2->ResumeLayout(false);
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ColorToMoveBox1))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox9))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox10))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox11))->EndInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ColorToMoveBox3))->EndInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ColorToMoveBox2))->EndInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ColorToMoveBox4))->EndInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->EndInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
             this->ResumeLayout(false);
 
         }
@@ -1894,8 +1930,10 @@ private: System::Windows::Forms::Button^ button2;
 	int clickcount = 0;
     private: System::Void Start_Click(System::Object^ sender, System::EventArgs^ e) {   //Board start, drawing pieces
         clickcount++;                                                                   // Buttons Start & Exit
-        ColorToMoveLable->Text = "Move for: ";
-        ColorToMoveBox->BackColor = Color::White;
+        ColorToMoveBox1->BackColor = Color::NavajoWhite;
+        ColorToMoveBox2->BackColor = Color::NavajoWhite;
+        ColorToMoveBox3->BackColor = Color::NavajoWhite;
+        ColorToMoveBox4->BackColor = Color::NavajoWhite;
         if (clickcount == 1)
         {
             this->button1->BackColor = Color::Red;
@@ -2044,9 +2082,19 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
 
             colorNumber++;
             if (colorNumber % 2 == 0)                       // Changing color of PictureBox which indicate color of moving pieces
-                ColorToMoveBox->BackColor = Color::Black;
+            {
+                ColorToMoveBox1->BackColor = Color::SaddleBrown;
+                ColorToMoveBox2->BackColor = Color::SaddleBrown;
+                ColorToMoveBox3->BackColor = Color::SaddleBrown;
+                ColorToMoveBox4->BackColor = Color::SaddleBrown;
+            }
             else 
-                ColorToMoveBox->BackColor = Color::White;
+            {
+                ColorToMoveBox1->BackColor = Color::NavajoWhite;
+                ColorToMoveBox2->BackColor = Color::NavajoWhite;
+                ColorToMoveBox3->BackColor = Color::NavajoWhite;
+                ColorToMoveBox4->BackColor = Color::NavajoWhite;
+            }
             return;
         } 
         else if(clickcountboard == 2)       // If move is not possible or no move after click at all
