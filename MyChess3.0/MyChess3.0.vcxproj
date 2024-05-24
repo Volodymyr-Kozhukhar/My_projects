@@ -142,12 +142,6 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\Users\Kozhu\Downloads\Board.jpg" />
-    <Image Include="..\..\..\Users\Kozhu\Downloads\Icon.ico" />
-    <Image Include="..\..\..\Users\Kozhu\Downloads\Icon2-removebg-preview.ico" />
-    <Image Include="..\..\..\Users\Kozhu\Downloads\WhiteKing.png" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
     </EmbeddedResource>

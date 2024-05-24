@@ -30,18 +30,4 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\..\..\Users\Kozhu\Downloads\Board.jpg">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="..\..\..\Users\Kozhu\Downloads\Icon.ico">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="..\..\..\Users\Kozhu\Downloads\Icon2-removebg-preview.ico">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-    <Image Include="..\..\..\Users\Kozhu\Downloads\WhiteKing.png">
-      <Filter>Файлы ресурсов</Filter>
-    </Image>
-  </ItemGroup>
 </Project>
