@@ -1,0 +1,26 @@
+﻿  MainForm.cpp
+C:\Prog\My_repo_proj\MyChess3.0\Board.h(69,29): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(11,70): warning C4042: StartBoardPosition: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(103,70): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(129,70): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(176,70): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(239,70): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(286,70): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2333,30): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2367,26): warning C4244: аргумент: преобразование "wchar_t" в "const _Elem", возможна потеря данных
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2367,26): warning C4244:         with
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2367,26): warning C4244:         [
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2367,26): warning C4244:             _Elem=char
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2367,26): warning C4244:         ]
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2368,26): warning C4244: аргумент: преобразование "wchar_t" в "const _Elem", возможна потеря данных
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2368,26): warning C4244:         with
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2368,26): warning C4244:         [
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2368,26): warning C4244:             _Elem=char
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2368,26): warning C4244:         ]
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2468,26): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+  Создание кода...
+C:\Prog\My_repo_proj\MyChess3.0\Board.h(60,1): warning C4715: FindPiece: значение возвращается не при всех путях выполнения
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(97,1): warning C4715: Pawn::CheckForPossibleMove: значение возвращается не при всех путях выполнения
+  MainForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
+  MyChess3.0.vcxproj -> C:\Prog\My_repo_proj\MyChess3.0\x64\Release\MyChess3.0.exe

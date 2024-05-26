@@ -173,7 +173,7 @@ public:
 ref class Rook {
 public:
 	color rook;
-	bool CheckForPossibleMove(int OldPieceNumber, static array<int, 2>^ Board, int X, int Y, int OldX, int OldY, System::String^% CaptureCellName, int* wrr, int *wlr, int *brr, int *blr)
+	bool CheckForPossibleMove(int OldPieceNumber, static array<int, 2>^ Board, int X, int Y, int OldX, int OldY, System::String^% CaptureCellName, System::Int32^% wrr, System::Int32^% wlr, System::Int32^% brr, System::Int32^% blr)
 	{
 		if (!((OldPieceNumber > 140 && OldPieceNumber < 150) || (OldPieceNumber > 40 && OldPieceNumber < 50)))
 		{
@@ -234,11 +234,111 @@ public:
 };
 
 ref class Queen {
+public:
 	color queen;
+	bool CheckForPossibleMove(int OldPieceNumber, static array<int, 2>^ Board, int X, int Y, int OldX, int OldY, System::String^% CaptureCellName)
+	{
+		if (!((OldPieceNumber > 150 && OldPieceNumber < 160) || (OldPieceNumber > 50 && OldPieceNumber < 60)))
+		{
+			return false;
+		}
 
+		array<int, 2>^ directions = gcnew array<int, 2> { {1, 1}, { 1, -1 }, { -1, 1 }, { -1, -1 }, { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
+
+		for (int d = 0; d < 8; d++)
+		{
+			int dx = directions[d, 0];
+			int dy = directions[d, 1];
+
+			for (int i = 1; i < 8; i++)
+			{
+				int newX = OldX + i * dx;
+				int newY = OldY + i * dy;
+
+				if (newX < 0 || newX >= 8 || newY < 0 || newY >= 8)
+				{
+					break;
+				}
+
+				if (X == newX && Y == newY)
+				{
+					if (Board[newX, newY] != 0)
+					{
+						CaptureCellName = CellNameForCapture(Board[newX, newY]);
+					}
+					return true;
+				}
+
+				if (Board[newX, newY] != 0)
+				{
+					break;
+				}
+			}
+		}
+
+		return false;
+	}
 };
 
 ref class King {
+public:
 	color king;
+	bool CheckForPossibleMove(int OldPieceNumber, static array<int, 2>^ Board, int X, int Y, int OldX, int OldY, System::String^% CaptureCellName, System::Int32^% castling, System::Int32^% wk, System::Int32^% bk, System::Int32^% wrr, System::Int32^% wlr, System::Int32^% brr, System::Int32^% blr)
+	{
+		if (!((OldPieceNumber == 161) || (OldPieceNumber == 61 )))
+		{
+			return false;
+		}
 
+		switch (OldPieceNumber)
+		{
+			case 161:
+				king = 1;
+				break;
+			case 61:
+				king = 0;
+				break;
+		}
+
+		if ((X == OldX + 1 || X == OldX - 1 || X == OldX) && (Y == OldY + 1 || Y == OldY - 1 || Y == OldY))
+		{
+
+			if (Board[X, Y] != 0)
+			{
+				CaptureCellName = CellNameForCapture(Board[X, Y]);
+			}
+
+			switch (king)
+			{
+			case 1:
+				*wk = 0;
+				break;
+			case 0:
+				*bk = 0;
+				break;
+			}
+
+			return true;
+		}
+
+		if (X == OldX && (Y == OldY + 2 && *wk == 1 && *wrr == 1) || (Y == OldY + 2 && *bk == 1 && *brr == 1))
+		{
+			if (Board[X, OldY + 1] == 0 && Board[X, OldY + 2] == 0)
+			{
+				*castling = 1;
+				*wk = 0;
+				return true;
+			}
+		}
+		else if (X == OldX && (Y == OldY - 2 && *wk == 1 && *wlr == 1) || (Y == OldY - 2 && *bk == 1 && *blr == 1))
+		{
+			if (Board[X, OldY - 1] == 0 && Board[X, OldY - 2] == 0 && Board[X, OldY - 3] == 0)
+			{
+				*bk = 0;
+				*castling = 2;
+				return true;
+			}
+		}
+		return false;
+	}
 };

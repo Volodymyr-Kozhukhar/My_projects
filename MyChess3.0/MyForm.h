@@ -1,8 +1,11 @@
 #pragma once
+
 #include "Board.h"
 #include "Pieces.h"
+
 #include <string>
 #include <windows.h>  
+#include <memory>
 
 namespace MyChess30 {
 
@@ -1535,7 +1538,6 @@ private: System::Windows::Forms::Label^ NewPieceText;
             this->CapturedBlackQueens->TabIndex = 100;
             this->CapturedBlackQueens->Text = L"0";
             this->CapturedBlackQueens->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            this->CapturedBlackQueens->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
             // 
             // CapturedBlackRooks
             // 
@@ -1549,7 +1551,6 @@ private: System::Windows::Forms::Label^ NewPieceText;
             this->CapturedBlackRooks->TabIndex = 99;
             this->CapturedBlackRooks->Text = L"0";
             this->CapturedBlackRooks->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            this->CapturedBlackRooks->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
             // 
             // CapturedBlackBishops
             // 
@@ -1563,7 +1564,6 @@ private: System::Windows::Forms::Label^ NewPieceText;
             this->CapturedBlackBishops->TabIndex = 98;
             this->CapturedBlackBishops->Text = L"0";
             this->CapturedBlackBishops->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            this->CapturedBlackBishops->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
             // 
             // CapturedBlackKnights
             // 
@@ -1577,7 +1577,6 @@ private: System::Windows::Forms::Label^ NewPieceText;
             this->CapturedBlackKnights->TabIndex = 97;
             this->CapturedBlackKnights->Text = L"0";
             this->CapturedBlackKnights->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            this->CapturedBlackKnights->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
             // 
             // pictureBox7
             // 
@@ -1631,7 +1630,6 @@ private: System::Windows::Forms::Label^ NewPieceText;
             this->CapturedBlackPawns->TabIndex = 92;
             this->CapturedBlackPawns->Text = L"0";
             this->CapturedBlackPawns->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            this->CapturedBlackPawns->Click += gcnew System::EventHandler(this, &MyForm::Restart_Click);
             // 
             // pictureBox11
             // 
@@ -2323,8 +2321,21 @@ private: System::Windows::Forms::Label^ NewPieceText;
            PictureBox^ Oldcell;
            Color OldColor;
 
-           int* wrr = new int(1), *wlr = new int(1), *brr = new int(1), *blr = new int(1);
+           // integers for cheking rooks and kings for staying in the start positions to help castling conditions to be checked
+           // (1: w - white, b - balck; 2: r - right, l - left, k - king; 3: r - rook)
+           // System::Int32^ - type with auto delete from heap;
+           Int32^ wk = 1;
+           Int32^ bk = 1;
+           Int32^ wrr = 1;
+           Int32^ wlr = 1;
+           Int32^ brr = 1;
+           Int32^ blr = 1;
+           Int32^ castling = 0;
+
+           // integers for new pieces in case of pawns that changing
+           // (1: w - white, b - balck; 2: q - queen, r - rook, b - bishop, k - knight; 3: k - default integer like i in for() loop)
            int wqk = 0, wrk = 0, wbk = 0, wkk = 0, bqk = 0, brk = 0, bbk = 0, bkk = 0;
+
            int PawnDoubleMoveSign = 0;
            int clickcountboard = 0;
            int OldCoordinatesX = -2;
@@ -2423,6 +2434,28 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                 }
             }
 
+            if (ImagePath->IndexOf("Queen") > 0)   // Queen moves
+            {
+                if (NewQueen.CheckForPossibleMove(StartBoardPosition[OldCoordinatesX, OldCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY, OldCoordinatesX, OldCoordinatesY, tmpString) != true)
+                {
+                    Oldcell->BackColor = OldColor;
+                    clickcountboard = 0;
+                    Oldcell = nullptr;
+                    return;
+                }
+            }
+
+            if (ImagePath->IndexOf("King") > 0)   // King moves
+            {
+                if (NewKing.CheckForPossibleMove(StartBoardPosition[OldCoordinatesX, OldCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY, OldCoordinatesX, OldCoordinatesY, tmpString, castling ,wk, bk ,wrr, wlr, brr, blr) != true)
+                {
+                    Oldcell->BackColor = OldColor;
+                    clickcountboard = 0;
+                    Oldcell = nullptr;
+                    return;
+                }
+            }
+
             //TODO: Checking is possible move if check 
             //if()
             {
@@ -2435,6 +2468,46 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                 int temp = System::Convert::ToInt64(Temp->Text);
                 temp += 1;
                 Temp->Text = System::Convert::ToString(temp);
+            }
+
+            if(*castling != 0) // Castling for both teams
+            {
+                if (*castling == 1)
+                {
+                    String^ tmpCellName = String::Format("B{0}{1}", cellCoordinatesX, cellCoordinatesY + 1);    // Changing matrix and board for white
+                    PictureBox^ tmpcell = (PictureBox^)this->Controls[tmpCellName];
+
+                    Drawing::Image^ TmpImage = tmpcell->BackgroundImage;
+                    tmpcell->BackgroundImage = nullptr;
+
+                    tmpCellName = String::Format("B{0}{1}", cellCoordinatesX, cellCoordinatesY - 1);
+                    tmpcell = (PictureBox^)this->Controls[tmpCellName];
+
+                    int tmp = StartBoardPosition[cellCoordinatesX, cellCoordinatesY + 1];
+                    StartBoardPosition[cellCoordinatesX, cellCoordinatesY + 1] = 0;
+                    StartBoardPosition[cellCoordinatesX, cellCoordinatesY - 1] = tmp;
+
+                    tmpcell->BackgroundImage = TmpImage;
+                    *castling = 0;
+                }
+                if (*castling == 2)
+                {
+                    String^ tmpCellName = String::Format("B{0}{1}", cellCoordinatesX, cellCoordinatesY - 2);    // Changing matrix and board for black
+                    PictureBox^ tmpcell = (PictureBox^)this->Controls[tmpCellName];
+
+                    Drawing::Image^ TmpImage = tmpcell->BackgroundImage;
+                    tmpcell->BackgroundImage = nullptr;
+
+                    tmpCellName = String::Format("B{0}{1}", cellCoordinatesX, cellCoordinatesY + 1);
+                    tmpcell = (PictureBox^)this->Controls[tmpCellName];
+
+                    int tmp = StartBoardPosition[cellCoordinatesX, cellCoordinatesY - 2];
+                    StartBoardPosition[cellCoordinatesX, cellCoordinatesY - 2] = 0;
+                    StartBoardPosition[cellCoordinatesX, cellCoordinatesY + 1] = tmp;
+
+                    tmpcell->BackgroundImage = TmpImage;
+                    *castling = 0;
+                }
             }
 
             if ((cellCoordinatesX == *SpecX + 1 && cellCoordinatesY == *SpecY || cellCoordinatesX == *SpecX - 1 && cellCoordinatesY == *SpecY) && StartBoardPosition[cellCoordinatesX, cellCoordinatesY] == 0 && (StartBoardPosition[OldCoordinatesX, OldCoordinatesY] > 10 && StartBoardPosition[OldCoordinatesX, OldCoordinatesY] < 20 || StartBoardPosition[OldCoordinatesX, OldCoordinatesY] > 110 && StartBoardPosition[OldCoordinatesX, OldCoordinatesY] < 120))
