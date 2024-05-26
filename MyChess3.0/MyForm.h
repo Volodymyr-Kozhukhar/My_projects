@@ -2323,6 +2323,7 @@ private: System::Windows::Forms::Label^ NewPieceText;
            PictureBox^ Oldcell;
            Color OldColor;
 
+           int* wrr = new int(1), *wlr = new int(1), *brr = new int(1), *blr = new int(1);
            int wqk = 0, wrk = 0, wbk = 0, wkk = 0, bqk = 0, brk = 0, bbk = 0, bkk = 0;
            int PawnDoubleMoveSign = 0;
            int clickcountboard = 0;
@@ -2378,7 +2379,7 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
 
             String^ tmpString = nullptr;
 
-            if (ImagePath->IndexOf("Pawn") != 0) //Pawns moves
+            if (ImagePath->IndexOf("Pawn") > 0) //Pawns moves
             {
                 if (NewPawn.CheckForPossibleMove(StartBoardPosition[OldCoordinatesX, OldCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY, OldCoordinatesX, OldCoordinatesY, tmpString, SpecX, SpecY) != true) 
                 {
@@ -2389,6 +2390,45 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                 }
             }
             
+            if (ImagePath->IndexOf("Knight") > 0)   //Knight moves
+            {
+                if (NewKnight.CheckForPossibleMove(StartBoardPosition[OldCoordinatesX, OldCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY, OldCoordinatesX, OldCoordinatesY, tmpString) != true)
+                {
+                    Oldcell->BackColor = OldColor;
+                    clickcountboard = 0;
+                    Oldcell = nullptr;
+                    return;
+                }
+            }
+
+            if (ImagePath->IndexOf("Bishop") > 0)   // Bishop moves
+            {
+                if (NewBishop.CheckForPossibleMove(StartBoardPosition[OldCoordinatesX, OldCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY, OldCoordinatesX, OldCoordinatesY, tmpString) != true)
+                {
+                    Oldcell->BackColor = OldColor;
+                    clickcountboard = 0;
+                    Oldcell = nullptr;
+                    return;
+                }
+            }
+
+            if (ImagePath->IndexOf("Rook") > 0) // Rook moves
+            {
+                if (NewRook.CheckForPossibleMove(StartBoardPosition[OldCoordinatesX, OldCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY, OldCoordinatesX, OldCoordinatesY, tmpString, wrr, wlr, brr, blr) != true)
+                {
+                    Oldcell->BackColor = OldColor;
+                    clickcountboard = 0;
+                    Oldcell = nullptr;
+                    return;
+                }
+            }
+
+            //TODO: Checking is possible move if check 
+            //if()
+            {
+
+            }
+
             if (tmpString != nullptr) //Captured piece calculating
             {
                 Label^ Temp = dynamic_cast<Label^>(this->Controls->Find(tmpString, true)[0]);
@@ -2397,7 +2437,7 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                 Temp->Text = System::Convert::ToString(temp);
             }
 
-            if ((cellCoordinatesX == *SpecX + 1 && cellCoordinatesY == *SpecY || cellCoordinatesX == *SpecX - 1 && cellCoordinatesY == *SpecY) && StartBoardPosition[cellCoordinatesX, cellCoordinatesY] == 0)
+            if ((cellCoordinatesX == *SpecX + 1 && cellCoordinatesY == *SpecY || cellCoordinatesX == *SpecX - 1 && cellCoordinatesY == *SpecY) && StartBoardPosition[cellCoordinatesX, cellCoordinatesY] == 0 && (StartBoardPosition[OldCoordinatesX, OldCoordinatesY] > 10 && StartBoardPosition[OldCoordinatesX, OldCoordinatesY] < 20 || StartBoardPosition[OldCoordinatesX, OldCoordinatesY] > 110 && StartBoardPosition[OldCoordinatesX, OldCoordinatesY] < 120))
             {
                 String^ tmpCellName = String::Format("B{0}{1}", *SpecX, *SpecY);    // Special takes for double pawn moves
                 PictureBox^ tmpcell = (PictureBox^)this->Controls[tmpCellName];
