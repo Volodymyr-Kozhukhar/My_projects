@@ -2459,8 +2459,10 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
             //TODO: Checking is possible move if check 
             //if()
             {
-
+                
             }
+
+            // TODO: if mate show massege box 
 
             if (tmpString != nullptr) //Captured piece calculating
             {
