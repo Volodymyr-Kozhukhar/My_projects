@@ -1,27 +1,28 @@
 ﻿#pragma once
 #include <iostream>
 
+
 System::String^ FindPiece(int piece_number)
 {
     if (piece_number < 100)
     {
-        if (piece_number > 10 && piece_number < 19)
+        if (piece_number > 10 && piece_number < 20)
         {
             return ".\\Pieces\\BlackPawn.png";
         }
-        else if (piece_number == 42 || piece_number == 41)
+        else if (piece_number > 40 && piece_number < 50)
         {
             return ".\\Pieces\\BlackRook.png"; //BlackRooks
         }
-        else if (piece_number == 21 || piece_number == 22)
+        else if (piece_number > 20 && piece_number < 30)
         {
             return ".\\Pieces\\BlackKnight.png"; //BlackKnights
         }
-        else if (piece_number == 31 || piece_number == 32)
+        else if (piece_number > 30 && piece_number < 40)
         {
             return ".\\Pieces\\BlackBishop.png"; //BlackBishops
         }
-        else if (piece_number == 51)
+        else if (piece_number > 50 && piece_number < 60)
         {
             return ".\\Pieces\\BlackQueen.png"; //BlackQueen
         }
@@ -36,19 +37,19 @@ System::String^ FindPiece(int piece_number)
         {
             return ".\\Pieces\\WhitePawn.png"; //WhitePawns
         }
-        else if (piece_number == 142 || piece_number == 141)
+        else if (piece_number > 140 && piece_number < 150)
         {
             return ".\\Pieces\\WhiteRook.png"; //WhiteRooks
         }
-        else if (piece_number == 121 || piece_number == 122)
+        else if (piece_number > 120 && piece_number < 130)
         {
             return ".\\Pieces\\WhiteKnight.png"; //WhiteKnights
         }
-        else if (piece_number == 131 || piece_number == 132)
+        else if (piece_number > 130 && piece_number < 140)
         {
             return ".\\Pieces\\WhiteBishop.png"; //WhiteBishops
         }
-        else if (piece_number == 151)
+        else if (piece_number > 150 && piece_number < 160)
         {
             return ".\\Pieces\\WhiteQueen.png"; //WhiteQueen
         }
