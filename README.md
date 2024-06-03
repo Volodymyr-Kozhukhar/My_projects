@@ -1,1 +1,1 @@
-Персональний репозиторій для своїх спроб та кодів
+Personal repository for projects and other programming stuff.
