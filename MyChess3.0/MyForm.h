@@ -2434,6 +2434,8 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                                 else if (TmpPieceName->IndexOf("Queen") > 0)
                                     check = NewQueen.IsCheck(StartBoardPosition[i, j], StartBoardPosition, i, j);
                             }
+                            if (*check != 0)
+                                break;
                         }
                         if (*check != 0)
                             break;
@@ -2477,6 +2479,8 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                                 else if (TmpPieceName->IndexOf("Queen") > 0)
                                     check = NewQueen.IsCheck(StartBoardPosition[i, j], StartBoardPosition, i, j);
                             }
+                            if (*check != 0)
+                                break;
                         }
                         if (*check != 0)
                             break;
@@ -2518,6 +2522,8 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                                 else if (TmpPieceName->IndexOf("Queen") > 0)
                                     check = NewQueen.IsCheck(StartBoardPosition[i, j], StartBoardPosition, i, j);
                             }
+                            if (*check != 0)
+                                break;
                         }
                         if (*check != 0)
                             break;
@@ -2559,6 +2565,8 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                                 else if (TmpPieceName->IndexOf("Queen") > 0)
                                     check = NewQueen.IsCheck(StartBoardPosition[i, j], StartBoardPosition, i, j);
                             }
+                            if (*check != 0)
+                                break;
                         }
                         if (*check != 0)
                             break;
@@ -2600,6 +2608,8 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                                 else if (TmpPieceName->IndexOf("Rook") > 0)
                                     check = NewRook.IsCheck(StartBoardPosition[i, j], StartBoardPosition, i, j);
                             }
+                            if (*check != 0)
+                                break;
                         }
                         if (*check != 0)
                             break;
@@ -2613,16 +2623,47 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
 
             if (ImagePath->IndexOf("King") > 0)   // King moves
             {
-                if (NewKing.CheckForPossibleMove(StartBoardPosition[OldCoordinatesX, OldCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY, OldCoordinatesX, OldCoordinatesY, wasCheck, moveSide ,tmpString, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, castling ,wk, bk ,wrr, wlr, brr, blr) != true)
+                bool CloseToKing = NewKing.IsNextToKing(StartBoardPosition, cellCoordinatesX, cellCoordinatesY, OldCoordinatesX, OldCoordinatesY);
+
+                if (NewKing.CheckForPossibleMove(StartBoardPosition[OldCoordinatesX, OldCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY, OldCoordinatesX, OldCoordinatesY, wasCheck, moveSide ,tmpString, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing, castling ,wk, bk ,wrr, wlr, brr, blr) != true || CloseToKing)
                 {
                     Oldcell->BackColor = OldColor;
                     clickcountboard = 0;
                     Oldcell = nullptr;
                     return;
                 }
+
+                int tmpPiecenumber = StartBoardPosition[cellCoordinatesX, cellCoordinatesY];
+                StartBoardPosition[cellCoordinatesX, cellCoordinatesY] = StartBoardPosition[OldCoordinatesX, OldCoordinatesY];
+                StartBoardPosition[OldCoordinatesX, OldCoordinatesY] = 0;
+
+                for (int i = 0; i < 8; i++)
+                {
+                    for (int j = 0; j < 8; j++)
+                    {
+                        String^ TmpPieceName = nullptr;
+                        if ((moveSide && StartBoardPosition[i, j] > 100) || (moveSide == false && StartBoardPosition[i, j] < 100 && StartBoardPosition[i, j] > 0))
+                        {
+                            TmpPieceName = FindPiece(StartBoardPosition[i, j]);
+                            if (TmpPieceName->IndexOf("Bishop") > 0)
+                                check = NewBishop.IsCheck(StartBoardPosition[i, j], StartBoardPosition, i, j);
+                            else if (TmpPieceName->IndexOf("Rook") > 0)
+                                check = NewRook.IsCheck(StartBoardPosition[i, j], StartBoardPosition, i, j);
+                            else if (TmpPieceName->IndexOf("Queen") > 0)
+                                check = NewQueen.IsCheck(StartBoardPosition[i, j], StartBoardPosition, i, j);
+                        }
+                        if (*check != 0)
+                            break;
+                    }
+                    if (*check != 0)
+                        break;
+                }
+
+                StartBoardPosition[OldCoordinatesX, OldCoordinatesY] = StartBoardPosition[cellCoordinatesX, cellCoordinatesY];
+                StartBoardPosition[cellCoordinatesX, cellCoordinatesY] = tmpPiecenumber;
             }
 
-            bool PossibleMove = IsMovePossible(StartBoardPosition, cellCoordinatesX, cellCoordinatesY, OldCoordinatesX, OldCoordinatesY, moveSide, NewPawn, NewKnight, NewBishop, NewRook, NewQueen);
+            bool PossibleMove = IsMovePossible(StartBoardPosition, cellCoordinatesX, cellCoordinatesY, OldCoordinatesX, OldCoordinatesY, moveSide, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing);
             if (PossibleMove == false)          //If move is not possible return nothing.
             {
                 clickcountboard = 0;
@@ -2638,8 +2679,6 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
             {
                 wasCheck = true;
             }
-
-            // TODO: if mate show massege box 
 
             if (tmpString != nullptr) //Captured piece calculating
             {
@@ -2702,7 +2741,7 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
 
             if (*check == 0)        //Changing color of King cell after check is over
             {
-                if (wasCheck && StartBoardPosition[OldCoordinatesX, OldCoordinatesY] == 161 || StartBoardPosition[OldCoordinatesX, OldCoordinatesY] == 61)
+                if (wasCheck && (StartBoardPosition[OldCoordinatesX, OldCoordinatesY] == 161 || StartBoardPosition[OldCoordinatesX, OldCoordinatesY] == 61))
                 {
                     OldColor = OldColorKing;
                     wasCheck = false;
@@ -2772,6 +2811,58 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                 kingCell = (PictureBox^)this->Controls[tmpCellName];
                 OldColorKing = kingCell->BackColor;
                 kingCell->BackColor = Color::Red;
+
+                mate = IsMate(check, StartBoardPosition, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing, moveSide);
+
+                if (*mate != 0)
+                {
+                    //massege box with text of mate
+                    if (*mate == 1)
+                        MessageBox::Show(this, "Black has won, checkmate!", "CHECK AND MATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
+                    else MessageBox::Show(this, "White has won, checkmate!", "CHECK AND MATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
+                    clickcountboard = 3;
+                    return;
+                }
+            }
+            else
+            {
+                bool tmp = false; 
+
+                for (int i = 0; i < 8; i++)
+                {
+                    for (int j = 0; j < 8; j++)
+                    {
+                        if ((moveSide && StartBoardPosition[i, j] > 100) || (moveSide == false && StartBoardPosition[i, j] < 100 && StartBoardPosition[i, j] != 0))
+                            tmp = IsPieceAbleToMove(StartBoardPosition[i, j], StartBoardPosition, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing, i, j, moveSide);
+                        if (tmp)
+                            break;
+                    }
+                    if (tmp)
+                        break;
+                }
+
+                if (tmp == false)
+                {
+                    MessageBox::Show(this, "Draw by stealmate\n  (-_-*)", "STEALMATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
+                    clickcountboard = 3;
+                    return;
+                }
+
+                int Sum = 0;
+                for (int i = 0; i < 8; i++)
+                {
+                    for (int j = 0; j < 8; j++)
+                    {
+                        Sum += StartBoardPosition[i, j];
+                    }
+                }
+
+                if (Sum == 222)
+                {
+                    MessageBox::Show(this, "Two kings draw!", "DRAW", MessageBoxButtons::OK, MessageBoxIcon::Information);
+                    clickcountboard = 3;
+                    return;
+                }
             }
 
             colorNumber++;
@@ -2790,20 +2881,11 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                 ColorToMoveBox4->BackColor = Color::NavajoWhite;
             }
 
-
-            if (*check != 0)
-            {
-                mate = IsMate(check, StartBoardPosition, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing, moveSide);
-
-                if (*mate != 0)
-                {
-                    clickcountboard = 3;
-                    return;
-                }
-            }
             *check = 0;
+
             return;
         } 
+
         else if(clickcountboard == 2)       // If move is not possible or no move after click at all
         {
             Oldcell->BackColor = OldColor;
@@ -2815,6 +2897,7 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
             Oldcell = nullptr;
             return;
         }
+
         PieceToMove = StartBoardPosition[cellCoordinatesX, cellCoordinatesY];   
         OldCoordinatesX = cellCoordinatesX;
         OldCoordinatesY = cellCoordinatesY;

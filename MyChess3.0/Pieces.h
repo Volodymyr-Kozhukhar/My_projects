@@ -37,7 +37,7 @@ public:
 
 			if (pawn == 1)
 			{
-				if(StartBoardPosition[X, Y] != 0 && (X == OldX - 1 && ((Y == OldY + 1 && OldY + 1 >= 0 && OldY + 1 < 8) || (Y == OldY - 1 && OldY - 1 >= 0 && OldY - 1 < 8))))
+				if(StartBoardPosition[X, Y] != 0 && StartBoardPosition[X, Y] < 100 && (X == OldX - 1 && ((Y == OldY + 1 && OldY + 1 >= 0 && OldY + 1 < 8) || (Y == OldY - 1 && OldY - 1 >= 0 && OldY - 1 < 8))))
 				{
 					CaptureCellName = CellNameForCapture(StartBoardPosition[X, Y]);
 					return true;
@@ -82,7 +82,7 @@ public:
 
 			if (pawn == 0)
 			{
-				if (StartBoardPosition[X, Y] != 0 && (X == OldX + 1 && ((Y == OldY + 1 && OldY + 1 >= 0 && OldY + 1 < 8) || (Y == OldY - 1 && OldY - 1 >= 0 && OldY - 1 < 8))))
+				if (StartBoardPosition[X, Y] != 0 && StartBoardPosition[X, Y] > 100 && (X == OldX + 1 && ((Y == OldY + 1 && OldY + 1 >= 0 && OldY + 1 < 8) || (Y == OldY - 1 && OldY - 1 >= 0 && OldY - 1 < 8))))
 				{
 					CaptureCellName = CellNameForCapture(StartBoardPosition[X, Y]);
 					return true;
@@ -104,13 +104,18 @@ public:
 
 	int IsCheck(int OldPieceNumber, static array<int, 2>^ Board, int X, int Y)
 	{
-		if ((X - 1) >= 0 && (X - 1) < 8 && (X + 1) >= 0 && (X + 1) < 8 && (Y + 1) >= 0 && (Y + 1) < 8 && (Y - 1) >= 0 && (Y - 1) < 8)
-		{
-			if ((Board[X - 1, Y + 1] == 61 || Board[X - 1, Y - 1] == 61) && OldPieceNumber > 100)
+		if((X - 1) >= 0 && (X - 1) < 8 && (Y - 1) >= 0 && (Y - 1) < 8)
+			if (Board[X - 1, Y - 1] == 61 && OldPieceNumber > 100)
 				return 2;
-			if ((Board[X + 1, Y + 1] == 161 || Board[X + 1, Y - 1] == 161) && OldPieceNumber < 100)
+		if((Y + 1) >= 0 && (Y + 1) < 8 && (X - 1) >= 0 && (X - 1) < 8)
+			if (Board[X - 1, Y + 1] == 61 && OldPieceNumber > 100)
+				return 2;
+		if ((X + 1) >= 0 && (X + 1) < 8 && (Y - 1) >= 0 && (Y - 1) < 8)
+			if (Board[X + 1, Y - 1] == 161 && OldPieceNumber < 100)
 				return 1;
-		}
+		if ((X + 1) >= 0 && (X + 1) < 8 && (Y + 1) >= 0 && (Y + 1) < 8)
+			if (Board[X + 1, Y + 1] == 161 && OldPieceNumber < 100)
+				return 1;
 		return 0;
 	}
 };
@@ -126,14 +131,12 @@ public:
 			if ((X == OldX + 1 && Y == OldY - 2) || (X == OldX + 1 && Y == OldY + 2) || (X == OldX + 2 && Y == OldY - 1) || (X == OldX + 2 && Y == OldY + 1) || (X == OldX - 1 && Y == OldY - 2) || (X == OldX - 1 && Y == OldY + 2) || (X == OldX - 2 && Y == OldY + 1) || (X == OldX - 2 && Y == OldY - 1))
 			{
 
-				if (Board[X, Y] != 0)
+				if ((OldPieceNumber > 100 && Board[X, Y] < 100) || (OldPieceNumber < 100 && (Board[X, Y] > 100 || Board[X, Y] == 0)))
 				{
-					CaptureCellName = CellNameForCapture(Board[X, Y]);
+					if(Board[X, Y] != 0)
+						CaptureCellName = CellNameForCapture(Board[X, Y]);
 					return true;
 				}
-
-				return true;
-
 			}
 			return false;
 		}
@@ -222,12 +225,14 @@ public:
 
 				if (newX >= 0 && newX < 8 && newY >= 0 && newY < 8)
 				{
-					if (Board[newX, newY] != 0 && Board[newX, newY] != 161 && Board[newX, newY] != 61 && Board[newX, newY] != OldPieceNumber)
+					if (Board[newX, newY] != 0 && Board[newX, newY] != OldPieceNumber)
+					{
+						if (Board[newX, newY] == 161 && OldPieceNumber < 100)
+							return 1;
+						if (Board[newX, newY] == 61 && OldPieceNumber > 100)
+							return 2;
 						break;
-					if (Board[newX, newY] == 161 && OldPieceNumber < 100)
-						return 1;
-					if (Board[newX, newY] == 61 && OldPieceNumber > 100)
-						return 2;
+					}
 				}
 			}
 		}
@@ -312,12 +317,14 @@ public:
 
 				if (newX >= 0 && newX < 8 && newY >= 0 && newY < 8)
 				{
-					if (Board[newX, newY] != 0 && Board[newX, newY] != 161 && Board[newX, newY] != 61 && Board[newX, newY] != OldPieceNumber)
+					if (Board[newX, newY] != 0 && Board[newX, newY] != OldPieceNumber)
+					{
+						if (Board[newX, newY] == 161 && OldPieceNumber < 100)
+							return 1;
+						if (Board[newX, newY] == 61 && OldPieceNumber > 100)
+							return 2;
 						break;
-					if (Board[newX, newY] == 161 && OldPieceNumber < 100)
-						return 1;
-					if (Board[newX, newY] == 61 && OldPieceNumber > 100)
-						return 2;
+					}
 				}
 			}
 		}
@@ -387,12 +394,14 @@ public:
 
 				if (newX >= 0 && newX < 8 && newY >= 0 && newY < 8)
 				{
-					if (Board[newX, newY] != 0 && Board[newX, newY] != 161 && Board[newX, newY] != 61 && Board[newX, newY] != OldPieceNumber)
+					if (Board[newX, newY] != 0 && Board[newX, newY] != OldPieceNumber)
+					{
+						if (Board[newX, newY] == 161 && OldPieceNumber < 100)
+							return 1;
+						if (Board[newX, newY] == 61 && OldPieceNumber > 100)
+							return 2;
 						break;
-					if (Board[newX, newY] == 161 && OldPieceNumber < 100)
-						return 1;
-					if (Board[newX, newY] == 61 && OldPieceNumber > 100)
-						return 2;
+					}
 				}
 			}
 		}
@@ -400,12 +409,14 @@ public:
 	}
 };
 
-bool IsMovePossible(static array<int, 2>^ Board, int X, int Y, int OldX, int OldY, bool moveSide, Pawn% pawn, Knight% knight, Bishop% bishop, Rook% rook, Queen% queen);
+ref class King;
+
+bool IsMovePossible(static array<int, 2>^ Board, int X, int Y, int OldX, int OldY, bool moveSide, Pawn% pawn, Knight% knight, Bishop% bishop, Rook% rook, Queen% queen, King% king);
 
 ref class King {
 public:
 	color king;
-	bool CheckForPossibleMove(int OldPieceNumber, static array<int, 2>^ Board, int X, int Y, int OldX, int OldY, bool wasCheck, bool moveSide,System::String^% CaptureCellName, Pawn% pawn, Knight% knight, Bishop% bishop, Rook% rook, Queen% queen, System::Int32^% castling, System::Int32^% wk, System::Int32^% bk, System::Int32^% wrr, System::Int32^% wlr, System::Int32^% brr, System::Int32^% blr)
+	bool CheckForPossibleMove(int OldPieceNumber, static array<int, 2>^ Board, int X, int Y, int OldX, int OldY, bool wasCheck, bool moveSide,System::String^% CaptureCellName, Pawn% pawn, Knight% knight, Bishop% bishop, Rook% rook, Queen% queen, King% Newking, System::Int32^% castling, System::Int32^% wk, System::Int32^% bk, System::Int32^% wrr, System::Int32^% wlr, System::Int32^% brr, System::Int32^% blr)
 	{
 		if (!((OldPieceNumber == 161) || (OldPieceNumber == 61 )))
 		{
@@ -447,7 +458,7 @@ public:
 
 		if (X == OldX && ((Y == OldY + 2 && *wk == 1 && *wrr == 1) || (Y == OldY + 2 && *bk == 1 && *brr == 1)) && wasCheck != true)
 		{
-			if (Board[X, OldY + 1] == 0 && Board[X, OldY + 2] == 0 && IsMovePossible(Board, X, OldY + 1, OldX, OldY, moveSide, pawn, knight, bishop, rook, queen))
+			if (Board[X, OldY + 1] == 0 && Board[X, OldY + 2] == 0 && IsMovePossible(Board, X, OldY + 1, OldX, OldY, moveSide, pawn, knight, bishop, rook, queen, Newking))
 			{
 				*castling = 1;
 				*wk = 0;
@@ -456,7 +467,7 @@ public:
 		}
 		else if (X == OldX && ((Y == OldY - 2 && *wk == 1 && *wlr == 1) || (Y == OldY - 2 && *bk == 1 && *blr == 1)) && wasCheck != true)
 		{
-			if (Board[X, OldY - 1] == 0 && Board[X, OldY - 2] == 0 && Board[X, OldY - 3] == 0 && IsMovePossible(Board, X, OldY - 1, OldX, OldY, moveSide, pawn, knight, bishop, rook, queen))
+			if (Board[X, OldY - 1] == 0 && Board[X, OldY - 2] == 0 && Board[X, OldY - 3] == 0 && IsMovePossible(Board, X, OldY - 1, OldX, OldY, moveSide, pawn, knight, bishop, rook, queen, Newking))
 			{
 				*bk = 0;
 				*castling = 2;
@@ -465,15 +476,52 @@ public:
 		}
 		return false;
 	}
+	
+	bool IsNextToKing(static array<int, 2>^ Board, int X, int Y, int OldX, int OldY)
+	{
+		int tmpPieceNumber;
+		
+		tmpPieceNumber = Board[X, Y];
+		Board[X, Y] = Board[OldX, OldY];
+		Board[OldX, OldY] = 0;
+
+		array<int, 2>^ directions = gcnew array<int, 2> { {1, 1}, { 1, -1 }, { -1, 1 }, { -1, -1 }, { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
+
+		for (int d = 0; d < 8; d++)
+		{
+
+			int newX = X + directions[d, 0];
+			int newY = Y + directions[d, 1];
+
+			if (newX >= 0 && newX < 8 && newY >= 0 && newY < 8)
+			{
+				if (Board[newX, newY] == 161 || Board[newX, newY] == 61)
+				{
+					if (X != OldX || Y != OldY)
+					{
+						Board[OldX, OldY] = Board[X, Y];
+						Board[X, Y] = tmpPieceNumber;
+					}
+					return true;
+				}
+			}
+		}
+		Board[OldX, OldY] = Board[X, Y];
+		Board[X, Y] = tmpPieceNumber;
+		return false;
+
+
+	}
 };
 
-bool IsMovePossible(static array<int, 2>^ Board, int X, int Y, int OldX, int OldY, bool moveSide, Pawn% pawn, Knight% knight, Bishop% bishop, Rook% rook, Queen% queen)
+bool IsMovePossible(static array<int, 2>^ Board, int X, int Y, int OldX, int OldY, bool moveSide, Pawn% pawn, Knight% knight, Bishop% bishop, Rook% rook, Queen% queen, King% king)
 {
 	int tmpPieceNumber = Board[X, Y];
 	Board[X, Y] = Board[OldX, OldY];
 	Board[OldX, OldY] = 0;
 
 	int tmp = 0;
+
 	for(int i = 0; i < 8; i++)
 		for (int j = 0; j < 8; j++)
 		{
@@ -542,39 +590,41 @@ bool IsPieceAbleToMove(int PieceNumber, static array<int, 2>^ Board, Pawn% pawn,
 			if (TmpPieceName->IndexOf("Pawn") > 0)
 			{
 				possible = pawn.CheckForPossibleMove(PieceNumber, Board, i, j, OldX, OldY, Capture, X, X);
-				if (possible && (possible = IsMovePossible(Board, i, j, OldX, OldY, !moveSide, pawn, knight, bishop, rook, queen)))
+				if (possible && (possible = IsMovePossible(Board, i, j, OldX, OldY, !moveSide, pawn, knight, bishop, rook, queen, king)))
 					break;
 			}
 			else if (TmpPieceName->IndexOf("Knight") > 0)
 			{
 				possible = knight.CheckForPossibleMove(PieceNumber, Board, i, j, OldX, OldY, Capture);
-				if (possible && (possible = IsMovePossible(Board, i, j, OldX, OldY, !moveSide, pawn, knight, bishop, rook, queen)))
+				if (possible && (possible = IsMovePossible(Board, i, j, OldX, OldY, !moveSide, pawn, knight, bishop, rook, queen, king)))
 					break;
 			}
 			else if (TmpPieceName->IndexOf("Bishop") > 0)
 			{
 				possible = bishop.CheckForPossibleMove(PieceNumber, Board, i, j, OldX, OldY, Capture);
-				if (possible && (possible = IsMovePossible(Board, i, j, OldX, OldY, !moveSide, pawn, knight, bishop, rook, queen)))
+				if (possible && (possible = IsMovePossible(Board, i, j, OldX, OldY, !moveSide, pawn, knight, bishop, rook, queen, king)))
 					break;
 			}
 			else if (TmpPieceName->IndexOf("Rook") > 0)
 			{
 				possible = rook.CheckForPossibleMove(PieceNumber, Board, i, j, OldX, OldY, Capture, Z, Z, Z, Z);
-				if (possible && (possible = IsMovePossible(Board, i, j, OldX, OldY, !moveSide, pawn, knight, bishop, rook, queen)))
+				if (possible && (possible = IsMovePossible(Board, i, j, OldX, OldY, !moveSide, pawn, knight, bishop, rook, queen, king)))
 					break;
 			}
 			else if (TmpPieceName->IndexOf("Queen") > 0)
 			{
 				possible = queen.CheckForPossibleMove(PieceNumber, Board, i, j, OldX, OldY, Capture);
-				if (possible && (possible = IsMovePossible(Board, i, j, OldX, OldY, !moveSide, pawn, knight, bishop, rook, queen)))
+				if (possible && (possible = IsMovePossible(Board, i, j, OldX, OldY, !moveSide, pawn, knight, bishop, rook, queen, king)))
 					break;
 			}
 			else if (TmpPieceName->IndexOf("King") > 0)
 			{
-				possible = king.CheckForPossibleMove(PieceNumber, Board, i, j, OldX, OldY, wasCheck, moveSide , Capture, pawn, knight, bishop, rook, queen, Z, Z, Z, Z, Z, Z, Z);
-				if (possible && (possible = IsMovePossible(Board, i, j, OldX, OldY, !moveSide, pawn, knight, bishop, rook, queen)))
-					break;
+				possible = king.CheckForPossibleMove(PieceNumber, Board, i, j, OldX, OldY, wasCheck, moveSide , Capture, pawn, knight, bishop, rook, queen, king, Z, Z, Z, Z, Z, Z, Z);
+				if (possible && (possible = IsMovePossible(Board, i, j, OldX, OldY, !moveSide, pawn, knight, bishop, rook, queen, king)))
+					if(king.IsNextToKing(Board, i, j, OldX, OldY) == false)
+						break;
 			}
+			possible = false;
 		}
 		if (possible)
 			return true;
