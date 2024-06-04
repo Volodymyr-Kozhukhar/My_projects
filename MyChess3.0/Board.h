@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <iostream>
+#include "MyForm.h"
 
 
 System::String^ FindPiece(int piece_number)
@@ -10,19 +11,19 @@ System::String^ FindPiece(int piece_number)
         {
             return ".\\Pieces\\BlackPawn.png";
         }
-        else if (piece_number > 40 && piece_number < 50)
+        else if (piece_number > 40 && piece_number <= 50)
         {
             return ".\\Pieces\\BlackRook.png"; //BlackRooks
         }
-        else if (piece_number > 20 && piece_number < 30)
+        else if (piece_number > 20 && piece_number <= 30)
         {
             return ".\\Pieces\\BlackKnight.png"; //BlackKnights
         }
-        else if (piece_number > 30 && piece_number < 40)
+        else if (piece_number > 30 && piece_number <= 40)
         {
             return ".\\Pieces\\BlackBishop.png"; //BlackBishops
         }
-        else if (piece_number > 50 && piece_number < 60)
+        else if (piece_number > 50 && piece_number <= 60)
         {
             return ".\\Pieces\\BlackQueen.png"; //BlackQueen
         }
@@ -37,19 +38,19 @@ System::String^ FindPiece(int piece_number)
         {
             return ".\\Pieces\\WhitePawn.png"; //WhitePawns
         }
-        else if (piece_number > 140 && piece_number < 150)
+        else if (piece_number > 140 && piece_number <= 150)
         {
             return ".\\Pieces\\WhiteRook.png"; //WhiteRooks
         }
-        else if (piece_number > 120 && piece_number < 130)
+        else if (piece_number > 120 && piece_number <= 130)
         {
             return ".\\Pieces\\WhiteKnight.png"; //WhiteKnights
         }
-        else if (piece_number > 130 && piece_number < 140)
+        else if (piece_number > 130 && piece_number <= 140)
         {
             return ".\\Pieces\\WhiteBishop.png"; //WhiteBishops
         }
-        else if (piece_number > 150 && piece_number < 160)
+        else if (piece_number > 150 && piece_number <= 160)
         {
             return ".\\Pieces\\WhiteQueen.png"; //WhiteQueen
         }

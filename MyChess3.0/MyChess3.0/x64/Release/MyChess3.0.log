@@ -1,38 +1,39 @@
 ﻿  MainForm.cpp
-C:\Prog\My_repo_proj\MyChess3.0\Board.h(70,29): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+C:\Prog\My_repo_proj\MyChess3.0\Board.h(71,29): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
 C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(11,70): warning C4042: StartBoardPosition: имеет недопустимый класс хранения
 C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(105,56): warning C4042: Board: имеет недопустимый класс хранения
-C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(121,70): warning C4042: Board: имеет недопустимый класс хранения
-C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(143,56): warning C4042: Board: имеет недопустимый класс хранения
-C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(166,70): warning C4042: Board: имеет недопустимый класс хранения
-C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(209,56): warning C4042: Board: имеет недопустимый класс хранения
-C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(241,70): warning C4042: Board: имеет недопустимый класс хранения
-C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(299,56): warning C4042: Board: имеет недопустимый класс хранения
-C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(331,70): warning C4042: Board: имеет недопустимый класс хранения
-C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(374,56): warning C4042: Board: имеет недопустимый класс хранения
-C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(403,43): warning C4042: Board: имеет недопустимый класс хранения
-C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(408,70): warning C4042: Board: имеет недопустимый класс хранения
-C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(470,43): warning C4042: Board: имеет недопустимый класс хранения
-C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(524,63): warning C4042: Board: имеет недопустимый класс хранения
-C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(533,19): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
-C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(585,57): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(125,70): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(145,56): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(167,70): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(210,56): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(243,70): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(301,56): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(334,70): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(377,56): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(410,43): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(415,70): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(476,42): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(513,43): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(568,63): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(577,19): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(631,57): warning C4042: Board: имеет недопустимый класс хранения
 C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2337,30): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
 C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2338,27): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
 C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2339,26): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2373,26): warning C4244: аргумент: преобразование "wchar_t" в "const _Elem", возможна потеря данных
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2373,26): warning C4244:         with
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2373,26): warning C4244:         [
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2373,26): warning C4244:             _Elem=char
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2373,26): warning C4244:         ]
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2374,26): warning C4244: аргумент: преобразование "wchar_t" в "const _Elem", возможна потеря данных
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2374,26): warning C4244:         with
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2374,26): warning C4244:         [
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2374,26): warning C4244:             _Elem=char
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2374,26): warning C4244:         ]
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2647,26): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2857,17): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2858,16): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
-C:\Prog\My_repo_proj\MyChess3.0\Board.h(61,1): warning C4715: FindPiece: значение возвращается не при всех путях выполнения
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2456,26): warning C4244: аргумент: преобразование "wchar_t" в "const _Elem", возможна потеря данных
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2456,26): warning C4244:         with
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2456,26): warning C4244:         [
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2456,26): warning C4244:             _Elem=char
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2456,26): warning C4244:         ]
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2457,26): warning C4244: аргумент: преобразование "wchar_t" в "const _Elem", возможна потеря данных
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2457,26): warning C4244:         with
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2457,26): warning C4244:         [
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2457,26): warning C4244:             _Elem=char
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2457,26): warning C4244:         ]
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2764,26): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2944,17): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2945,16): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+C:\Prog\My_repo_proj\MyChess3.0\Board.h(62,1): warning C4715: FindPiece: значение возвращается не при всех путях выполнения
 C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(103,1): warning C4715: Pawn::CheckForPossibleMove: значение возвращается не при всех путях выполнения
   MainForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
   MyChess3.0.vcxproj -> C:\Prog\My_repo_proj\MyChess3.0\x64\Release\MyChess3.0.exe

@@ -122,7 +122,6 @@ public:
 
 ref class Knight {
 public:
-	color knight;
 	bool CheckForPossibleMove(int OldPieceNumber, static array<int, 2>^ Board, int X, int Y, int OldX, int OldY, System::String^% CaptureCellName)
 	{
 		if (OldPieceNumber > 120 && OldPieceNumber < 130 || OldPieceNumber > 20 && OldPieceNumber < 30)
@@ -165,7 +164,6 @@ public:
 
 ref class Bishop {
 public:
-	color bishop;
 	bool CheckForPossibleMove(int OldPieceNumber, static array<int, 2>^ Board, int X, int Y, int OldX, int OldY, System::String^% CaptureCellName)
 	{
 		if (!((OldPieceNumber > 130 && OldPieceNumber < 140) || (OldPieceNumber > 30 && OldPieceNumber < 40)))
@@ -242,7 +240,6 @@ public:
 
 ref class Rook {
 public:
-	color rook;
 	bool CheckForPossibleMove(int OldPieceNumber, static array<int, 2>^ Board, int X, int Y, int OldX, int OldY, System::String^% CaptureCellName, System::Int32^% wrr, System::Int32^% wlr, System::Int32^% brr, System::Int32^% blr)
 	{
 		if (!((OldPieceNumber > 140 && OldPieceNumber < 150) || (OldPieceNumber > 40 && OldPieceNumber < 50)))
@@ -334,7 +331,6 @@ public:
 
 ref class Queen {
 public:
-	color queen;
 	bool CheckForPossibleMove(int OldPieceNumber, static array<int, 2>^ Board, int X, int Y, int OldX, int OldY, System::String^% CaptureCellName)
 	{
 		if (!((OldPieceNumber > 150 && OldPieceNumber < 160) || (OldPieceNumber > 50 && OldPieceNumber < 60)))
@@ -437,7 +433,7 @@ public:
 		{
 			if (((Board[X, Y] > 100 || Board[X, Y] == 0) && OldPieceNumber == 61) || ((Board[X, Y] < 100 || Board[X, Y] == 0) && OldPieceNumber == 161))
 			{
-				if (Board[X, Y] > 100)
+				if (Board[X, Y] > 100 || Board[X, Y] < 100 && Board[X, Y] != 0)
 				{
 					CaptureCellName = CellNameForCapture(Board[X, Y]);
 				}

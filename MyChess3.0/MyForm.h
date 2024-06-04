@@ -2359,6 +2359,89 @@ private: System::Windows::Forms::Label^ NewPieceText;
            Queen NewQueen;
            King NewKing;
 
+private: void CheckMateDrawStealmate()   // Func for changing color of king cell in case of check and checking for mate, draw or stealmare. In case of game end - creating MassegeBox.
+{
+    int KingX;
+    int KingY;
+
+    if (*check != 0)         // Check, red color for king
+    {
+        wasCheck = true;
+        int kingNumber;
+
+        if (*check == 1)
+        {
+            kingNumber = 161;
+        }
+        else kingNumber = 61;
+        for (int i = 0; i < 8; i++)
+            for (int j = 0; j < 8; j++)
+                if (StartBoardPosition[i, j] == kingNumber)
+                {
+                    KingX = i;
+                    KingY = j;
+                    goto HERE;
+                }
+    HERE:
+        String^ tmpCellName = String::Format("B{0}{1}", KingX, KingY);
+        kingCell = (PictureBox^)this->Controls[tmpCellName];
+        OldColorKing = kingCell->BackColor;
+        kingCell->BackColor = Color::Red;
+
+        mate = IsMate(check, StartBoardPosition, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing, moveSide);
+
+        if (*mate != 0)
+        {
+            //massege box with text of mate
+            if (*mate == 1)
+                MessageBox::Show(this, "Black has won, checkmate!", "CHECK AND MATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
+            else MessageBox::Show(this, "White has won, checkmate!", "CHECK AND MATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
+            clickcountboard = 3;
+            return;
+        }
+    }
+    else
+    {
+        bool tmp = false;
+
+        for (int i = 0; i < 8; i++)
+        {
+            for (int j = 0; j < 8; j++)
+            {
+                if ((moveSide && StartBoardPosition[i, j] > 100) || (moveSide == false && StartBoardPosition[i, j] < 100 && StartBoardPosition[i, j] != 0))
+                    tmp = IsPieceAbleToMove(StartBoardPosition[i, j], StartBoardPosition, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing, i, j, moveSide);
+                if (tmp)
+                    break;
+            }
+            if (tmp)
+                break;
+        }
+
+        if (tmp == false)
+        {
+            MessageBox::Show(this, "Draw by stealmate\n  (-_-*)", "STEALMATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
+            clickcountboard = 3;
+            return;
+        }
+
+        int Sum = 0;
+        for (int i = 0; i < 8; i++)
+        {
+            for (int j = 0; j < 8; j++)
+            {
+                Sum += StartBoardPosition[i, j];
+            }
+        }
+
+        if (Sum == 222)
+        {
+            MessageBox::Show(this, "Two kings draw!", "DRAW", MessageBoxButtons::OK, MessageBoxIcon::Information);
+            clickcountboard = 3;
+            return;
+        }
+    }
+}
+
 private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) {
 
     if (clickcount == 0 || clickcountboard == 3)    // cheking start button state
@@ -2675,11 +2758,6 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                 return;
             }
 
-            if (*check != 0)
-            {
-                wasCheck = true;
-            }
-
             if (tmpString != nullptr) //Captured piece calculating
             {
                 Label^ Temp = dynamic_cast<Label^>(this->Controls->Find(tmpString, true)[0]);
@@ -2787,83 +2865,7 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                 }
             }
             
-            int KingX;
-            int KingY;
-
-            if (*check != 0)         // Check, red color for king
-            {
-                int kingNumber;
-                if (*check == 1)
-                {
-                    kingNumber = 161;
-                }
-                else kingNumber = 61;
-                for (int i = 0; i < 8; i++)
-                    for (int j = 0; j < 8; j++)
-                        if (StartBoardPosition[i, j] == kingNumber)
-                        {
-                            KingX = i;
-                            KingY = j;
-                            goto HERE;
-                        }
-                HERE:
-                String^ tmpCellName = String::Format("B{0}{1}", KingX, KingY);
-                kingCell = (PictureBox^)this->Controls[tmpCellName];
-                OldColorKing = kingCell->BackColor;
-                kingCell->BackColor = Color::Red;
-
-                mate = IsMate(check, StartBoardPosition, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing, moveSide);
-
-                if (*mate != 0)
-                {
-                    //massege box with text of mate
-                    if (*mate == 1)
-                        MessageBox::Show(this, "Black has won, checkmate!", "CHECK AND MATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
-                    else MessageBox::Show(this, "White has won, checkmate!", "CHECK AND MATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
-                    clickcountboard = 3;
-                    return;
-                }
-            }
-            else
-            {
-                bool tmp = false; 
-
-                for (int i = 0; i < 8; i++)
-                {
-                    for (int j = 0; j < 8; j++)
-                    {
-                        if ((moveSide && StartBoardPosition[i, j] > 100) || (moveSide == false && StartBoardPosition[i, j] < 100 && StartBoardPosition[i, j] != 0))
-                            tmp = IsPieceAbleToMove(StartBoardPosition[i, j], StartBoardPosition, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing, i, j, moveSide);
-                        if (tmp)
-                            break;
-                    }
-                    if (tmp)
-                        break;
-                }
-
-                if (tmp == false)
-                {
-                    MessageBox::Show(this, "Draw by stealmate\n  (-_-*)", "STEALMATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
-                    clickcountboard = 3;
-                    return;
-                }
-
-                int Sum = 0;
-                for (int i = 0; i < 8; i++)
-                {
-                    for (int j = 0; j < 8; j++)
-                    {
-                        Sum += StartBoardPosition[i, j];
-                    }
-                }
-
-                if (Sum == 222)
-                {
-                    MessageBox::Show(this, "Two kings draw!", "DRAW", MessageBoxButtons::OK, MessageBoxIcon::Information);
-                    clickcountboard = 3;
-                    return;
-                }
-            }
+            CheckMateDrawStealmate(); // Important function to check for mates or draws
 
             colorNumber++;
             if (colorNumber % 2 == 0)                       // Changing color of PictureBox which indicate color of moving pieces
@@ -3035,6 +3037,7 @@ private: System::Void PieceChanging_Click(System::Object^ sender, System::EventA
                 ChangingPieces->BackgroundImage = Image::FromFile(".\\Pieces\\BlackKnight.png");
             }
         }
+
         Q->BackgroundImage = nullptr;
         R->BackgroundImage = nullptr;
         B->BackgroundImage = nullptr;
@@ -3045,6 +3048,17 @@ private: System::Void PieceChanging_Click(System::Object^ sender, System::EventA
         clickcountboard = 0;
 
         NewPieceMaking = false;
+        
+        if(Name == "K")
+            check = NewKnight.IsCheck(StartBoardPosition[cellCoordinatesX, cellCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY);
+        if(Name == "B")
+            check = NewBishop.IsCheck(StartBoardPosition[cellCoordinatesX, cellCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY);
+        if (Name == "R")
+            check = NewRook.IsCheck(StartBoardPosition[cellCoordinatesX, cellCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY);
+        if (Name == "Q")
+            check = NewQueen.IsCheck(StartBoardPosition[cellCoordinatesX, cellCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY);
+
+        CheckMateDrawStealmate();
     }
 }
 };
