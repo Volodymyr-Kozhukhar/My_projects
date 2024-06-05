@@ -44,7 +44,7 @@ public:
 				}
 				else if((X + 1) >= 0 && (X + 1) < 8)
 				{
-					if (StartBoardPosition[X + 1, Y] > 10 && StartBoardPosition[X + 1, Y] < 20 && X == *SpecX - 1 && Y == *SpecY)
+					if (StartBoardPosition[X + 1, Y] > 10 && StartBoardPosition[X + 1, Y] < 20 && X == *SpecX - 1 && Y == *SpecY && OldX == X + 1)
 					{
 						CaptureCellName = CellNameForCapture(StartBoardPosition[X + 1, Y]);
 						return true;
@@ -89,7 +89,7 @@ public:
 				}
 				else if ((X - 1) >= 0 && (X - 1) < 8)
 				{
-					if (StartBoardPosition[X - 1, Y] > 110 && StartBoardPosition[X - 1, Y] < 120 && X == *SpecX + 1 && Y == *SpecY)
+					if (StartBoardPosition[X - 1, Y] > 110 && StartBoardPosition[X - 1, Y] < 120 && X == *SpecX + 1 && Y == *SpecY && OldX == X - 1)
 					{
 						CaptureCellName = CellNameForCapture(StartBoardPosition[X - 1, Y]);
 						return true;

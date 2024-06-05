@@ -2302,9 +2302,9 @@ private: System::Windows::Forms::Label^ NewPieceText;
                     ImagePath = nullptr;
                     ImagePath = FindPiece(StartBoardPosition[i, j]);
                     if (ImagePath != nullptr)
-                        pictureBox->BackgroundImage = Image::FromFile(ImagePath);
+                        pictureBox->Image = Image::FromFile(ImagePath);
                     else
-                        pictureBox->BackgroundImage = nullptr;
+                        pictureBox->Image = nullptr;
                 }
         }
         if (clickcount == 2)
@@ -2358,6 +2358,115 @@ private: System::Windows::Forms::Label^ NewPieceText;
            Rook NewRook;
            Queen NewQueen;
            King NewKing;
+
+private: void ImageChangeForDorCircle(int i, int j)
+{
+    String^ cellName = String::Format("B{0}{1}", i, j);
+    PictureBox^ pictureBox = (PictureBox^)this->Controls[cellName];
+    if (StartBoardPosition[i, j] == 0)
+        pictureBox->BackgroundImage = Image::FromFile(".\\Pieces\\Dot.png");
+    else
+        pictureBox->BackgroundImage = Image::FromFile(".\\Pieces\\Circle.png");
+}
+
+private: void ImagesToNull()
+{
+    for(int i = 0; i < 8; i++)
+        for (int j = 0; j < 8; j++)
+        {
+            String^ cellName = String::Format("B{0}{1}", i, j);
+            PictureBox^ pictureBox = (PictureBox^)this->Controls[cellName];
+            pictureBox->BackgroundImage = nullptr;
+        }
+}
+
+private: void IndicatePossibleMovesForPiece(String^ PieceImage)
+{
+    int* TSpecX = new int(*SpecX);
+    int* TSpecY = new int(*SpecY);
+
+    String^ TMP;
+
+    Int32^ Tcastling = castling;
+    Int32^ twk = wk;
+    Int32^ tbk = bk;
+    Int32^ twrr = wrr;
+    Int32^ twlr = wlr;
+    Int32^ tbrr = brr;
+    Int32^ tblr = blr;
+    bool possible = false;
+
+    for(int i = 0; i < 8; i++)
+        for (int j = 0; j < 8; j++)
+        {
+            if (PieceImage->IndexOf("Pawn") > 0)
+            {
+                possible = NewPawn.CheckForPossibleMove(PieceToMove, StartBoardPosition, i, j, cellCoordinatesX , cellCoordinatesY, TMP, TSpecX, TSpecY);
+                if (possible)
+                    possible = IsMovePossible(StartBoardPosition, i, j, cellCoordinatesX, cellCoordinatesY, moveSide, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing);
+                if (possible)
+                {
+                    ImageChangeForDorCircle(i, j);
+                    possible = false;
+                }
+            }
+            else if (PieceImage->IndexOf("Knight") > 0)
+            {
+                possible = NewKnight.CheckForPossibleMove(PieceToMove, StartBoardPosition, i, j, cellCoordinatesX, cellCoordinatesY, TMP);
+                if (possible)
+                    possible = IsMovePossible(StartBoardPosition, i, j, cellCoordinatesX, cellCoordinatesY, moveSide, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing);
+                if (possible)
+                {
+                    ImageChangeForDorCircle(i, j);
+                    possible = false;
+                }
+            }
+            else if (PieceImage->IndexOf("Bishop") > 0)
+            {
+                possible = NewBishop.CheckForPossibleMove(PieceToMove, StartBoardPosition, i, j, cellCoordinatesX, cellCoordinatesY, TMP);
+                if (possible)
+                    possible = IsMovePossible(StartBoardPosition, i, j, cellCoordinatesX, cellCoordinatesY, moveSide, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing);
+                if (possible)
+                {
+                    ImageChangeForDorCircle(i, j);
+                    possible = false;
+                }
+            }
+            else if (PieceImage->IndexOf("Rook") > 0)
+            {
+                possible = NewRook.CheckForPossibleMove(PieceToMove, StartBoardPosition, i, j, cellCoordinatesX, cellCoordinatesY, TMP, twrr, twlr, tbrr, tblr);
+                if (possible)
+                    possible = IsMovePossible(StartBoardPosition, i, j, cellCoordinatesX, cellCoordinatesY, moveSide, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing);
+                if (possible)
+                {
+                    ImageChangeForDorCircle(i, j);
+                    possible = false;
+                }
+            }
+            else if (PieceImage->IndexOf("Queen") > 0)
+            {
+                possible = NewQueen.CheckForPossibleMove(PieceToMove, StartBoardPosition, i, j, cellCoordinatesX, cellCoordinatesY, TMP);
+                if (possible)
+                    possible = IsMovePossible(StartBoardPosition, i, j, cellCoordinatesX, cellCoordinatesY, moveSide, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing);
+                if (possible)
+                {
+                    ImageChangeForDorCircle(i, j);
+                    possible = false;
+                }
+            }
+            else if (PieceImage->IndexOf("King") > 0)
+            {
+                possible = NewKing.CheckForPossibleMove(PieceToMove, StartBoardPosition, i, j, cellCoordinatesX, cellCoordinatesY, wasCheck, moveSide, TMP, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing, Tcastling, twk, tbk, twrr, twlr, tbrr, tblr);
+                if (possible)
+                    possible = IsMovePossible(StartBoardPosition, i, j, cellCoordinatesX, cellCoordinatesY, moveSide, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing);
+                if (possible)
+                {
+                    ImageChangeForDorCircle(i, j);
+                    possible = false;
+                }
+            }
+        }
+}
 
 private: void CheckMateDrawStealmate()   // Func for changing color of king cell in case of check and checking for mate, draw or stealmare. In case of game end - creating MassegeBox.
 {
@@ -2447,6 +2556,8 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
     if (clickcount == 0 || clickcountboard == 3)    // cheking start button state
         return;
 
+RetirnPointForSameColorPiece:
+
         clickcountboard++;
         PictureBox^ cell = safe_cast<PictureBox^>(sender);  // new temporary picterBox for clicked cell
         cellName = cell->Name;
@@ -2461,11 +2572,13 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
         if (StartBoardPosition[cellCoordinatesX, cellCoordinatesY] == 0 && clickcountboard == 1) // Cheking if cell empty or not at first click
         {
             clickcountboard = 0;
+            ImagesToNull();
             return;
         }
 
         if (clickcountboard == 2 && OldCoordinatesX == cellCoordinatesX && OldCoordinatesY == cellCoordinatesY) // Cheking if cell is same at second click
         {
+            ImagesToNull();
             clickcountboard = 0;
             Oldcell->BackColor = OldColor;
 
@@ -2492,6 +2605,7 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                     Oldcell->BackColor = OldColor;
                     clickcountboard = 0;
                     Oldcell = nullptr;
+                    ImagesToNull();
                     return;
                 }
                 check = NewPawn.IsCheck(StartBoardPosition[OldCoordinatesX, OldCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY);
@@ -2537,6 +2651,7 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                     Oldcell->BackColor = OldColor;
                     clickcountboard = 0;
                     Oldcell = nullptr;
+                    ImagesToNull();
                     return;
                 }
                 check = NewKnight.IsCheck(StartBoardPosition[OldCoordinatesX, OldCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY);
@@ -2582,6 +2697,7 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                     Oldcell->BackColor = OldColor;
                     clickcountboard = 0;
                     Oldcell = nullptr;
+                    ImagesToNull();
                     return;
                 }
                 check = NewBishop.IsCheck(StartBoardPosition[OldCoordinatesX, OldCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY);
@@ -2625,6 +2741,7 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                     Oldcell->BackColor = OldColor;
                     clickcountboard = 0;
                     Oldcell = nullptr;
+                    ImagesToNull();
                     return;
                 }
                 check = NewRook.IsCheck(StartBoardPosition[OldCoordinatesX, OldCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY);
@@ -2668,6 +2785,7 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                     Oldcell->BackColor = OldColor;
                     clickcountboard = 0;
                     Oldcell = nullptr;
+                    ImagesToNull();
                     return;
                 }
                 check = NewQueen.IsCheck(StartBoardPosition[OldCoordinatesX, OldCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY);
@@ -2713,6 +2831,7 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                     Oldcell->BackColor = OldColor;
                     clickcountboard = 0;
                     Oldcell = nullptr;
+                    ImagesToNull();
                     return;
                 }
 
@@ -2755,6 +2874,7 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                 if (*check != 0)
                     kingCell->BackColor = Color::Red;
 
+                ImagesToNull();
                 return;
             }
 
@@ -2773,8 +2893,8 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                     String^ tmpCellName = String::Format("B{0}{1}", cellCoordinatesX, cellCoordinatesY + 1);    // Changing matrix and board for white
                     PictureBox^ tmpcell = (PictureBox^)this->Controls[tmpCellName];
 
-                    Drawing::Image^ TmpImage = tmpcell->BackgroundImage;
-                    tmpcell->BackgroundImage = nullptr;
+                    Drawing::Image^ TmpImage = tmpcell->Image;
+                    tmpcell->Image = nullptr;
 
                     tmpCellName = String::Format("B{0}{1}", cellCoordinatesX, cellCoordinatesY - 1);
                     tmpcell = (PictureBox^)this->Controls[tmpCellName];
@@ -2783,7 +2903,7 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                     StartBoardPosition[cellCoordinatesX, cellCoordinatesY + 1] = 0;
                     StartBoardPosition[cellCoordinatesX, cellCoordinatesY - 1] = tmp;
 
-                    tmpcell->BackgroundImage = TmpImage;
+                    tmpcell->Image = TmpImage;
                     *castling = 0;
                 }
                 if (*castling == 2)
@@ -2791,8 +2911,8 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                     String^ tmpCellName = String::Format("B{0}{1}", cellCoordinatesX, cellCoordinatesY - 2);    // Changing matrix and board for black
                     PictureBox^ tmpcell = (PictureBox^)this->Controls[tmpCellName];
 
-                    Drawing::Image^ TmpImage = tmpcell->BackgroundImage;
-                    tmpcell->BackgroundImage = nullptr;
+                    Drawing::Image^ TmpImage = tmpcell->Image;
+                    tmpcell->Image = nullptr;
 
                     tmpCellName = String::Format("B{0}{1}", cellCoordinatesX, cellCoordinatesY + 1);
                     tmpcell = (PictureBox^)this->Controls[tmpCellName];
@@ -2801,7 +2921,7 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                     StartBoardPosition[cellCoordinatesX, cellCoordinatesY - 2] = 0;
                     StartBoardPosition[cellCoordinatesX, cellCoordinatesY + 1] = tmp;
 
-                    tmpcell->BackgroundImage = TmpImage;
+                    tmpcell->Image = TmpImage;
                     *castling = 0;
                 }
             }
@@ -2810,12 +2930,12 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
             {
                 String^ tmpCellName = String::Format("B{0}{1}", *SpecX, *SpecY);    // Special takes for double pawn moves
                 PictureBox^ tmpcell = (PictureBox^)this->Controls[tmpCellName];
-                tmpcell->BackgroundImage = nullptr;
+                tmpcell->Image = nullptr;
                 StartBoardPosition[*SpecX, *SpecY] = 0;
             }
 
-            cell->BackgroundImage = Image::FromFile(ImagePath);     // Changing image of cell piece
-            Oldcell->BackgroundImage = nullptr;
+            cell->Image = Image::FromFile(ImagePath);     // Changing image of cell piece
+            Oldcell->Image = nullptr;
 
             if (*check == 0)        //Changing color of King cell after check is over
             {
@@ -2843,7 +2963,7 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
                 NewPieceText->Text = "Choose new piece: ";
 
                 clickcountboard = 3;
-
+                ImagesToNull();
                 return;
             }
 
@@ -2884,13 +3004,20 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
             }
 
             *check = 0;
-
+            ImagesToNull();
             return;
         } 
-
+        else if (clickcountboard == 2 && ((StartBoardPosition[cellCoordinatesX, cellCoordinatesY] > 100 && moveSide) || (StartBoardPosition[cellCoordinatesX, cellCoordinatesY] < 100 && moveSide == false && StartBoardPosition[cellCoordinatesX, cellCoordinatesY] != 0)))
+        {
+            clickcountboard = 0;
+            ImagesToNull();
+            Oldcell->BackColor = OldColor;
+            goto RetirnPointForSameColorPiece;
+        }
         else if(clickcountboard == 2)       // If move is not possible or no move after click at all
         {
             Oldcell->BackColor = OldColor;
+            ImagesToNull();
 
             if (*check != 0)
                 kingCell->BackColor = Color::Red;
@@ -2907,11 +3034,15 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
         if (StartBoardPosition[cellCoordinatesX, cellCoordinatesY] > 100 && moveSide == true || StartBoardPosition[cellCoordinatesX, cellCoordinatesY] < 100 && moveSide == false) 
         {                                   // If first click and piece in cell is right color
             OldColor = cell->BackColor;
-            cell->BackColor = Color::Linen;
+            cell->BackColor = Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(29)), static_cast<System::Int32>(static_cast<System::Byte>(161)), static_cast<System::Int32>(static_cast<System::Byte>(202)));;
             Oldcell = cell;
+
+            String^ PieceImage = FindPiece(PieceToMove);
+            IndicatePossibleMovesForPiece(PieceImage);
         }
         else
         {
+            ImagesToNull();
             clickcountboard = 0;
             Oldcell = nullptr;
             return;
@@ -2921,6 +3052,7 @@ private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) 
 private: System::Void Restart_Click(System::Object^ sender, System::EventArgs^ e) { // Button Restart
     if (clickcount == 1)
     {
+        ImagesToNull();
         if (wasCheck)
             kingCell->BackColor = OldColorKing;
 
@@ -2975,7 +3107,7 @@ private: System::Void PieceChanging_Click(System::Object^ sender, System::EventA
                 wqk++;
                 StartBoardPosition[OldCoordinatesX, OldCoordinatesY] = 0;
 
-                ChangingPieces->BackgroundImage = Image::FromFile(".\\Pieces\\WhiteQueen.png");
+                ChangingPieces->Image = Image::FromFile(".\\Pieces\\WhiteQueen.png");
             }
             else if (Name == "R")
             {
@@ -2983,7 +3115,7 @@ private: System::Void PieceChanging_Click(System::Object^ sender, System::EventA
                 wqk++;
                 StartBoardPosition[OldCoordinatesX, OldCoordinatesY] = 0;
 
-                ChangingPieces->BackgroundImage = Image::FromFile(".\\Pieces\\WhiteRook.png");
+                ChangingPieces->Image = Image::FromFile(".\\Pieces\\WhiteRook.png");
             }
             else if (Name == "B")
             {
@@ -2991,7 +3123,7 @@ private: System::Void PieceChanging_Click(System::Object^ sender, System::EventA
                 wqk++;
                 StartBoardPosition[OldCoordinatesX, OldCoordinatesY] = 0;
 
-                ChangingPieces->BackgroundImage = Image::FromFile(".\\Pieces\\WhiteBishop.png");
+                ChangingPieces->Image = Image::FromFile(".\\Pieces\\WhiteBishop.png");
             }
             else if (Name == "K")
             {
@@ -2999,7 +3131,7 @@ private: System::Void PieceChanging_Click(System::Object^ sender, System::EventA
                 wqk++;
                 StartBoardPosition[OldCoordinatesX, OldCoordinatesY] = 0;
 
-                ChangingPieces->BackgroundImage = Image::FromFile(".\\Pieces\\WhiteKnight.png");
+                ChangingPieces->Image = Image::FromFile(".\\Pieces\\WhiteKnight.png");
             }
         }
         else
@@ -3010,7 +3142,7 @@ private: System::Void PieceChanging_Click(System::Object^ sender, System::EventA
                 wqk++;
                 StartBoardPosition[OldCoordinatesX, OldCoordinatesY] = 0;
 
-                ChangingPieces->BackgroundImage = Image::FromFile(".\\Pieces\\BlackQueen.png");
+                ChangingPieces->Image = Image::FromFile(".\\Pieces\\BlackQueen.png");
             }
             else if (Name == "R")
             {
@@ -3018,7 +3150,7 @@ private: System::Void PieceChanging_Click(System::Object^ sender, System::EventA
                 wqk++;
                 StartBoardPosition[OldCoordinatesX, OldCoordinatesY] = 0;
 
-                ChangingPieces->BackgroundImage = Image::FromFile(".\\Pieces\\BlackRook.png");
+                ChangingPieces->Image = Image::FromFile(".\\Pieces\\BlackRook.png");
             }
             else if (Name == "B")
             {
@@ -3026,7 +3158,7 @@ private: System::Void PieceChanging_Click(System::Object^ sender, System::EventA
                 wqk++;
                 StartBoardPosition[OldCoordinatesX, OldCoordinatesY] = 0;
 
-                ChangingPieces->BackgroundImage = Image::FromFile(".\\Pieces\\BlackBishop.png");
+                ChangingPieces->Image = Image::FromFile(".\\Pieces\\BlackBishop.png");
             }
             else if (Name == "K")
             {
@@ -3034,7 +3166,7 @@ private: System::Void PieceChanging_Click(System::Object^ sender, System::EventA
                 wqk++;
                 StartBoardPosition[OldCoordinatesX, OldCoordinatesY] = 0;
 
-                ChangingPieces->BackgroundImage = Image::FromFile(".\\Pieces\\BlackKnight.png");
+                ChangingPieces->Image = Image::FromFile(".\\Pieces\\BlackKnight.png");
             }
         }
 
