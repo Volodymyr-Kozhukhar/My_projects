@@ -2387,13 +2387,13 @@ private: void IndicatePossibleMovesForPiece(String^ PieceImage)
 
     String^ TMP;
 
-    Int32^ Tcastling = castling;
-    Int32^ twk = wk;
-    Int32^ tbk = bk;
-    Int32^ twrr = wrr;
-    Int32^ twlr = wlr;
-    Int32^ tbrr = brr;
-    Int32^ tblr = blr;
+    Int32^ Tcastling = *castling;
+    Int32^ twk = *wk;
+    Int32^ tbk = *bk;
+    Int32^ twrr = *wrr;
+    Int32^ twlr = *wlr;
+    Int32^ tbrr = *brr;
+    Int32^ tblr = *blr;
     bool possible = false;
 
     for(int i = 0; i < 8; i++)
@@ -2461,11 +2461,21 @@ private: void IndicatePossibleMovesForPiece(String^ PieceImage)
                     possible = IsMovePossible(StartBoardPosition, i, j, cellCoordinatesX, cellCoordinatesY, moveSide, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing);
                 if (possible)
                 {
-                    ImageChangeForDorCircle(i, j);
+                    bool TCloseToKing = NewKing.IsNextToKing(StartBoardPosition, i, j, cellCoordinatesX, cellCoordinatesY);
+                    if(TCloseToKing == false)
+                        ImageChangeForDorCircle(i, j);
+                    twk = *wk;
+                    tbk = *bk;
+                    twrr = *wrr;
+                    twlr = *wlr;
+                    tbrr = *brr;
+                    tblr = *blr;
                     possible = false;
                 }
             }
         }
+    delete TSpecX;
+    delete TSpecY;
 }
 
 private: void CheckMateDrawStealmate()   // Func for changing color of king cell in case of check and checking for mate, draw or stealmare. In case of game end - creating MassegeBox.

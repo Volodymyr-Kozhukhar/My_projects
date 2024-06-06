@@ -20,19 +20,19 @@ C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(631,57): warning C4042: Board: имее
 C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2337,30): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
 C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2338,27): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
 C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2339,26): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2567,26): warning C4244: аргумент: преобразование "wchar_t" в "const _Elem", возможна потеря данных
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2567,26): warning C4244:         with
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2567,26): warning C4244:         [
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2567,26): warning C4244:             _Elem=char
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2567,26): warning C4244:         ]
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2568,26): warning C4244: аргумент: преобразование "wchar_t" в "const _Elem", возможна потеря данных
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2568,26): warning C4244:         with
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2568,26): warning C4244:         [
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2568,26): warning C4244:             _Elem=char
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2568,26): warning C4244:         ]
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2884,26): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(3076,17): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
-C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(3077,16): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2577,26): warning C4244: аргумент: преобразование "wchar_t" в "const _Elem", возможна потеря данных
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2577,26): warning C4244:         with
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2577,26): warning C4244:         [
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2577,26): warning C4244:             _Elem=char
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2577,26): warning C4244:         ]
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2578,26): warning C4244: аргумент: преобразование "wchar_t" в "const _Elem", возможна потеря данных
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2578,26): warning C4244:         with
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2578,26): warning C4244:         [
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2578,26): warning C4244:             _Elem=char
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2578,26): warning C4244:         ]
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(2894,26): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(3086,17): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+C:\Prog\My_repo_proj\MyChess3.0\MyForm.h(3087,16): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
 C:\Prog\My_repo_proj\MyChess3.0\Board.h(62,1): warning C4715: FindPiece: значение возвращается не при всех путях выполнения
 C:\Prog\My_repo_proj\MyChess3.0\Pieces.h(103,1): warning C4715: Pawn::CheckForPossibleMove: значение возвращается не при всех путях выполнения
   MainForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
