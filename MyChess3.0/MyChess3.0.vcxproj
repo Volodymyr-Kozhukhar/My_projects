@@ -132,9 +132,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
+    <ClInclude Include="BishopClass.h" />
+    <ClInclude Include="KingClass.h" />
+    <ClInclude Include="QueenClass.h" />
+    <ClInclude Include="RookClass.h" />
+    <ClInclude Include="KnightClass.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="PawnClass.h" />
     <ClInclude Include="Pieces.h" />
   </ItemGroup>
   <ItemGroup>

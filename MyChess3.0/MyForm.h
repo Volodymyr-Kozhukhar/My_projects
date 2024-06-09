@@ -2265,14 +2265,14 @@ private: System::Windows::Forms::Label^ NewPieceText;
 
         }
 #pragma endregion 
-
+public:
         int colorNumber = 1;
         String^ ImagePath;
-        private:
-            static array<int, 2>^ StartBoardPosition;
+        static array<int, 2>^ StartBoardPosition;
 
-	int clickcount = 0;
-    private: System::Void Start_Click(System::Object^ sender, System::EventArgs^ e) {   //Board start, drawing pieces
+	    int clickcount = 0;
+
+    System::Void Start_Click(System::Object^ sender, System::EventArgs^ e) {   //Board start, drawing pieces
         clickcount++;                                                                   // Buttons Start & Exit
         ColorToMoveBox1->BackColor = Color::NavajoWhite;
         ColorToMoveBox2->BackColor = Color::NavajoWhite;
@@ -2359,7 +2359,7 @@ private: System::Windows::Forms::Label^ NewPieceText;
            Queen NewQueen;
            King NewKing;
 
-private: void ImageChangeForDorCircle(int i, int j)
+void ImageChangeForDorCircle(int i, int j)
 {
     String^ cellName = String::Format("B{0}{1}", i, j);
     PictureBox^ pictureBox = (PictureBox^)this->Controls[cellName];
@@ -2369,7 +2369,7 @@ private: void ImageChangeForDorCircle(int i, int j)
         pictureBox->BackgroundImage = Image::FromFile(".\\Pieces\\Circle.png");
 }
 
-private: void ImagesToNull()
+void ImagesToNull()
 {
     for(int i = 0; i < 8; i++)
         for (int j = 0; j < 8; j++)
@@ -2380,7 +2380,7 @@ private: void ImagesToNull()
         }
 }
 
-private: void IndicatePossibleMovesForPiece(String^ PieceImage)
+void IndicatePossibleMovesForPiece(String^ PieceImage)
 {
     int* TSpecX = new int(*SpecX);
     int* TSpecY = new int(*SpecY);
@@ -2478,7 +2478,7 @@ private: void IndicatePossibleMovesForPiece(String^ PieceImage)
     delete TSpecY;
 }
 
-private: void CheckMateDrawStealmate()   // Func for changing color of king cell in case of check and checking for mate, draw or stealmare. In case of game end - creating MassegeBox.
+void CheckMateDrawStealmate()   // Func for changing color of king cell in case of check and checking for mate, draw or stealmare. In case of game end - creating MassegeBox.
 {
     int KingX;
     int KingY;
@@ -2561,7 +2561,7 @@ private: void CheckMateDrawStealmate()   // Func for changing color of king cell
     }
 }
 
-private: System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) {
+System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) {
 
     if (clickcount == 0 || clickcountboard == 3)    // cheking start button state
         return;
@@ -3059,7 +3059,7 @@ RetirnPointForSameColorPiece:
         }
 }
 
-private: System::Void Restart_Click(System::Object^ sender, System::EventArgs^ e) { // Button Restart
+System::Void Restart_Click(System::Object^ sender, System::EventArgs^ e) { // Button Restart
     if (clickcount == 1)
     {
         ImagesToNull();
@@ -3100,7 +3100,7 @@ private: System::Void Restart_Click(System::Object^ sender, System::EventArgs^ e
     }
 }
 
-private: System::Void PieceChanging_Click(System::Object^ sender, System::EventArgs^ e) {       // Function to change pawn after click on piece
+System::Void PieceChanging_Click(System::Object^ sender, System::EventArgs^ e) {       // Function to change pawn after click on piece
     if (NewPieceMaking)
     {
         PictureBox^ ChangingPieces = safe_cast<PictureBox^>(sender);

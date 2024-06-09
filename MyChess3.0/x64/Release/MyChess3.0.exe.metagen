@@ -29,3 +29,57 @@ Assembly WindowsFormsIntegration, Version=4.0.0.0, Culture=neutral, PublicKeyTok
 Class MyChess30.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 colorNumber : Public
+    System.String ImagePath : Public
+    Int32 clickcount : Public
+    Boolean moveSide : Public
+    Boolean NewPieceMaking : Public
+    Boolean wasCheck : Public
+    System.String cellName : Public
+    System.Windows.Forms.PictureBox kingCell : Public
+    System.Windows.Forms.PictureBox Oldcell : Public
+    System.Drawing.Color OldColor : Public
+    System.Drawing.Color OldColorKing : Public
+    System.ValueType wk Int32 IsBoxed : Public
+    System.ValueType bk Int32 IsBoxed : Public
+    System.ValueType wrr Int32 IsBoxed : Public
+    System.ValueType wlr Int32 IsBoxed : Public
+    System.ValueType brr Int32 IsBoxed : Public
+    System.ValueType blr Int32 IsBoxed : Public
+    System.ValueType castling Int32 IsBoxed : Public
+    System.ValueType check Int32 IsBoxed : Public
+    System.ValueType mate Int32 IsBoxed : Public
+    Int32 wqk : Public
+    Int32 wrk : Public
+    Int32 wbk : Public
+    Int32 wkk : Public
+    Int32 bqk : Public
+    Int32 brk : Public
+    Int32 bbk : Public
+    Int32 bkk : Public
+    Int32 PawnDoubleMoveSign : Public
+    Int32 clickcountboard : Public
+    Int32 OldCoordinatesX : Public
+    Int32 OldCoordinatesY : Public
+    Int32 PieceToMove : Public
+    Int32* SpecX : Public
+    Int32* SpecY : Public
+    Int32 cellCoordinatesX : Public
+    Int32 cellCoordinatesY : Public
+    Pawn NewPawn IsByValue : Public, InitOnly
+    Knight NewKnight IsByValue : Public, InitOnly
+    Bishop NewBishop IsByValue : Public, InitOnly
+    Rook NewRook IsByValue : Public, InitOnly
+    Queen NewQueen IsByValue : Public, InitOnly
+    King NewKing IsByValue : Public, InitOnly
+    Int32[,] StartBoardPosition : Public, Static
+  Methods:
+    Start_Click(Object, EventArgs): PrivateScope, Public, HideBySig
+    ImageChangeForDorCircle(Int32, Int32): PrivateScope, Public, HideBySig
+    ImagesToNull(): PrivateScope, Public, HideBySig
+    IndicatePossibleMovesForPiece(String): PrivateScope, Public, HideBySig
+    CheckMateDrawStealmate(): PrivateScope, Public, HideBySig
+    Board_Click(Object, EventArgs): PrivateScope, Public, HideBySig
+    Restart_Click(Object, EventArgs): PrivateScope, Public, HideBySig
+    PieceChanging_Click(Object, EventArgs): PrivateScope, Public, HideBySig
