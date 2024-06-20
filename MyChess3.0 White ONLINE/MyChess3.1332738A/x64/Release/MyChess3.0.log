@@ -1,0 +1,43 @@
+﻿  MainForm.cpp
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\Board.h(71,29): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\PawnClass.h(16,70): warning C4042: StartBoardPosition: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\PawnClass.h(110,56): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\KnightClass.h(12,70): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\KnightClass.h(32,56): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\BishopClass.h(12,70): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\BishopClass.h(55,56): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\RookClass.h(12,70): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\RookClass.h(70,56): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\QueenClass.h(12,70): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\QueenClass.h(55,56): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\KingClass.h(9,43): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\KingClass.h(20,70): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\KingClass.h(81,42): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\Pieces.h(12,43): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\Pieces.h(67,63): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\Pieces.h(76,19): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\Pieces.h(130,57): warning C4042: Board: имеет недопустимый класс хранения
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(2432,17): warning C4677: NewPawn: сигнатура члена, не являющегося частным, содержит частный тип сборки "Pawn"
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(2433,19): warning C4677: NewKnight: сигнатура члена, не являющегося частным, содержит частный тип сборки "Knight"
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(2434,19): warning C4677: NewBishop: сигнатура члена, не являющегося частным, содержит частный тип сборки "Bishop"
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(2435,17): warning C4677: NewRook: сигнатура члена, не являющегося частным, содержит частный тип сборки "Rook"
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(2436,18): warning C4677: NewQueen: сигнатура члена, не являющегося частным, содержит частный тип сборки "Queen"
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(2437,17): warning C4677: NewKing: сигнатура члена, не являющегося частным, содержит частный тип сборки "King"
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(2414,30): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(2415,27): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(2416,26): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(2656,26): warning C4244: аргумент: преобразование "wchar_t" в "const _Elem", возможна потеря данных
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(2656,26): warning C4244:         with
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(2656,26): warning C4244:         [
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(2656,26): warning C4244:             _Elem=char
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(2656,26): warning C4244:         ]
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(2657,26): warning C4244: аргумент: преобразование "wchar_t" в "const _Elem", возможна потеря данных
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(2657,26): warning C4244:         with
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(2657,26): warning C4244:         [
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(2657,26): warning C4244:             _Elem=char
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(2657,26): warning C4244:         ]
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(2973,26): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(3097,33): error C2440: reinterpret_cast: невозможно преобразовать "cli::interior_ptr<int>" в "char *"
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(3097,13): error C2660: send: функция не принимает 3 аргументов
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(3167,17): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+C:\Prog\My_repo_proj\MyChess3.0 White ONLINE\MyForm.h(3168,16): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
