@@ -255,22 +255,22 @@ private: System::Windows::Forms::PictureBox^ pictureBox4;
 private: System::Windows::Forms::PictureBox^ pictureBox3;
 private: System::Windows::Forms::Label^ CapturedWhitePawns;
 private: System::Windows::Forms::PictureBox^ pictureBox2;
-private: System::Windows::Forms::Label^ label17;
-private: System::Windows::Forms::Label^ label18;
-private: System::Windows::Forms::Label^ label19;
-private: System::Windows::Forms::Label^ label20;
-private: System::Windows::Forms::Label^ label21;
-private: System::Windows::Forms::Label^ label22;
-private: System::Windows::Forms::Label^ label23;
-private: System::Windows::Forms::Label^ label24;
-private: System::Windows::Forms::Label^ label25;
-private: System::Windows::Forms::Label^ label26;
-private: System::Windows::Forms::Label^ label27;
-private: System::Windows::Forms::Label^ label28;
-private: System::Windows::Forms::Label^ label29;
-private: System::Windows::Forms::Label^ label30;
-private: System::Windows::Forms::Label^ label31;
-private: System::Windows::Forms::Label^ label32;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 private: System::Windows::Forms::PictureBox^ Q;
 private: System::Windows::Forms::PictureBox^ R;
 private: System::Windows::Forms::PictureBox^ B;
@@ -286,6 +286,22 @@ private: System::Windows::Forms::TextBox^ portTextBox;
 
 
 private: System::Windows::Forms::Button^ ServerStartButton;
+private: System::Windows::Forms::Label^ label25;
+private: System::Windows::Forms::Label^ label26;
+private: System::Windows::Forms::Label^ label27;
+private: System::Windows::Forms::Label^ label28;
+private: System::Windows::Forms::Label^ label29;
+private: System::Windows::Forms::Label^ label30;
+private: System::Windows::Forms::Label^ label31;
+private: System::Windows::Forms::Label^ label32;
+private: System::Windows::Forms::Label^ label17;
+private: System::Windows::Forms::Label^ label18;
+private: System::Windows::Forms::Label^ label19;
+private: System::Windows::Forms::Label^ label20;
+private: System::Windows::Forms::Label^ label21;
+private: System::Windows::Forms::Label^ label22;
+private: System::Windows::Forms::Label^ label23;
+private: System::Windows::Forms::Label^ label24;
 
 
 
@@ -448,22 +464,6 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
             this->CapturedWhitePawns = (gcnew System::Windows::Forms::Label());
             this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
-            this->label17 = (gcnew System::Windows::Forms::Label());
-            this->label18 = (gcnew System::Windows::Forms::Label());
-            this->label19 = (gcnew System::Windows::Forms::Label());
-            this->label20 = (gcnew System::Windows::Forms::Label());
-            this->label21 = (gcnew System::Windows::Forms::Label());
-            this->label22 = (gcnew System::Windows::Forms::Label());
-            this->label23 = (gcnew System::Windows::Forms::Label());
-            this->label24 = (gcnew System::Windows::Forms::Label());
-            this->label25 = (gcnew System::Windows::Forms::Label());
-            this->label26 = (gcnew System::Windows::Forms::Label());
-            this->label27 = (gcnew System::Windows::Forms::Label());
-            this->label28 = (gcnew System::Windows::Forms::Label());
-            this->label29 = (gcnew System::Windows::Forms::Label());
-            this->label30 = (gcnew System::Windows::Forms::Label());
-            this->label31 = (gcnew System::Windows::Forms::Label());
-            this->label32 = (gcnew System::Windows::Forms::Label());
             this->Q = (gcnew System::Windows::Forms::PictureBox());
             this->R = (gcnew System::Windows::Forms::PictureBox());
             this->B = (gcnew System::Windows::Forms::PictureBox());
@@ -474,6 +474,22 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->port_Lable = (gcnew System::Windows::Forms::Label());
             this->portTextBox = (gcnew System::Windows::Forms::TextBox());
             this->ServerStartButton = (gcnew System::Windows::Forms::Button());
+            this->label25 = (gcnew System::Windows::Forms::Label());
+            this->label26 = (gcnew System::Windows::Forms::Label());
+            this->label27 = (gcnew System::Windows::Forms::Label());
+            this->label28 = (gcnew System::Windows::Forms::Label());
+            this->label29 = (gcnew System::Windows::Forms::Label());
+            this->label30 = (gcnew System::Windows::Forms::Label());
+            this->label31 = (gcnew System::Windows::Forms::Label());
+            this->label32 = (gcnew System::Windows::Forms::Label());
+            this->label17 = (gcnew System::Windows::Forms::Label());
+            this->label18 = (gcnew System::Windows::Forms::Label());
+            this->label19 = (gcnew System::Windows::Forms::Label());
+            this->label20 = (gcnew System::Windows::Forms::Label());
+            this->label21 = (gcnew System::Windows::Forms::Label());
+            this->label22 = (gcnew System::Windows::Forms::Label());
+            this->label23 = (gcnew System::Windows::Forms::Label());
+            this->label24 = (gcnew System::Windows::Forms::Label());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B00))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B01))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->B02))->BeginInit();
@@ -1331,7 +1347,7 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->label1->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
             this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(204)));
-            this->label1->Location = System::Drawing::Point(722, 566);
+            this->label1->Location = System::Drawing::Point(1142, 566);
             this->label1->Name = L"label1";
             this->label1->Size = System::Drawing::Size(60, 20);
             this->label1->TabIndex = 70;
@@ -1343,7 +1359,7 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->label2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
             this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(204)));
-            this->label2->Location = System::Drawing::Point(782, 566);
+            this->label2->Location = System::Drawing::Point(1082, 566);
             this->label2->Name = L"label2";
             this->label2->Size = System::Drawing::Size(60, 20);
             this->label2->TabIndex = 71;
@@ -1355,7 +1371,7 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->label3->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
             this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(204)));
-            this->label3->Location = System::Drawing::Point(842, 566);
+            this->label3->Location = System::Drawing::Point(1022, 566);
             this->label3->Name = L"label3";
             this->label3->Size = System::Drawing::Size(60, 20);
             this->label3->TabIndex = 72;
@@ -1367,7 +1383,7 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->label4->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
             this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(204)));
-            this->label4->Location = System::Drawing::Point(902, 566);
+            this->label4->Location = System::Drawing::Point(962, 566);
             this->label4->Name = L"label4";
             this->label4->Size = System::Drawing::Size(60, 20);
             this->label4->TabIndex = 73;
@@ -1379,7 +1395,7 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->label5->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
             this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(204)));
-            this->label5->Location = System::Drawing::Point(962, 566);
+            this->label5->Location = System::Drawing::Point(902, 566);
             this->label5->Name = L"label5";
             this->label5->Size = System::Drawing::Size(60, 20);
             this->label5->TabIndex = 74;
@@ -1391,7 +1407,7 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->label6->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
             this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(204)));
-            this->label6->Location = System::Drawing::Point(1022, 566);
+            this->label6->Location = System::Drawing::Point(842, 566);
             this->label6->Name = L"label6";
             this->label6->Size = System::Drawing::Size(60, 20);
             this->label6->TabIndex = 75;
@@ -1403,7 +1419,7 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->label7->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
             this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(204)));
-            this->label7->Location = System::Drawing::Point(1082, 566);
+            this->label7->Location = System::Drawing::Point(782, 566);
             this->label7->Name = L"label7";
             this->label7->Size = System::Drawing::Size(60, 20);
             this->label7->TabIndex = 76;
@@ -1415,7 +1431,7 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->label8->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
             this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(204)));
-            this->label8->Location = System::Drawing::Point(1142, 566);
+            this->label8->Location = System::Drawing::Point(722, 566);
             this->label8->Name = L"label8";
             this->label8->Size = System::Drawing::Size(60, 20);
             this->label8->TabIndex = 77;
@@ -1427,7 +1443,7 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->label9->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
             this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(204)));
-            this->label9->Location = System::Drawing::Point(702, 86);
+            this->label9->Location = System::Drawing::Point(702, 506);
             this->label9->Name = L"label9";
             this->label9->Size = System::Drawing::Size(20, 60);
             this->label9->TabIndex = 78;
@@ -1439,7 +1455,7 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->label10->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
             this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(204)));
-            this->label10->Location = System::Drawing::Point(702, 146);
+            this->label10->Location = System::Drawing::Point(702, 446);
             this->label10->Name = L"label10";
             this->label10->Size = System::Drawing::Size(20, 60);
             this->label10->TabIndex = 79;
@@ -1451,7 +1467,7 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->label11->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
             this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(204)));
-            this->label11->Location = System::Drawing::Point(702, 206);
+            this->label11->Location = System::Drawing::Point(702, 386);
             this->label11->Name = L"label11";
             this->label11->Size = System::Drawing::Size(20, 60);
             this->label11->TabIndex = 80;
@@ -1463,7 +1479,7 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->label12->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
             this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(204)));
-            this->label12->Location = System::Drawing::Point(702, 266);
+            this->label12->Location = System::Drawing::Point(702, 326);
             this->label12->Name = L"label12";
             this->label12->Size = System::Drawing::Size(20, 60);
             this->label12->TabIndex = 81;
@@ -1475,7 +1491,7 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->label13->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
             this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(204)));
-            this->label13->Location = System::Drawing::Point(702, 326);
+            this->label13->Location = System::Drawing::Point(702, 266);
             this->label13->Name = L"label13";
             this->label13->Size = System::Drawing::Size(20, 60);
             this->label13->TabIndex = 82;
@@ -1487,7 +1503,7 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->label14->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
             this->label14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(204)));
-            this->label14->Location = System::Drawing::Point(702, 386);
+            this->label14->Location = System::Drawing::Point(702, 206);
             this->label14->Name = L"label14";
             this->label14->Size = System::Drawing::Size(20, 60);
             this->label14->TabIndex = 83;
@@ -1499,7 +1515,7 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->label15->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
             this->label15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(204)));
-            this->label15->Location = System::Drawing::Point(702, 446);
+            this->label15->Location = System::Drawing::Point(702, 146);
             this->label15->Name = L"label15";
             this->label15->Size = System::Drawing::Size(20, 60);
             this->label15->TabIndex = 84;
@@ -1511,7 +1527,7 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->label16->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
             this->label16->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(204)));
-            this->label16->Location = System::Drawing::Point(702, 506);
+            this->label16->Location = System::Drawing::Point(702, 86);
             this->label16->Name = L"label16";
             this->label16->Size = System::Drawing::Size(20, 60);
             this->label16->TabIndex = 85;
@@ -1785,198 +1801,6 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->pictureBox2->TabIndex = 107;
             this->pictureBox2->TabStop = false;
             // 
-            // label17
-            // 
-            this->label17->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-            this->label17->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(204)));
-            this->label17->Location = System::Drawing::Point(1142, 66);
-            this->label17->Name = L"label17";
-            this->label17->Size = System::Drawing::Size(60, 20);
-            this->label17->TabIndex = 124;
-            this->label17->Text = L"H";
-            this->label17->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            // 
-            // label18
-            // 
-            this->label18->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-            this->label18->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(204)));
-            this->label18->Location = System::Drawing::Point(1082, 66);
-            this->label18->Name = L"label18";
-            this->label18->Size = System::Drawing::Size(60, 20);
-            this->label18->TabIndex = 123;
-            this->label18->Text = L"G";
-            this->label18->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            // 
-            // label19
-            // 
-            this->label19->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-            this->label19->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(204)));
-            this->label19->Location = System::Drawing::Point(1022, 66);
-            this->label19->Name = L"label19";
-            this->label19->Size = System::Drawing::Size(60, 20);
-            this->label19->TabIndex = 122;
-            this->label19->Text = L"F";
-            this->label19->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            // 
-            // label20
-            // 
-            this->label20->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-            this->label20->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(204)));
-            this->label20->Location = System::Drawing::Point(962, 66);
-            this->label20->Name = L"label20";
-            this->label20->Size = System::Drawing::Size(60, 20);
-            this->label20->TabIndex = 121;
-            this->label20->Text = L"E";
-            this->label20->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            // 
-            // label21
-            // 
-            this->label21->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-            this->label21->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(204)));
-            this->label21->Location = System::Drawing::Point(902, 66);
-            this->label21->Name = L"label21";
-            this->label21->Size = System::Drawing::Size(60, 20);
-            this->label21->TabIndex = 120;
-            this->label21->Text = L"D";
-            this->label21->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            // 
-            // label22
-            // 
-            this->label22->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-            this->label22->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(204)));
-            this->label22->Location = System::Drawing::Point(842, 66);
-            this->label22->Name = L"label22";
-            this->label22->Size = System::Drawing::Size(60, 20);
-            this->label22->TabIndex = 119;
-            this->label22->Text = L"C";
-            this->label22->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            // 
-            // label23
-            // 
-            this->label23->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-            this->label23->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(204)));
-            this->label23->Location = System::Drawing::Point(782, 66);
-            this->label23->Name = L"label23";
-            this->label23->Size = System::Drawing::Size(60, 20);
-            this->label23->TabIndex = 118;
-            this->label23->Text = L"B";
-            this->label23->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            // 
-            // label24
-            // 
-            this->label24->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-            this->label24->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(204)));
-            this->label24->Location = System::Drawing::Point(722, 66);
-            this->label24->Name = L"label24";
-            this->label24->Size = System::Drawing::Size(60, 20);
-            this->label24->TabIndex = 117;
-            this->label24->Text = L"A";
-            this->label24->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            // 
-            // label25
-            // 
-            this->label25->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-            this->label25->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(204)));
-            this->label25->Location = System::Drawing::Point(1202, 506);
-            this->label25->Name = L"label25";
-            this->label25->Size = System::Drawing::Size(20, 60);
-            this->label25->TabIndex = 132;
-            this->label25->Text = L"1";
-            this->label25->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            // 
-            // label26
-            // 
-            this->label26->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-            this->label26->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(204)));
-            this->label26->Location = System::Drawing::Point(1202, 446);
-            this->label26->Name = L"label26";
-            this->label26->Size = System::Drawing::Size(20, 60);
-            this->label26->TabIndex = 131;
-            this->label26->Text = L"2";
-            this->label26->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            // 
-            // label27
-            // 
-            this->label27->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-            this->label27->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(204)));
-            this->label27->Location = System::Drawing::Point(1202, 386);
-            this->label27->Name = L"label27";
-            this->label27->Size = System::Drawing::Size(20, 60);
-            this->label27->TabIndex = 130;
-            this->label27->Text = L"3";
-            this->label27->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            // 
-            // label28
-            // 
-            this->label28->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-            this->label28->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(204)));
-            this->label28->Location = System::Drawing::Point(1202, 326);
-            this->label28->Name = L"label28";
-            this->label28->Size = System::Drawing::Size(20, 60);
-            this->label28->TabIndex = 129;
-            this->label28->Text = L"4";
-            this->label28->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            // 
-            // label29
-            // 
-            this->label29->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-            this->label29->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(204)));
-            this->label29->Location = System::Drawing::Point(1202, 266);
-            this->label29->Name = L"label29";
-            this->label29->Size = System::Drawing::Size(20, 60);
-            this->label29->TabIndex = 128;
-            this->label29->Text = L"5";
-            this->label29->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            // 
-            // label30
-            // 
-            this->label30->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-            this->label30->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(204)));
-            this->label30->Location = System::Drawing::Point(1202, 206);
-            this->label30->Name = L"label30";
-            this->label30->Size = System::Drawing::Size(20, 60);
-            this->label30->TabIndex = 127;
-            this->label30->Text = L"6";
-            this->label30->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            // 
-            // label31
-            // 
-            this->label31->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-            this->label31->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(204)));
-            this->label31->Location = System::Drawing::Point(1202, 146);
-            this->label31->Name = L"label31";
-            this->label31->Size = System::Drawing::Size(20, 60);
-            this->label31->TabIndex = 126;
-            this->label31->Text = L"7";
-            this->label31->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            // 
-            // label32
-            // 
-            this->label32->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-            this->label32->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(204)));
-            this->label32->Location = System::Drawing::Point(1202, 86);
-            this->label32->Name = L"label32";
-            this->label32->Size = System::Drawing::Size(20, 60);
-            this->label32->TabIndex = 125;
-            this->label32->Text = L"8";
-            this->label32->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-            // 
             // Q
             // 
             this->Q->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
@@ -2037,7 +1861,7 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->ipTextBox->Name = L"ipTextBox";
             this->ipTextBox->Size = System::Drawing::Size(276, 15);
             this->ipTextBox->TabIndex = 138;
-            this->ipTextBox->Text = L"26.193.106.111";
+            this->ipTextBox->Text = L"26.63.92.98";
             this->ipTextBox->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
             // 
             // ip_Lable
@@ -2088,6 +1912,198 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->ServerStartButton->UseVisualStyleBackColor = false;
             this->ServerStartButton->Click += gcnew System::EventHandler(this, &MyForm::ServerStartButton_Click);
             // 
+            // label25
+            // 
+            this->label25->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->label25->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->label25->Location = System::Drawing::Point(1202, 86);
+            this->label25->Name = L"label25";
+            this->label25->Size = System::Drawing::Size(20, 60);
+            this->label25->TabIndex = 151;
+            this->label25->Text = L"1";
+            this->label25->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // label26
+            // 
+            this->label26->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->label26->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->label26->Location = System::Drawing::Point(1202, 146);
+            this->label26->Name = L"label26";
+            this->label26->Size = System::Drawing::Size(20, 60);
+            this->label26->TabIndex = 150;
+            this->label26->Text = L"2";
+            this->label26->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // label27
+            // 
+            this->label27->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->label27->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->label27->Location = System::Drawing::Point(1202, 206);
+            this->label27->Name = L"label27";
+            this->label27->Size = System::Drawing::Size(20, 60);
+            this->label27->TabIndex = 149;
+            this->label27->Text = L"3";
+            this->label27->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // label28
+            // 
+            this->label28->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->label28->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->label28->Location = System::Drawing::Point(1202, 266);
+            this->label28->Name = L"label28";
+            this->label28->Size = System::Drawing::Size(20, 60);
+            this->label28->TabIndex = 148;
+            this->label28->Text = L"4";
+            this->label28->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // label29
+            // 
+            this->label29->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->label29->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->label29->Location = System::Drawing::Point(1202, 326);
+            this->label29->Name = L"label29";
+            this->label29->Size = System::Drawing::Size(20, 60);
+            this->label29->TabIndex = 147;
+            this->label29->Text = L"5";
+            this->label29->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // label30
+            // 
+            this->label30->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->label30->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->label30->Location = System::Drawing::Point(1202, 386);
+            this->label30->Name = L"label30";
+            this->label30->Size = System::Drawing::Size(20, 60);
+            this->label30->TabIndex = 146;
+            this->label30->Text = L"6";
+            this->label30->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // label31
+            // 
+            this->label31->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->label31->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->label31->Location = System::Drawing::Point(1202, 446);
+            this->label31->Name = L"label31";
+            this->label31->Size = System::Drawing::Size(20, 60);
+            this->label31->TabIndex = 145;
+            this->label31->Text = L"7";
+            this->label31->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // label32
+            // 
+            this->label32->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->label32->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->label32->Location = System::Drawing::Point(1202, 506);
+            this->label32->Name = L"label32";
+            this->label32->Size = System::Drawing::Size(20, 60);
+            this->label32->TabIndex = 144;
+            this->label32->Text = L"8";
+            this->label32->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // label17
+            // 
+            this->label17->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->label17->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->label17->Location = System::Drawing::Point(722, 66);
+            this->label17->Name = L"label17";
+            this->label17->Size = System::Drawing::Size(60, 20);
+            this->label17->TabIndex = 159;
+            this->label17->Text = L"H";
+            this->label17->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // label18
+            // 
+            this->label18->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->label18->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->label18->Location = System::Drawing::Point(782, 66);
+            this->label18->Name = L"label18";
+            this->label18->Size = System::Drawing::Size(60, 20);
+            this->label18->TabIndex = 158;
+            this->label18->Text = L"G";
+            this->label18->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // label19
+            // 
+            this->label19->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->label19->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->label19->Location = System::Drawing::Point(842, 66);
+            this->label19->Name = L"label19";
+            this->label19->Size = System::Drawing::Size(60, 20);
+            this->label19->TabIndex = 157;
+            this->label19->Text = L"F";
+            this->label19->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // label20
+            // 
+            this->label20->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->label20->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->label20->Location = System::Drawing::Point(902, 66);
+            this->label20->Name = L"label20";
+            this->label20->Size = System::Drawing::Size(60, 20);
+            this->label20->TabIndex = 156;
+            this->label20->Text = L"E";
+            this->label20->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // label21
+            // 
+            this->label21->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->label21->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->label21->Location = System::Drawing::Point(962, 66);
+            this->label21->Name = L"label21";
+            this->label21->Size = System::Drawing::Size(60, 20);
+            this->label21->TabIndex = 155;
+            this->label21->Text = L"D";
+            this->label21->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // label22
+            // 
+            this->label22->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->label22->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->label22->Location = System::Drawing::Point(1022, 66);
+            this->label22->Name = L"label22";
+            this->label22->Size = System::Drawing::Size(60, 20);
+            this->label22->TabIndex = 154;
+            this->label22->Text = L"C";
+            this->label22->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // label23
+            // 
+            this->label23->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->label23->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->label23->Location = System::Drawing::Point(1082, 66);
+            this->label23->Name = L"label23";
+            this->label23->Size = System::Drawing::Size(60, 20);
+            this->label23->TabIndex = 153;
+            this->label23->Text = L"B";
+            this->label23->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // label24
+            // 
+            this->label24->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+            this->label24->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(204)));
+            this->label24->Location = System::Drawing::Point(1142, 66);
+            this->label24->Name = L"label24";
+            this->label24->Size = System::Drawing::Size(60, 20);
+            this->label24->TabIndex = 152;
+            this->label24->Text = L"A";
+            this->label24->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
             // MyForm
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(7, 13);
@@ -2095,6 +2111,22 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(194)), static_cast<System::Int32>(static_cast<System::Byte>(162)),
                 static_cast<System::Int32>(static_cast<System::Byte>(128)));
             this->ClientSize = System::Drawing::Size(1402, 711);
+            this->Controls->Add(this->label17);
+            this->Controls->Add(this->label18);
+            this->Controls->Add(this->label19);
+            this->Controls->Add(this->label20);
+            this->Controls->Add(this->label21);
+            this->Controls->Add(this->label22);
+            this->Controls->Add(this->label23);
+            this->Controls->Add(this->label24);
+            this->Controls->Add(this->label25);
+            this->Controls->Add(this->label26);
+            this->Controls->Add(this->label27);
+            this->Controls->Add(this->label28);
+            this->Controls->Add(this->label29);
+            this->Controls->Add(this->label30);
+            this->Controls->Add(this->label31);
+            this->Controls->Add(this->label32);
             this->Controls->Add(this->ServerStartButton);
             this->Controls->Add(this->portTextBox);
             this->Controls->Add(this->port_Lable);
@@ -2105,22 +2137,6 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->Controls->Add(this->B);
             this->Controls->Add(this->R);
             this->Controls->Add(this->Q);
-            this->Controls->Add(this->label25);
-            this->Controls->Add(this->label26);
-            this->Controls->Add(this->label27);
-            this->Controls->Add(this->label28);
-            this->Controls->Add(this->label29);
-            this->Controls->Add(this->label30);
-            this->Controls->Add(this->label31);
-            this->Controls->Add(this->label32);
-            this->Controls->Add(this->label17);
-            this->Controls->Add(this->label18);
-            this->Controls->Add(this->label19);
-            this->Controls->Add(this->label20);
-            this->Controls->Add(this->label21);
-            this->Controls->Add(this->label22);
-            this->Controls->Add(this->label23);
-            this->Controls->Add(this->label24);
             this->Controls->Add(this->CapturedBlackPawns);
             this->Controls->Add(this->CapturedBlackKnights);
             this->Controls->Add(this->pictureBox11);
@@ -2380,8 +2396,8 @@ public:
            Color OldColor;
            Color OldColorKing;
 
-           // integers for cheking rooks and kings for staying in the start positions to help castling conditions to be checked
-           // (1: w - white, b - balck; 2: r - right, l - left, k - king; 3: r - rook)
+           // integers for checking rooks and kings for staying in the start positions to help castling conditions to be checked
+           // (1: w - white, b - black; 2: r - right, l - left, k - king; 3: r - rook)
            // System::Int32^ - type with auto delete from heap;
            Int32^ wk = 1;
            Int32^ bk = 1;
@@ -2394,7 +2410,7 @@ public:
            Int32^ mate = 0;
 
            // integers for new pieces in case of pawns that changing
-           // (1: w - white, b - balck; 2: q - queen, r - rook, b - bishop, k - knight; 3: k - default integer like i in for() loop)
+           // (1: w - white, b - black; 2: q - queen, r - rook, b - bishop, k - knight; 3: k - default integer like i in for() loop)
            int wqk = 0, wrk = 0, wbk = 0, wkk = 0, bqk = 0, brk = 0, bbk = 0, bkk = 0;
 
            int PawnDoubleMoveSign = 0;
@@ -2416,9 +2432,11 @@ public:
 
            SOCKET newConnection;
 
-
+private: System::Void SettingDataFromOtherPlayer() {
+    System::Threading::Tasks::Task::Run(gcnew System::Action(this, &MyForm::ReceiveData));
+}
  
-private: System::Void SettingDataFromOtherPalyer() {
+private: System::Void ReceiveData() {
     int X;
     int Y;
     int OlX;
@@ -2439,7 +2457,14 @@ private: System::Void SettingDataFromOtherPalyer() {
     pictureBox->Image = pictureBoxOld->Image;
     pictureBoxOld->Image = nullptr;
     moveSide = !moveSide;
+
+    ColorToMoveBox1->BackColor = Color::SaddleBrown;
+    ColorToMoveBox2->BackColor = Color::SaddleBrown;
+    ColorToMoveBox3->BackColor = Color::SaddleBrown;
+    ColorToMoveBox4->BackColor = Color::SaddleBrown;
+
     firstMove = false;
+
     return;
 }
 
@@ -2563,7 +2588,7 @@ void IndicatePossibleMovesForPiece(String^ PieceImage)
     delete TSpecY;
 }
 
-void CheckMateDrawStealmate()   // Func for changing color of king cell in case of check and checking for mate, draw or stealmare. In case of game end - creating MassegeBox.
+void CheckMateDrawStalemate()   // Func for changing color of king cell in case of check and checking for mate, draw or stealmare. In case of game end - creating MassegeBox.
 {
     int KingX;
     int KingY;
@@ -2648,7 +2673,7 @@ void CheckMateDrawStealmate()   // Func for changing color of king cell in case 
 
 System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) {
 
-    if (clickcount == 0 || clickcountboard == 3 || newConnection == 0 || !moveSide || firstMove)    // cheking start button state
+    if (clickcount == 0 || clickcountboard == 3 || newConnection == 0 || moveSide || firstMove)    // checking start button state
     {
         return;
     }
@@ -3082,7 +3107,7 @@ RetirnPointForSameColorPiece:
                 }
             }
             
-            CheckMateDrawStealmate(); // Important function to check for mates or draws
+            CheckMateDrawStalemate(); // Important function to check for mates or draws
 
             colorNumber++;
             if (colorNumber % 2 == 0)                       // Changing color of PictureBox which indicate color of moving pieces
@@ -3110,8 +3135,13 @@ RetirnPointForSameColorPiece:
             send(newConnection, reinterpret_cast<char*>(&Y), sizeof(int), 0);
             send(newConnection, reinterpret_cast<char*>(&OlX), sizeof(int), 0);
             send(newConnection, reinterpret_cast<char*>(&OlY), sizeof(int), 0);
-            
-            System::Threading::Tasks::Task^ GettingDataTask = System::Threading::Tasks::Task::Factory->StartNew(gcnew System::Action(this, &MyForm::SettingDataFromOtherPalyer));
+
+            ColorToMoveBox1->BackColor = Color::NavajoWhite;
+            ColorToMoveBox2->BackColor = Color::NavajoWhite;
+            ColorToMoveBox3->BackColor = Color::NavajoWhite;
+            ColorToMoveBox4->BackColor = Color::NavajoWhite;
+
+            System::Threading::Tasks::Task^ GettingDataTask = System::Threading::Tasks::Task::Factory->StartNew(gcnew System::Action(this, &MyForm::SettingDataFromOtherPlayer));
 
             return;
         } 
@@ -3298,19 +3328,20 @@ System::Void PieceChanging_Click(System::Object^ sender, System::EventArgs^ e) {
         if (Name == "Q")
             check = NewQueen.IsCheck(StartBoardPosition[cellCoordinatesX, cellCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY);
 
-        CheckMateDrawStealmate();
+        CheckMateDrawStalemate();
     }
 }
 
 int ServerPortNumber;
-int clickCountServer = 0;
+public: int clickCountServer = 0;
 
 String^ ServerIp;
 Server^ NewServer;
+System::Threading::Tasks::Task<bool>^ connectTask;
 
 private: System::Void ServerStartButton_Click(System::Object^ sender, System::EventArgs^ e) {
     clickCountServer++;
-    if (clickCountServer == 1)
+    if (this->ServerStartButton->Text == "Connect to the game")
     {
         ServerIp = this->ipTextBox->Text;
         String^ ServerPort = this->portTextBox->Text;
@@ -3340,15 +3371,21 @@ private: System::Void ServerStartButton_Click(System::Object^ sender, System::Ev
         this->ServerStartButton->Text = "Connecting...";
         this->ServerStartButton->BackColor = Color::LightGreen;
 
+        if (NewServer != nullptr) {
+            delete NewServer;
+            NewServer = nullptr;
+        }
+
         NewServer = gcnew Server(ServerIp, ServerPortNumber);
-        System::Threading::Tasks::Task<bool>^ task = System::Threading::Tasks::Task::Factory->StartNew(gcnew Func<bool>(NewServer, &Server::ServerConnect));
-        task->ContinueWith(gcnew Action<System::Threading::Tasks::Task<bool>^>(this, &MyForm::OnServerStarted), System::Threading::Tasks::TaskScheduler::FromCurrentSynchronizationContext());
+
+        if (connectTask != nullptr && !connectTask->IsCompleted) {
+            connectTask->Wait();
+        }
+
+        connectTask = System::Threading::Tasks::Task::Factory->StartNew(gcnew Func<bool>(NewServer, &Server::ServerConnect));
+        connectTask->ContinueWith(gcnew Action<System::Threading::Tasks::Task<bool>^>(this, &MyForm::OnServerStarted), System::Threading::Tasks::TaskScheduler::FromCurrentSynchronizationContext());
 
         Start_Click(sender, e);
-        if (firstMove)
-        {
-            System::Threading::Tasks::Task^ GettingDataTask = System::Threading::Tasks::Task::Factory->StartNew(gcnew System::Action(this, &MyForm::SettingDataFromOtherPalyer));
-        }
 
         return;
 
@@ -3360,18 +3397,24 @@ private: System::Void ServerStartButton_Click(System::Object^ sender, System::Ev
 };
 
        void OnServerStarted(System::Threading::Tasks::Task<bool>^ task) {
-           bool serverStarted = task->Result;
+           bool serverStarted = connectTask->Result;
 
            if (!serverStarted) {
-               this->ServerStartButton->Text = "Create game";
+               this->ServerStartButton->Text = "{{{(>_<)}}}";
                this->ServerStartButton->BackColor = Color::Transparent;
                MessageBox::Show("Failed to connect", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-               clickCountServer = 0;
+               Close();
+
            }
            else {
                this->ServerStartButton->Text = "End game";
                this->ServerStartButton->BackColor = Color::Red;
                newConnection = NewServer->newConnection;
+               clickCountServer++;
+               if (firstMove)
+               {
+                   SettingDataFromOtherPlayer();
+               }
            }
        }
 };

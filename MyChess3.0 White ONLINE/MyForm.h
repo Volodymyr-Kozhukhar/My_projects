@@ -2037,7 +2037,7 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             this->ipTextBox->Name = L"ipTextBox";
             this->ipTextBox->Size = System::Drawing::Size(276, 15);
             this->ipTextBox->TabIndex = 138;
-            this->ipTextBox->Text = L"26.193.106.111";
+            this->ipTextBox->Text = L"26.63.92.98";
             this->ipTextBox->TextAlign = System::Windows::Forms::HorizontalAlignment::Center;
             // 
             // ip_Lable
@@ -2438,6 +2438,12 @@ private: System::Void SettingDataFromOtherPalyer() {
     pictureBox->Image = pictureBoxOld->Image;
     pictureBoxOld->Image = nullptr;
     moveSide = !moveSide;
+
+    ColorToMoveBox1->BackColor = Color::NavajoWhite;
+    ColorToMoveBox2->BackColor = Color::NavajoWhite;
+    ColorToMoveBox3->BackColor = Color::NavajoWhite;
+    ColorToMoveBox4->BackColor = Color::NavajoWhite;
+
     return;
 }
 
@@ -3107,6 +3113,11 @@ RetirnPointForSameColorPiece:
             send(newConnection, reinterpret_cast<char*>(&OlX), sizeof(int), 0);
             send(newConnection, reinterpret_cast<char*>(&OlY), sizeof(int), 0);
             
+            ColorToMoveBox1->BackColor = Color::SaddleBrown;
+            ColorToMoveBox2->BackColor = Color::SaddleBrown;
+            ColorToMoveBox3->BackColor = Color::SaddleBrown;
+            ColorToMoveBox4->BackColor = Color::SaddleBrown;
+
             System::Threading::Tasks::Task^ GettingDataTask = System::Threading::Tasks::Task::Factory->StartNew(gcnew System::Action(this, &MyForm::SettingDataFromOtherPalyer));
 
             return;

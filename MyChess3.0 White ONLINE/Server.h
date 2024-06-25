@@ -26,17 +26,6 @@ public:
 	newConnection = INVALID_SOCKET;
 }
 
-protected: 
-	~Server() {
-		if (sListen != INVALID_SOCKET) {
-			closesocket(sListen);
-		}
-		if (newConnection != INVALID_SOCKET) {
-			closesocket(newConnection);
-		}
-		WSACleanup();
-	}
-
 public:
 	bool ServerStart()
 	{
@@ -74,5 +63,16 @@ public:
 			System::Windows::Forms::MessageBox::Show("Client connected", "Success", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Information);
 			return true;
 		}
+	}
+
+protected:
+	~Server() {
+		if (sListen != INVALID_SOCKET) {
+			closesocket(sListen);
+		}
+		if (newConnection != INVALID_SOCKET) {
+			closesocket(newConnection);
+		}
+		WSACleanup();
 	}
 };
