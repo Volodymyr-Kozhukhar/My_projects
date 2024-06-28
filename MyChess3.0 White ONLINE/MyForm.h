@@ -2371,7 +2371,7 @@ public:
            bool moveSide = true;        // Changing color of moving pieces          true - white    false - black
            bool NewPieceMaking = false;
            bool wasCheck = false;
-
+           bool capture = false;
 
            String^ cellName;
            PictureBox^ kingCell;
@@ -2391,6 +2391,8 @@ public:
            Int32^ castling = 0;
            Int32^ check = 0;
            Int32^ mate = 0;
+           Int32^ stealmate = 0;
+           Int32^ draw = 0;
 
            // integers for new pieces in case of pawns that changing
            // (1: w - white, b - balck; 2: q - queen, r - rook, b - bishop, k - knight; 3: k - default integer like i in for() loop)
@@ -2416,18 +2418,137 @@ public:
            SOCKET newConnection;
 
 
+void CheckMateDrawStealmate()   // Func for changing color of king cell in case of check and checking for mate, draw or stealmare. In case of game end - creating MassegeBox.
+           {
+               int KingX;
+               int KingY;
+
+               if (*check != 0)         // Check, red color for king
+               {
+                   wasCheck = true;
+                   int kingNumber;
+
+                   if (*check == 1)
+                   {
+                       kingNumber = 161;
+                   }
+                   else kingNumber = 61;
+                   for (int i = 0; i < 8; i++)
+                       for (int j = 0; j < 8; j++)
+                           if (StartBoardPosition[i, j] == kingNumber)
+                           {
+                               KingX = i;
+                               KingY = j;
+                               goto HERE;
+                           }
+               HERE:
+                   String^ tmpCellName = String::Format("B{0}{1}", KingX, KingY);
+                   kingCell = (PictureBox^)this->Controls[tmpCellName];
+                   OldColorKing = kingCell->BackColor;
+                   kingCell->BackColor = Color::Red;
+
+                   mate = IsMate(check, StartBoardPosition, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing, moveSide);
+
+                   if (*mate != 0)
+                   {
+                       //massege box with text of mate
+                   }
+               }
+               else
+               {
+                   bool tmp = false;
+
+                   for (int i = 0; i < 8; i++)
+                   {
+                       for (int j = 0; j < 8; j++)
+                       {
+                           if ((moveSide && StartBoardPosition[i, j] > 100) || (moveSide == false && StartBoardPosition[i, j] < 100 && StartBoardPosition[i, j] != 0))
+                               tmp = IsPieceAbleToMove(StartBoardPosition[i, j], StartBoardPosition, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing, i, j, moveSide);
+                           if (tmp)
+                               break;
+                       }
+                       if (tmp)
+                           break;
+                   }
+
+                   if (tmp == false)
+                   {
+                       *stealmate = 1;
+                       return;
+                   }
+
+                   int Sum = 0;
+                   for (int i = 0; i < 8; i++)
+                   {
+                       for (int j = 0; j < 8; j++)
+                       {
+                           Sum += StartBoardPosition[i, j];
+                       }
+                   }
+
+                   if (Sum == 222)
+                   {
+                       *draw = 1;
+                       return;
+                   }
+               }
+           }
+
+private: System::Void SettingDataFromOtherPlayer() {
+    System::Threading::Tasks::Task::Run(gcnew System::Action(this, &MyForm::ReceiveData));
+}
  
-private: System::Void SettingDataFromOtherPalyer() {
+private: System::Void ReceiveData() {
     int X;
     int Y;
     int OlX;
     int OlY;
+    int castl;
+    int che;
+    int ma;
+    int capt;
+    int steal;
+    int dra;;
+    int NewPiece = 0;
+
+    recv(newConnection, reinterpret_cast<char*>(&NewPiece), sizeof(int), 0);
+
+    recv(newConnection, reinterpret_cast<char*>(&capt), sizeof(int), 0);
+    recv(newConnection, reinterpret_cast<char*>(&steal), sizeof(int), 0);
+    recv(newConnection, reinterpret_cast<char*>(&dra), sizeof(int), 0);
+
+    recv(newConnection, reinterpret_cast<char*>(SpecX), sizeof(int), 0);
+    recv(newConnection, reinterpret_cast<char*>(SpecY), sizeof(int), 0);
+
     recv(newConnection, reinterpret_cast<char*>(&X), sizeof(int), 0);
     recv(newConnection, reinterpret_cast<char*>(&Y), sizeof(int), 0);
     recv(newConnection, reinterpret_cast<char*>(&OlX), sizeof(int), 0);
     recv(newConnection, reinterpret_cast<char*>(&OlY), sizeof(int), 0);
-    StartBoardPosition[X, Y] = StartBoardPosition[OlX, OlY];
-    StartBoardPosition[OlX, OlY] = 0;
+
+    recv(newConnection, reinterpret_cast<char*>(&castl), sizeof(int), 0);
+    recv(newConnection, reinterpret_cast<char*>(&che), sizeof(int), 0);
+    recv(newConnection, reinterpret_cast<char*>(&ma), sizeof(int), 0);
+
+    if (capt != 0)
+    {
+        Label^ Temp;
+        if (StartBoardPosition[X, Y] != 0)
+        {
+            Temp = dynamic_cast<Label^>(this->Controls->Find(CellNameForCapture(StartBoardPosition[X, Y]), true)[0]);
+        }
+        else
+        {
+            Temp = dynamic_cast<Label^>(this->Controls->Find("CapturedWhitePawns", true)[0]);
+            String^ cellName = String::Format("B{0}{1}", X - 1, Y);
+            PictureBox^ pictureBox = (PictureBox^)this->Controls[cellName];
+            pictureBox->Image = nullptr;
+
+            StartBoardPosition[X - 1, Y] = 0;
+        }
+        int temp = System::Convert::ToInt64(Temp->Text);
+        temp += 1;
+        Temp->Text = System::Convert::ToString(temp);
+    }
 
     String^ cellName = String::Format("B{0}{1}", X, Y);
     PictureBox^ pictureBox = (PictureBox^)this->Controls[cellName];
@@ -2435,8 +2556,72 @@ private: System::Void SettingDataFromOtherPalyer() {
     String^ cellNameOld = String::Format("B{0}{1}", OlX, OlY);
     PictureBox^ pictureBoxOld = (PictureBox^)this->Controls[cellNameOld];
 
+    if (NewPiece > 1)
+    {
+        StartBoardPosition[OlX, OlY] = NewPiece;
+        pictureBoxOld->Image = Image::FromFile(FindPiece(NewPiece));
+    }
+
     pictureBox->Image = pictureBoxOld->Image;
     pictureBoxOld->Image = nullptr;
+
+    StartBoardPosition[X, Y] = StartBoardPosition[OlX, OlY];
+    StartBoardPosition[OlX, OlY] = 0;
+
+    if (castl == 2)
+    {
+        String^ cellName = String::Format("B{0}{1}", X, Y - 2);
+        PictureBox^ pictureBox1 = (PictureBox^)this->Controls[cellName];
+        cellName = String::Format("B{0}{1}", X, Y + 1);
+        PictureBox^ pictureBox2 = (PictureBox^)this->Controls[cellName];
+
+        pictureBox2->Image = pictureBox1->Image;
+        pictureBox1->Image = nullptr;
+
+        StartBoardPosition[X, Y + 1] = StartBoardPosition[X, Y - 2];
+        StartBoardPosition[X, Y - 2] = 0;
+    }
+    else if (castl == 1)
+    {
+        String^ cellName = String::Format("B{0}{1}", X, Y + 1);
+        PictureBox^ pictureBox1 = (PictureBox^)this->Controls[cellName];
+        cellName = String::Format("B{0}{1}", X, Y - 1);
+        PictureBox^ pictureBox2 = (PictureBox^)this->Controls[cellName];
+
+        pictureBox2->Image = pictureBox1->Image;
+        pictureBox1->Image = nullptr;
+
+        StartBoardPosition[X, Y - 1] = StartBoardPosition[X, Y + 1];
+        StartBoardPosition[X, Y + 1] = 0;
+    }
+
+    if (wasCheck)
+    {
+       kingCell->BackColor = OldColorKing;
+    }
+
+    if (che != 0)
+    {
+        check = che;
+        CheckMateDrawStealmate();
+    }
+
+    if (ma != 0)
+    {
+        MessageBox::Show(this, "Black has won, checkmate!", "CHECK AND MATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
+        clickcountboard = 3;
+    }
+    if (steal != 0)
+    {
+        MessageBox::Show(this, "Draw by stealmate\n  (-_-*)", "STEALMATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
+        clickcountboard = 3;
+    }
+    if (dra != 0)
+    {
+        MessageBox::Show(this, "Two kings draw!", "DRAW", MessageBoxButtons::OK, MessageBoxIcon::Information);
+        clickcountboard = 3;
+    }
+
     moveSide = !moveSide;
 
     ColorToMoveBox1->BackColor = Color::NavajoWhite;
@@ -2567,90 +2752,10 @@ void IndicatePossibleMovesForPiece(String^ PieceImage)
     delete TSpecY;
 }
 
-void CheckMateDrawStealmate()   // Func for changing color of king cell in case of check and checking for mate, draw or stealmare. In case of game end - creating MassegeBox.
-{
-    int KingX;
-    int KingY;
-
-    if (*check != 0)         // Check, red color for king
-    {
-        wasCheck = true;
-        int kingNumber;
-
-        if (*check == 1)
-        {
-            kingNumber = 161;
-        }
-        else kingNumber = 61;
-        for (int i = 0; i < 8; i++)
-            for (int j = 0; j < 8; j++)
-                if (StartBoardPosition[i, j] == kingNumber)
-                {
-                    KingX = i;
-                    KingY = j;
-                    goto HERE;
-                }
-    HERE:
-        String^ tmpCellName = String::Format("B{0}{1}", KingX, KingY);
-        kingCell = (PictureBox^)this->Controls[tmpCellName];
-        OldColorKing = kingCell->BackColor;
-        kingCell->BackColor = Color::Red;
-
-        mate = IsMate(check, StartBoardPosition, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing, moveSide);
-
-        if (*mate != 0)
-        {
-            //massege box with text of mate
-            if (*mate == 1)
-                MessageBox::Show(this, "Black has won, checkmate!", "CHECK AND MATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
-            else MessageBox::Show(this, "White has won, checkmate!", "CHECK AND MATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
-            clickcountboard = 3;
-            return;
-        }
-    }
-    else
-    {
-        bool tmp = false;
-
-        for (int i = 0; i < 8; i++)
-        {
-            for (int j = 0; j < 8; j++)
-            {
-                if ((moveSide && StartBoardPosition[i, j] > 100) || (moveSide == false && StartBoardPosition[i, j] < 100 && StartBoardPosition[i, j] != 0))
-                    tmp = IsPieceAbleToMove(StartBoardPosition[i, j], StartBoardPosition, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing, i, j, moveSide);
-                if (tmp)
-                    break;
-            }
-            if (tmp)
-                break;
-        }
-
-        if (tmp == false)
-        {
-            MessageBox::Show(this, "Draw by stealmate\n  (-_-*)", "STEALMATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
-            clickcountboard = 3;
-            return;
-        }
-
-        int Sum = 0;
-        for (int i = 0; i < 8; i++)
-        {
-            for (int j = 0; j < 8; j++)
-            {
-                Sum += StartBoardPosition[i, j];
-            }
-        }
-
-        if (Sum == 222)
-        {
-            MessageBox::Show(this, "Two kings draw!", "DRAW", MessageBoxButtons::OK, MessageBoxIcon::Information);
-            clickcountboard = 3;
-            return;
-        }
-    }
-}
 
 System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) {
+    *draw = 0;
+    *stealmate = 0;
 
     if (clickcount == 0 || clickcountboard == 3 || newConnection == 0 || !moveSide)    // cheking start button state
         return;
@@ -2983,13 +3088,14 @@ RetirnPointForSameColorPiece:
                 int temp = System::Convert::ToInt64(Temp->Text);
                 temp += 1;
                 Temp->Text = System::Convert::ToString(temp);
+                capture = true;
             }
 
             if(*castling != 0) // Castling for both teams
             {
                 if (*castling == 1)
                 {
-                    String^ tmpCellName = String::Format("B{0}{1}", cellCoordinatesX, cellCoordinatesY + 1);    // Changing matrix and board for white
+                    String^ tmpCellName = String::Format("B{0}{1}", cellCoordinatesX, cellCoordinatesY + 1);    // Changing matrix and board
                     PictureBox^ tmpcell = (PictureBox^)this->Controls[tmpCellName];
 
                     Drawing::Image^ TmpImage = tmpcell->Image;
@@ -3003,11 +3109,10 @@ RetirnPointForSameColorPiece:
                     StartBoardPosition[cellCoordinatesX, cellCoordinatesY - 1] = tmp;
 
                     tmpcell->Image = TmpImage;
-                    *castling = 0;
                 }
                 if (*castling == 2)
                 {
-                    String^ tmpCellName = String::Format("B{0}{1}", cellCoordinatesX, cellCoordinatesY - 2);    // Changing matrix and board for black
+                    String^ tmpCellName = String::Format("B{0}{1}", cellCoordinatesX, cellCoordinatesY - 2);    // Changing matrix and board
                     PictureBox^ tmpcell = (PictureBox^)this->Controls[tmpCellName];
 
                     Drawing::Image^ TmpImage = tmpcell->Image;
@@ -3021,7 +3126,6 @@ RetirnPointForSameColorPiece:
                     StartBoardPosition[cellCoordinatesX, cellCoordinatesY + 1] = tmp;
 
                     tmpcell->Image = TmpImage;
-                    *castling = 0;
                 }
             }
 
@@ -3072,6 +3176,70 @@ RetirnPointForSameColorPiece:
             clickcountboard = 0;
             Oldcell = nullptr;
             moveSide = !moveSide;
+            
+            CheckMateDrawStealmate(); // Important function to check for mates or draws
+
+            ImagesToNull();
+            int X = cellCoordinatesX;
+            int Y = cellCoordinatesY;
+            int OlX = OldCoordinatesX;
+            int OlY = OldCoordinatesY;
+            int castl = *castling;
+            int che = *check;
+            int ma = *mate;
+            int capt = capture;
+            int steal = *stealmate;
+            int dra = *draw;
+            int nol = 1;
+
+            send(newConnection, reinterpret_cast<char*>(&nol), sizeof(int), 0);
+
+            send(newConnection, reinterpret_cast<char*>(&capt), sizeof(int), 0);
+            send(newConnection, reinterpret_cast<char*>(&steal), sizeof(int), 0);
+            send(newConnection, reinterpret_cast<char*>(&dra), sizeof(int), 0);
+
+            send(newConnection, reinterpret_cast<char*>(SpecX), sizeof(int), 0);
+            send(newConnection, reinterpret_cast<char*>(SpecY), sizeof(int), 0);
+            
+            send(newConnection, reinterpret_cast<char*>(&X), sizeof(int), 0);
+            send(newConnection, reinterpret_cast<char*>(&Y), sizeof(int), 0);
+            send(newConnection, reinterpret_cast<char*>(&OlX), sizeof(int), 0);
+            send(newConnection, reinterpret_cast<char*>(&OlY), sizeof(int), 0);
+
+            send(newConnection, reinterpret_cast<char*>(&castl), sizeof(int), 0);
+            send(newConnection, reinterpret_cast<char*>(&che), sizeof(int), 0);
+            send(newConnection, reinterpret_cast<char*>(&ma), sizeof(int), 0);
+
+            ColorToMoveBox1->BackColor = Color::SaddleBrown;
+            ColorToMoveBox2->BackColor = Color::SaddleBrown;
+            ColorToMoveBox3->BackColor = Color::SaddleBrown;
+            ColorToMoveBox4->BackColor = Color::SaddleBrown;
+
+            SettingDataFromOtherPlayer();
+
+            if (*mate != 0)
+            {
+                //message box with text of mate
+                if (*mate == 1)
+                    MessageBox::Show(this, "Black has won, checkmate!", "CHECK AND MATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
+                else MessageBox::Show(this, "White has won, checkmate!", "CHECK AND MATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
+                clickcountboard = 3;
+                return;
+            }
+            if (*stealmate != 0)
+            {
+                MessageBox::Show(this, "Draw by stealmate\n  (-_-*)", "STEALMATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
+                clickcountboard = 3;
+            }
+            if (*draw != 0)
+            {
+                MessageBox::Show(this, "Two kings draw!", "DRAW", MessageBoxButtons::OK, MessageBoxIcon::Information);
+                clickcountboard = 3;
+            }
+
+            *castling = 0;
+            *check = 0;
+            capture = false;
 
             if (*SpecX != 0)        // Changing special double pawn move sign after next move
             {
@@ -3083,42 +3251,6 @@ RetirnPointForSameColorPiece:
                     *SpecY = 0;
                 }
             }
-            
-            CheckMateDrawStealmate(); // Important function to check for mates or draws
-
-            colorNumber++;
-            if (colorNumber % 2 == 0)                       // Changing color of PictureBox which indicate color of moving pieces
-            {
-                ColorToMoveBox1->BackColor = Color::SaddleBrown;
-                ColorToMoveBox2->BackColor = Color::SaddleBrown;
-                ColorToMoveBox3->BackColor = Color::SaddleBrown;
-                ColorToMoveBox4->BackColor = Color::SaddleBrown;
-            }
-            else 
-            {
-                ColorToMoveBox1->BackColor = Color::NavajoWhite;
-                ColorToMoveBox2->BackColor = Color::NavajoWhite;
-                ColorToMoveBox3->BackColor = Color::NavajoWhite;
-                ColorToMoveBox4->BackColor = Color::NavajoWhite;
-            }
-
-            *check = 0;
-            ImagesToNull();
-            int X = cellCoordinatesX;
-            int Y = cellCoordinatesY;
-            int OlX = OldCoordinatesX;
-            int OlY = OldCoordinatesY;
-            send(newConnection, reinterpret_cast<char*>(&X), sizeof(int), 0);
-            send(newConnection, reinterpret_cast<char*>(&Y), sizeof(int), 0);
-            send(newConnection, reinterpret_cast<char*>(&OlX), sizeof(int), 0);
-            send(newConnection, reinterpret_cast<char*>(&OlY), sizeof(int), 0);
-            
-            ColorToMoveBox1->BackColor = Color::SaddleBrown;
-            ColorToMoveBox2->BackColor = Color::SaddleBrown;
-            ColorToMoveBox3->BackColor = Color::SaddleBrown;
-            ColorToMoveBox4->BackColor = Color::SaddleBrown;
-
-            System::Threading::Tasks::Task^ GettingDataTask = System::Threading::Tasks::Task::Factory->StartNew(gcnew System::Action(this, &MyForm::SettingDataFromOtherPalyer));
 
             return;
         } 
@@ -3306,6 +3438,80 @@ System::Void PieceChanging_Click(System::Object^ sender, System::EventArgs^ e) {
             check = NewQueen.IsCheck(StartBoardPosition[cellCoordinatesX, cellCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY);
 
         CheckMateDrawStealmate();
+
+        int X = cellCoordinatesX;
+        int Y = cellCoordinatesY;
+        int OlX = OldCoordinatesX;
+        int OlY = OldCoordinatesY;
+        int castl = *castling;
+        int che = *check;
+        int ma = *mate;
+        int capt = capture;
+        int steal = *stealmate;
+        int dra = *draw;
+        int NewPiece = StartBoardPosition[cellCoordinatesX, cellCoordinatesY];
+
+        send(newConnection, reinterpret_cast<char*>(&NewPiece), sizeof(int), 0);
+
+        send(newConnection, reinterpret_cast<char*>(&capt), sizeof(int), 0);
+        send(newConnection, reinterpret_cast<char*>(&steal), sizeof(int), 0);
+        send(newConnection, reinterpret_cast<char*>(&dra), sizeof(int), 0);
+
+        send(newConnection, reinterpret_cast<char*>(SpecX), sizeof(int), 0);
+        send(newConnection, reinterpret_cast<char*>(SpecY), sizeof(int), 0);
+
+        send(newConnection, reinterpret_cast<char*>(&X), sizeof(int), 0);
+        send(newConnection, reinterpret_cast<char*>(&Y), sizeof(int), 0);
+        send(newConnection, reinterpret_cast<char*>(&OlX), sizeof(int), 0);
+        send(newConnection, reinterpret_cast<char*>(&OlY), sizeof(int), 0);
+
+        send(newConnection, reinterpret_cast<char*>(&castl), sizeof(int), 0);
+        send(newConnection, reinterpret_cast<char*>(&che), sizeof(int), 0);
+        send(newConnection, reinterpret_cast<char*>(&ma), sizeof(int), 0);
+
+        ColorToMoveBox1->BackColor = Color::NavajoWhite;
+        ColorToMoveBox2->BackColor = Color::NavajoWhite;
+        ColorToMoveBox3->BackColor = Color::NavajoWhite;
+        ColorToMoveBox4->BackColor = Color::NavajoWhite;
+
+        SettingDataFromOtherPlayer();
+
+        if (*mate != 0)
+        {
+            //message box with text of mate
+            if (*mate == 1)
+                MessageBox::Show(this, "Black has won, checkmate!", "CHECK AND MATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
+            else MessageBox::Show(this, "White has won, checkmate!", "CHECK AND MATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
+            clickcountboard = 3;
+            return;
+        }
+        if (*stealmate != 0)
+        {
+            MessageBox::Show(this, "Draw by stealmate\n  (-_-*)", "STEALMATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
+            clickcountboard = 3;
+        }
+        if (*draw != 0)
+        {
+            MessageBox::Show(this, "Two kings draw!", "DRAW", MessageBoxButtons::OK, MessageBoxIcon::Information);
+            clickcountboard = 3;
+        }
+
+        *castling = 0;
+        *check = 0;
+        capture = false;
+
+        if (*SpecX != 0)        // Changing special double pawn move sign after next move
+        {
+            PawnDoubleMoveSign++;
+            if (PawnDoubleMoveSign == 2)
+            {
+                PawnDoubleMoveSign = 0;
+                *SpecX = 0;
+                *SpecY = 0;
+            }
+        }
+
+        return;
     }
 }
 

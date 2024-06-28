@@ -1,6 +1,6 @@
   MyChess30.MyForm.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
-Assembly MyChess3.0 White Online (Server), Version=0.0.*, Culture=Инвариантный язык (Инвариантная страна): 
+Assembly MyChess3.0 Black Online (Client), Version=0.0.*, Culture=Инвариантный язык (Инвариантная страна): 
 	hash=SHA1, flags=PublicKey
 Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
@@ -36,6 +36,7 @@ Class MyChess30.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Boolean moveSide : Public
     Boolean NewPieceMaking : Public
     Boolean wasCheck : Public
+    Boolean firstMove : Public
     Boolean capture : Public
     System.String cellName : Public
     System.Windows.Forms.PictureBox kingCell : Public
@@ -77,7 +78,10 @@ Class MyChess30.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Queen NewQueen IsByValue : Public, InitOnly
     King NewKing IsByValue : Public, InitOnly
     UInt64 newConnection : Public
+    Int32 clickCountServer : Public
+    System.String ServerIp : Public
+    Server NewServer : Public
+    System.Threading.Tasks.Task`1[System.Boolean] connectTask : Public
     Int32[,] StartBoardPosition : Public, Static
   Methods:
     Start_Click(Object, EventArgs): PrivateScope, Public, HideBySig
-    CheckMateDrawStealmate(): PrivateScope, Public, HideBySig

@@ -61,7 +61,7 @@ public:
             return false;
         }
 
-        System::Windows::Forms::MessageBox::Show("Connected", "Success", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Information);
+        System::Windows::Forms::MessageBox::Show("Connected to the game", "Success", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Information);
         return true;
 	}
 

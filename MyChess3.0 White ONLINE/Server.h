@@ -60,7 +60,7 @@ public:
 			return false;
 		}
 		else {
-			System::Windows::Forms::MessageBox::Show("Client connected", "Success", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Information);
+			System::Windows::Forms::MessageBox::Show("Second player connected", "Success", System::Windows::Forms::MessageBoxButtons::OK, System::Windows::Forms::MessageBoxIcon::Information);
 			return true;
 		}
 	}

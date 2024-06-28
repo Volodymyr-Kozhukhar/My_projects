@@ -14,7 +14,7 @@ private: color pawn;		// pawn moves and captures
 
 public:
 	bool CheckForPossibleMove(int OldPieceNumber, static array<int, 2>^ StartBoardPosition, int X, int Y, int OldX, int OldY, System::String^% CaptureCellName, int* SpecX, int* SpecY)
-	{	// true - possible move;  false - unpossible move;
+	{	// true - possible move;  false - impossible move;
 
 		if (OldPieceNumber > 100 && OldPieceNumber < 120)
 		{
