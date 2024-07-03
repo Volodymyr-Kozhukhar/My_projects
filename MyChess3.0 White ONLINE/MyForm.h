@@ -2372,6 +2372,7 @@ public:
            bool NewPieceMaking = false;
            bool wasCheck = false;
            bool capture = false;
+           bool blackCheck = false;
 
            String^ cellName;
            PictureBox^ kingCell;
@@ -2432,7 +2433,10 @@ void CheckMateDrawStealmate()   // Func for changing color of king cell in case 
                    {
                        kingNumber = 161;
                    }
-                   else kingNumber = 61;
+                   else {
+                       kingNumber = 61;
+                       blackCheck = true;
+                   }
                    for (int i = 0; i < 8; i++)
                        for (int j = 0; j < 8; j++)
                            if (StartBoardPosition[i, j] == kingNumber)
@@ -2517,8 +2521,8 @@ private: System::Void ReceiveData() {
     recv(newConnection, reinterpret_cast<char*>(&steal), sizeof(int), 0);
     recv(newConnection, reinterpret_cast<char*>(&dra), sizeof(int), 0);
 
-    recv(newConnection, reinterpret_cast<char*>(SpecX), sizeof(int), 0);
-    recv(newConnection, reinterpret_cast<char*>(SpecY), sizeof(int), 0);
+    recv(newConnection, reinterpret_cast<char*>(&*SpecX), sizeof(int), 0);
+    recv(newConnection, reinterpret_cast<char*>(&*SpecY), sizeof(int), 0);
 
     recv(newConnection, reinterpret_cast<char*>(&X), sizeof(int), 0);
     recv(newConnection, reinterpret_cast<char*>(&Y), sizeof(int), 0);
@@ -2595,15 +2599,16 @@ private: System::Void ReceiveData() {
         StartBoardPosition[X, Y + 1] = 0;
     }
 
-    if (wasCheck)
-    {
-       kingCell->BackColor = OldColorKing;
-    }
-
     if (che != 0)
     {
         check = che;
         CheckMateDrawStealmate();
+    }
+
+    if (blackCheck)
+    {
+        kingCell->BackColor = OldColorKing;
+        blackCheck = false;
     }
 
     if (ma != 0)
@@ -2795,6 +2800,7 @@ RetirnPointForSameColorPiece:
 
         else if (clickcountboard == 2 && (StartBoardPosition[OldCoordinatesX, OldCoordinatesY] > 100 && StartBoardPosition[cellCoordinatesX, cellCoordinatesY] < 100 && moveSide == true || StartBoardPosition[OldCoordinatesX, OldCoordinatesY] < 100 && (StartBoardPosition[cellCoordinatesX, cellCoordinatesY] > 100 || StartBoardPosition[cellCoordinatesX, cellCoordinatesY] == 0) && moveSide == false))
         {
+            *check = 0;
             ImagePath = nullptr;                    // If its second click and piece color is right finding piece image to change it
             ImagePath = FindPiece(PieceToMove);
 
@@ -3198,8 +3204,8 @@ RetirnPointForSameColorPiece:
             send(newConnection, reinterpret_cast<char*>(&steal), sizeof(int), 0);
             send(newConnection, reinterpret_cast<char*>(&dra), sizeof(int), 0);
 
-            send(newConnection, reinterpret_cast<char*>(SpecX), sizeof(int), 0);
-            send(newConnection, reinterpret_cast<char*>(SpecY), sizeof(int), 0);
+            send(newConnection, reinterpret_cast<char*>(&*SpecX), sizeof(int), 0);
+            send(newConnection, reinterpret_cast<char*>(&*SpecY), sizeof(int), 0);
             
             send(newConnection, reinterpret_cast<char*>(&X), sizeof(int), 0);
             send(newConnection, reinterpret_cast<char*>(&Y), sizeof(int), 0);

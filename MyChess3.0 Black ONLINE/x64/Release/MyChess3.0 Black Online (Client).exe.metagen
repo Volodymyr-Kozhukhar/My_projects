@@ -38,6 +38,7 @@ Class MyChess30.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Boolean wasCheck : Public
     Boolean firstMove : Public
     Boolean capture : Public
+    Boolean whiteCheck : Public
     System.String cellName : Public
     System.Windows.Forms.PictureBox kingCell : Public
     System.Windows.Forms.PictureBox Oldcell : Public

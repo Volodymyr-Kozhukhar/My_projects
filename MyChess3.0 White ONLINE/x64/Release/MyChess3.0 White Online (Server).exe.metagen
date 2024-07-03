@@ -37,6 +37,7 @@ Class MyChess30.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Boolean NewPieceMaking : Public
     Boolean wasCheck : Public
     Boolean capture : Public
+    Boolean blackCheck : Public
     System.String cellName : Public
     System.Windows.Forms.PictureBox kingCell : Public
     System.Windows.Forms.PictureBox Oldcell : Public

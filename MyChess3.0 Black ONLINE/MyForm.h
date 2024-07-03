@@ -2389,6 +2389,7 @@ public:
            bool wasCheck = false;
            bool firstMove = true;
            bool capture = false;
+           bool whiteCheck = false;
 
            String^ cellName;
            PictureBox^ kingCell;
@@ -2457,8 +2458,8 @@ private: System::Void ReceiveData() {
     recv(newConnection, reinterpret_cast<char*>(&steal), sizeof(int), 0);
     recv(newConnection, reinterpret_cast<char*>(&dra), sizeof(int), 0);
 
-    recv(newConnection, reinterpret_cast<char*>(SpecX), sizeof(int), 0);
-    recv(newConnection, reinterpret_cast<char*>(SpecY), sizeof(int), 0);
+    recv(newConnection, reinterpret_cast<char*>(&*SpecX), sizeof(int), 0);
+    recv(newConnection, reinterpret_cast<char*>(&*SpecY), sizeof(int), 0);
 
     recv(newConnection, reinterpret_cast<char*>(&X), sizeof(int), 0);
     recv(newConnection, reinterpret_cast<char*>(&Y), sizeof(int), 0);
@@ -2535,15 +2536,16 @@ private: System::Void ReceiveData() {
         StartBoardPosition[X, Y + 1] = 0;
     }
 
-    if (wasCheck)
-    {
-        kingCell->BackColor = OldColorKing;
-    }
-
     if (che != 0)
     {
         check = che;
         CheckMateDrawStalemate();
+    }
+
+    if (whiteCheck)
+    {
+        kingCell->BackColor = OldColorKing;
+        whiteCheck = false;
     }
 
     if (ma != 0)
@@ -2707,6 +2709,7 @@ void CheckMateDrawStalemate()   // Func for changing color of king cell in case 
         if (*check == 1)
         {
             kingNumber = 161;
+            whiteCheck = true;
         }
         else kingNumber = 61;
         for (int i = 0; i < 8; i++)
@@ -3219,8 +3222,8 @@ RetirnPointForSameColorPiece:
             send(newConnection, reinterpret_cast<char*>(&steal), sizeof(int), 0);
             send(newConnection, reinterpret_cast<char*>(&dra), sizeof(int), 0);
 
-            send(newConnection, reinterpret_cast<char*>(SpecX), sizeof(int), 0);
-            send(newConnection, reinterpret_cast<char*>(SpecY), sizeof(int), 0);
+            send(newConnection, reinterpret_cast<char*>(&*SpecX), sizeof(int), 0);
+            send(newConnection, reinterpret_cast<char*>(&*SpecY), sizeof(int), 0);
 
             send(newConnection, reinterpret_cast<char*>(&X), sizeof(int), 0);
             send(newConnection, reinterpret_cast<char*>(&Y), sizeof(int), 0);
@@ -3238,7 +3241,6 @@ RetirnPointForSameColorPiece:
             ColorToMoveBox4->BackColor = Color::NavajoWhite;
 
             SettingDataFromOtherPlayer();
-            //System::Threading::Tasks::Task^ GettingDataTask = System::Threading::Tasks::Task::Factory->StartNew(gcnew System::Action(this, &MyForm::SettingDataFromOtherPlayer));
 
             if (*mate != 0)
             {
