@@ -2336,7 +2336,6 @@ private: System::Windows::Forms::Label^ label24;
         }
 #pragma endregion 
 public:
-        int colorNumber = 1;
         String^ ImagePath;
         static array<int, 2>^ StartBoardPosition;
 
@@ -2392,10 +2391,18 @@ public:
            bool whiteCheck = false;
 
            String^ cellName;
+
            PictureBox^ kingCell;
            PictureBox^ Oldcell;
+           PictureBox^ cell;
+           PictureBox^ OldcellTmp;
+           PictureBox^ cellTmp;
+
            Color OldColor;
            Color OldColorKing;
+           Color OldCellColour;
+           Color NewCellColour;
+           Color OldCellColourMain;
 
            // integers for checking rooks and kings for staying in the start positions to help castling conditions to be checked
            // (1: w - white, b - black; 2: r - right, l - left, k - king; 3: r - rook)
@@ -2496,6 +2503,22 @@ private: System::Void ReceiveData() {
 
     String^ cellNameOld = String::Format("B{0}{1}", OlX, OlY);
     PictureBox^ pictureBoxOld = (PictureBox^)this->Controls[cellNameOld];
+
+    OldcellTmp = pictureBoxOld;
+    cellTmp = pictureBox;
+
+    if (!firstMove)
+    {
+        Oldcell->BackColor = OldCellColourMain;
+        cell->BackColor = NewCellColour;
+    }
+
+    NewCellColour = pictureBox->BackColor;
+    OldCellColour = pictureBoxOld->BackColor;
+
+    pictureBox->BackColor = Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
+    pictureBoxOld->BackColor = Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
+
 
     if (NewPiece > 1)
     {
@@ -2782,12 +2805,12 @@ System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) {
         return;
     }
 
-RetirnPointForSameColorPiece:
+ReturnPointForSameColorPiece:
 
         clickcountboard++;
-        PictureBox^ cell = safe_cast<PictureBox^>(sender);  // new temporary picterBox for clicked cell
+        cell = safe_cast<PictureBox^>(sender);  // new temporary picterBox for clicked cell
         cellName = cell->Name;
-        
+
         std::string tmp1 = "0";     // Name of cell converting to coordinates of matrix
         std::string tmp2 = "0";
         tmp1 = cellName[1];
@@ -2811,7 +2834,7 @@ RetirnPointForSameColorPiece:
             if (*check != 0)                        //If was check than king cell will stay red colored
                 kingCell->BackColor = Color::Red;
 
-            Oldcell = nullptr;
+            // Deleted
             return;
         }
 
@@ -2830,7 +2853,7 @@ RetirnPointForSameColorPiece:
                 {
                     Oldcell->BackColor = OldColor;
                     clickcountboard = 0;
-                    Oldcell = nullptr;
+                    // Deleted
                     ImagesToNull();
                     return;
                 }
@@ -2876,7 +2899,7 @@ RetirnPointForSameColorPiece:
                 {
                     Oldcell->BackColor = OldColor;
                     clickcountboard = 0;
-                    Oldcell = nullptr;
+                    // Deleted
                     ImagesToNull();
                     return;
                 }
@@ -2922,7 +2945,7 @@ RetirnPointForSameColorPiece:
                 {
                     Oldcell->BackColor = OldColor;
                     clickcountboard = 0;
-                    Oldcell = nullptr;
+                    // Deleted
                     ImagesToNull();
                     return;
                 }
@@ -2966,7 +2989,7 @@ RetirnPointForSameColorPiece:
                 {
                     Oldcell->BackColor = OldColor;
                     clickcountboard = 0;
-                    Oldcell = nullptr;
+                    // Deleted
                     ImagesToNull();
                     return;
                 }
@@ -3010,7 +3033,7 @@ RetirnPointForSameColorPiece:
                 {
                     Oldcell->BackColor = OldColor;
                     clickcountboard = 0;
-                    Oldcell = nullptr;
+                    // Deleted
                     ImagesToNull();
                     return;
                 }
@@ -3056,7 +3079,7 @@ RetirnPointForSameColorPiece:
                 {
                     Oldcell->BackColor = OldColor;
                     clickcountboard = 0;
-                    Oldcell = nullptr;
+                    // Deleted
                     ImagesToNull();
                     return;
                 }
@@ -3195,8 +3218,14 @@ RetirnPointForSameColorPiece:
             StartBoardPosition[cellCoordinatesX, cellCoordinatesY] = StartBoardPosition[OldCoordinatesX, OldCoordinatesY];   // Changing matrix after piece move or capture
             StartBoardPosition[OldCoordinatesX, OldCoordinatesY] = 0;
 
+            cellTmp->BackColor = NewCellColour;
+            OldcellTmp->BackColor = OldCellColour;
+
+            Oldcell->BackColor = Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
+            NewCellColour = cell->BackColor;
+            cell->BackColor = Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
+
             clickcountboard = 0;
-            Oldcell = nullptr;
             moveSide = !moveSide;
             
             CheckMateDrawStalemate(); // Important function to check for mates or draws
@@ -3284,7 +3313,7 @@ RetirnPointForSameColorPiece:
             clickcountboard = 0;
             ImagesToNull();
             Oldcell->BackColor = OldColor;
-            goto RetirnPointForSameColorPiece;
+            goto ReturnPointForSameColorPiece;
         }
         else if(clickcountboard == 2)       // If move is not possible or no move after click at all
         {
@@ -3295,7 +3324,7 @@ RetirnPointForSameColorPiece:
                 kingCell->BackColor = Color::Red;
 
             clickcountboard = 0;
-            Oldcell = nullptr;
+            // Deleted
             return;
         }
 
@@ -3308,6 +3337,7 @@ RetirnPointForSameColorPiece:
             OldColor = cell->BackColor;
             cell->BackColor = Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(29)), static_cast<System::Int32>(static_cast<System::Byte>(161)), static_cast<System::Int32>(static_cast<System::Byte>(202)));;
             Oldcell = cell;
+            OldCellColourMain = OldColor;
 
             String^ PieceImage = FindPiece(PieceToMove);
             IndicatePossibleMovesForPiece(PieceImage);
@@ -3316,7 +3346,7 @@ RetirnPointForSameColorPiece:
         {
             ImagesToNull();
             clickcountboard = 0;
-            Oldcell = nullptr;
+            // Deleted
             return;
         }
 }
@@ -3354,7 +3384,6 @@ System::Void Restart_Click(System::Object^ sender, System::EventArgs^ e) { // Bu
             Oldcell->BackColor = OldColor;
         clickcountboard = 0;
 
-        colorNumber = 1;
         moveSide = true;
         NewPieceMaking = false;
 

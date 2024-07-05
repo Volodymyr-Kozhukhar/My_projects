@@ -47,151 +47,66 @@ namespace MyChess30 {
 	private: System::Windows::Forms::PictureBox^ B03;
 	private: System::Windows::Forms::PictureBox^ B07;
 	protected:
-
-
-
-
-
 	private: System::Windows::Forms::PictureBox^ B06;
 	protected:
-
-
-
-
-
-
 	private: System::Windows::Forms::PictureBox^ B05;
-
-
 	private: System::Windows::Forms::PictureBox^ B04;
-
-
 	private: System::Windows::Forms::PictureBox^ B10;
 	private: System::Windows::Forms::PictureBox^ B17;
-
-
-
 	private: System::Windows::Forms::PictureBox^ B16;
-
 	private: System::Windows::Forms::PictureBox^ B15;
-
 	private: System::Windows::Forms::PictureBox^ B14;
-
 	private: System::Windows::Forms::PictureBox^ B13;
-
 	private: System::Windows::Forms::PictureBox^ B12;
-
 	private: System::Windows::Forms::PictureBox^ B11;
 	private: System::Windows::Forms::PictureBox^ B30;
 	private: System::Windows::Forms::PictureBox^ B37;
-
-
-
-
 	private: System::Windows::Forms::PictureBox^ B36;
-
 	private: System::Windows::Forms::PictureBox^ B35;
-
 	private: System::Windows::Forms::PictureBox^ B34;
-
 	private: System::Windows::Forms::PictureBox^ B33;
-
 	private: System::Windows::Forms::PictureBox^ B32;
-
 	private: System::Windows::Forms::PictureBox^ B31;
-
 	private: System::Windows::Forms::PictureBox^ B27;
 	private: System::Windows::Forms::PictureBox^ B26;
-
-
-
 	private: System::Windows::Forms::PictureBox^ B25;
-
-
-
 	private: System::Windows::Forms::PictureBox^ B24;
-
-
 	private: System::Windows::Forms::PictureBox^ B23;
-
-
 	private: System::Windows::Forms::PictureBox^ B22;
-
-
 	private: System::Windows::Forms::PictureBox^ B21;
-
-
 	private: System::Windows::Forms::PictureBox^ B20;
 private: System::Windows::Forms::PictureBox^ B70;
 private: System::Windows::Forms::PictureBox^ B77;
-
-
-
-
-
-
-
-
 private: System::Windows::Forms::PictureBox^ B76;
-
 private: System::Windows::Forms::PictureBox^ B75;
-
 private: System::Windows::Forms::PictureBox^ B74;
-
 private: System::Windows::Forms::PictureBox^ B73;
-
 private: System::Windows::Forms::PictureBox^ B72;
-
 private: System::Windows::Forms::PictureBox^ B71;
-
 private: System::Windows::Forms::PictureBox^ B67;
-
 private: System::Windows::Forms::PictureBox^ B66;
-
 private: System::Windows::Forms::PictureBox^ B65;
-
 private: System::Windows::Forms::PictureBox^ B64;
-
 private: System::Windows::Forms::PictureBox^ B63;
-
 private: System::Windows::Forms::PictureBox^ B62;
-
 private: System::Windows::Forms::PictureBox^ B61;
-
 private: System::Windows::Forms::PictureBox^ B60;
-
 private: System::Windows::Forms::PictureBox^ B50;
 private: System::Windows::Forms::PictureBox^ B57;
-
-
 private: System::Windows::Forms::PictureBox^ B56;
-
 private: System::Windows::Forms::PictureBox^ B55;
-
 private: System::Windows::Forms::PictureBox^ B54;
-
 private: System::Windows::Forms::PictureBox^ B53;
-
 private: System::Windows::Forms::PictureBox^ B52;
-
 private: System::Windows::Forms::PictureBox^ B51;
-
 private: System::Windows::Forms::PictureBox^ B47;
-
 private: System::Windows::Forms::PictureBox^ B46;
-
 private: System::Windows::Forms::PictureBox^ B45;
-
 private: System::Windows::Forms::PictureBox^ B44;
-
 private: System::Windows::Forms::PictureBox^ B43;
-
 private: System::Windows::Forms::PictureBox^ B42;
-
 private: System::Windows::Forms::PictureBox^ B41;
-
 private: System::Windows::Forms::PictureBox^ B40;
-
 private: System::Windows::Forms::Label^ label1;
 private: System::Windows::Forms::Label^ label2;
 private: System::Windows::Forms::Label^ label3;
@@ -208,28 +123,7 @@ private: System::Windows::Forms::Label^ label13;
 private: System::Windows::Forms::Label^ label14;
 private: System::Windows::Forms::Label^ label15;
 private: System::Windows::Forms::Label^ label16;
-
-
 private: System::Windows::Forms::PictureBox^ ColorToMoveBox1;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 private: System::Windows::Forms::Label^ CapturedBlackQueens;
 private: System::Windows::Forms::Label^ CapturedBlackRooks;
 private: System::Windows::Forms::Label^ CapturedBlackBishops;
@@ -240,9 +134,7 @@ private: System::Windows::Forms::PictureBox^ pictureBox9;
 private: System::Windows::Forms::PictureBox^ pictureBox10;
 private: System::Windows::Forms::Label^ CapturedBlackPawns;
 private: System::Windows::Forms::PictureBox^ pictureBox11;
-
 private: System::Windows::Forms::PictureBox^ ColorToMoveBox3;
-
 private: System::Windows::Forms::PictureBox^ ColorToMoveBox2;
 private: System::Windows::Forms::PictureBox^ ColorToMoveBox4;
 private: System::Windows::Forms::Label^ CapturedWhiteQueens;
@@ -281,43 +173,7 @@ private: System::Windows::Forms::TextBox^ ipTextBox;
 private: System::Windows::Forms::Label^ ip_Lable;
 private: System::Windows::Forms::Label^ port_Lable;
 private: System::Windows::Forms::TextBox^ portTextBox;
-
-
-
-
 private: System::Windows::Forms::Button^ ServerStartButton;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	protected:
 
@@ -2320,7 +2176,6 @@ private: System::Windows::Forms::Button^ ServerStartButton;
         }
 #pragma endregion 
 public:
-        int colorNumber = 1;
         String^ ImagePath;
         static array<int, 2>^ StartBoardPosition;
 
@@ -2375,10 +2230,18 @@ public:
            bool blackCheck = false;
 
            String^ cellName;
+
            PictureBox^ kingCell;
            PictureBox^ Oldcell;
+           PictureBox^ cell;
+           PictureBox^ OldcellTmp = nullptr;
+           PictureBox^ cellTmp = nullptr;
+
            Color OldColor;
            Color OldColorKing;
+           Color OldCellColour;
+           Color NewCellColour;
+           Color OldCellColourMain;
 
            // integers for cheking rooks and kings for staying in the start positions to help castling conditions to be checked
            // (1: w - white, b - balck; 2: r - right, l - left, k - king; 3: r - rook)
@@ -2559,6 +2422,17 @@ private: System::Void ReceiveData() {
 
     String^ cellNameOld = String::Format("B{0}{1}", OlX, OlY);
     PictureBox^ pictureBoxOld = (PictureBox^)this->Controls[cellNameOld];
+
+    OldcellTmp = pictureBoxOld;
+    cellTmp = pictureBox;
+
+    Oldcell->BackColor = OldCellColourMain;
+    cell->BackColor = NewCellColour;
+
+    NewCellColour = pictureBox->BackColor;
+    OldCellColour = pictureBoxOld->BackColor;
+    pictureBox->BackColor = Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
+    pictureBoxOld->BackColor = Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
 
     if (NewPiece > 1)
     {
@@ -2765,10 +2639,10 @@ System::Void Board_Click(System::Object^ sender, System::EventArgs^ e) {
     if (clickcount == 0 || clickcountboard == 3 || newConnection == 0 || !moveSide)    // cheking start button state
         return;
 
-RetirnPointForSameColorPiece:
+ReturnPointForSameColorPiece:
 
         clickcountboard++;
-        PictureBox^ cell = safe_cast<PictureBox^>(sender);  // new temporary picterBox for clicked cell
+        cell = safe_cast<PictureBox^>(sender);  // new temporary PictureBox for clicked cell
         cellName = cell->Name;
         
         std::string tmp1 = "0";     // Name of cell converting to coordinates of matrix
@@ -2794,7 +2668,7 @@ RetirnPointForSameColorPiece:
             if (*check != 0)                        //If was check than king cell will stay red colored
                 kingCell->BackColor = Color::Red;
 
-            Oldcell = nullptr;
+            // Deleted
             return;
         }
 
@@ -2814,7 +2688,7 @@ RetirnPointForSameColorPiece:
                 {
                     Oldcell->BackColor = OldColor;
                     clickcountboard = 0;
-                    Oldcell = nullptr;
+                    // Deleted
                     ImagesToNull();
                     return;
                 }
@@ -2860,7 +2734,7 @@ RetirnPointForSameColorPiece:
                 {
                     Oldcell->BackColor = OldColor;
                     clickcountboard = 0;
-                    Oldcell = nullptr;
+                    // Deleted
                     ImagesToNull();
                     return;
                 }
@@ -2906,7 +2780,7 @@ RetirnPointForSameColorPiece:
                 {
                     Oldcell->BackColor = OldColor;
                     clickcountboard = 0;
-                    Oldcell = nullptr;
+                    // Deleted
                     ImagesToNull();
                     return;
                 }
@@ -2950,7 +2824,7 @@ RetirnPointForSameColorPiece:
                 {
                     Oldcell->BackColor = OldColor;
                     clickcountboard = 0;
-                    Oldcell = nullptr;
+                    // Deleted
                     ImagesToNull();
                     return;
                 }
@@ -2994,7 +2868,7 @@ RetirnPointForSameColorPiece:
                 {
                     Oldcell->BackColor = OldColor;
                     clickcountboard = 0;
-                    Oldcell = nullptr;
+                    // Deleted
                     ImagesToNull();
                     return;
                 }
@@ -3040,7 +2914,7 @@ RetirnPointForSameColorPiece:
                 {
                     Oldcell->BackColor = OldColor;
                     clickcountboard = 0;
-                    Oldcell = nullptr;
+                    // Deleted
                     ImagesToNull();
                     return;
                 }
@@ -3179,8 +3053,18 @@ RetirnPointForSameColorPiece:
             StartBoardPosition[cellCoordinatesX, cellCoordinatesY] = StartBoardPosition[OldCoordinatesX, OldCoordinatesY];   // Changing matrix after piece move or capture
             StartBoardPosition[OldCoordinatesX, OldCoordinatesY] = 0;
 
+            if (cellTmp != nullptr && OldcellTmp != nullptr)
+            {
+                cellTmp->BackColor = NewCellColour;
+                OldcellTmp->BackColor = OldCellColour;
+            }
+
+            Oldcell->BackColor = Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
+            NewCellColour = cell->BackColor;
+            cell->BackColor = Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
+
             clickcountboard = 0;
-            Oldcell = nullptr;
+            // Deleted
             moveSide = !moveSide;
             
             CheckMateDrawStealmate(); // Important function to check for mates or draws
@@ -3265,7 +3149,7 @@ RetirnPointForSameColorPiece:
             clickcountboard = 0;
             ImagesToNull();
             Oldcell->BackColor = OldColor;
-            goto RetirnPointForSameColorPiece;
+            goto ReturnPointForSameColorPiece;
         }
         else if(clickcountboard == 2)       // If move is not possible or no move after click at all
         {
@@ -3276,7 +3160,7 @@ RetirnPointForSameColorPiece:
                 kingCell->BackColor = Color::Red;
 
             clickcountboard = 0;
-            Oldcell = nullptr;
+            // Deleted
             return;
         }
 
@@ -3287,8 +3171,9 @@ RetirnPointForSameColorPiece:
         if (StartBoardPosition[cellCoordinatesX, cellCoordinatesY] > 100 && moveSide == true || StartBoardPosition[cellCoordinatesX, cellCoordinatesY] < 100 && moveSide == false) 
         {                                   // If first click and piece in cell is right color
             OldColor = cell->BackColor;
-            cell->BackColor = Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(29)), static_cast<System::Int32>(static_cast<System::Byte>(161)), static_cast<System::Int32>(static_cast<System::Byte>(202)));;
+            cell->BackColor = Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(29)), static_cast<System::Int32>(static_cast<System::Byte>(161)), static_cast<System::Int32>(static_cast<System::Byte>(202)));
             Oldcell = cell;
+            OldCellColourMain = OldColor;
 
             String^ PieceImage = FindPiece(PieceToMove);
             IndicatePossibleMovesForPiece(PieceImage);
@@ -3297,7 +3182,7 @@ RetirnPointForSameColorPiece:
         {
             ImagesToNull();
             clickcountboard = 0;
-            Oldcell = nullptr;
+            // Deleted
             return;
         }
 }
@@ -3335,7 +3220,6 @@ System::Void Restart_Click(System::Object^ sender, System::EventArgs^ e) { // Bu
             Oldcell->BackColor = OldColor;
         clickcountboard = 0;
 
-        colorNumber = 1;
         moveSide = true;
         NewPieceMaking = false;
 

@@ -30,7 +30,6 @@ Class MyChess30.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
-    Int32 colorNumber : Public
     System.String ImagePath : Public
     Int32 clickcount : Public
     Boolean moveSide : Public
@@ -41,8 +40,14 @@ Class MyChess30.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     System.String cellName : Public
     System.Windows.Forms.PictureBox kingCell : Public
     System.Windows.Forms.PictureBox Oldcell : Public
+    System.Windows.Forms.PictureBox cell : Public
+    System.Windows.Forms.PictureBox OldcellTmp : Public
+    System.Windows.Forms.PictureBox cellTmp : Public
     System.Drawing.Color OldColor : Public
     System.Drawing.Color OldColorKing : Public
+    System.Drawing.Color OldCellColour : Public
+    System.Drawing.Color NewCellColour : Public
+    System.Drawing.Color OldCellColourMain : Public
     System.ValueType wk Int32 IsBoxed : Public
     System.ValueType bk Int32 IsBoxed : Public
     System.ValueType wrr Int32 IsBoxed : Public

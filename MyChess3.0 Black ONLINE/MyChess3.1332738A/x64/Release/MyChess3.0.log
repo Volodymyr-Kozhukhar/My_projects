@@ -18,32 +18,32 @@ D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\Pieces.h(12,43)
 D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\Pieces.h(67,63): warning C4042: Board: имеет недопустимый класс хранения
 D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\Pieces.h(76,19): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
 D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\Pieces.h(130,57): warning C4042: Board: имеет недопустимый класс хранения
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2429,17): warning C4677: NewPawn: сигнатура члена, не являющегося частным, содержит частный тип сборки "Pawn"
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2430,19): warning C4677: NewKnight: сигнатура члена, не являющегося частным, содержит частный тип сборки "Knight"
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2431,19): warning C4677: NewBishop: сигнатура члена, не являющегося частным, содержит частный тип сборки "Bishop"
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2432,17): warning C4677: NewRook: сигнатура члена, не являющегося частным, содержит частный тип сборки "Rook"
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2433,18): warning C4677: NewQueen: сигнатура члена, не являющегося частным, содержит частный тип сборки "Queen"
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2434,17): warning C4677: NewKing: сигнатура члена, не являющегося частным, содержит частный тип сборки "King"
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(3547,18): warning C4677: NewServer: сигнатура члена, не являющегося частным, содержит частный тип сборки "Server"
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2409,30): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2410,27): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2411,26): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2412,31): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2413,26): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2489,18): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2793,26): warning C4244: аргумент: преобразование "wchar_t" в "const _Elem", возможна потеря данных
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2793,26): warning C4244:         with
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2793,26): warning C4244:         [
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2793,26): warning C4244:             _Elem=char
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2793,26): warning C4244:         ]
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2794,26): warning C4244: аргумент: преобразование "wchar_t" в "const _Elem", возможна потеря данных
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2794,26): warning C4244:         with
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2794,26): warning C4244:         [
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2794,26): warning C4244:             _Elem=char
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2794,26): warning C4244:         ]
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(3110,26): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(3348,17): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
-D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(3349,16): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2436,17): warning C4677: NewPawn: сигнатура члена, не являющегося частным, содержит частный тип сборки "Pawn"
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2437,19): warning C4677: NewKnight: сигнатура члена, не являющегося частным, содержит частный тип сборки "Knight"
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2438,19): warning C4677: NewBishop: сигнатура члена, не являющегося частным, содержит частный тип сборки "Bishop"
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2439,17): warning C4677: NewRook: сигнатура члена, не являющегося частным, содержит частный тип сборки "Rook"
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2440,18): warning C4677: NewQueen: сигнатура члена, не являющегося частным, содержит частный тип сборки "Queen"
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2441,17): warning C4677: NewKing: сигнатура члена, не являющегося частным, содержит частный тип сборки "King"
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(3576,18): warning C4677: NewServer: сигнатура члена, не являющегося частным, содержит частный тип сборки "Server"
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2416,30): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2417,27): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2418,26): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2419,31): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2420,26): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2496,18): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2816,26): warning C4244: аргумент: преобразование "wchar_t" в "const _Elem", возможна потеря данных
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2816,26): warning C4244:         with
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2816,26): warning C4244:         [
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2816,26): warning C4244:             _Elem=char
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2816,26): warning C4244:         ]
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2817,26): warning C4244: аргумент: преобразование "wchar_t" в "const _Elem", возможна потеря данных
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2817,26): warning C4244:         with
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2817,26): warning C4244:         [
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2817,26): warning C4244:             _Elem=char
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(2817,26): warning C4244:         ]
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(3133,26): warning C4244: инициализация: преобразование "__int64" в "int", возможна потеря данных
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(3378,17): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\MyForm.h(3379,16): warning C4965: неявная упаковка целого числа 0; используйте nullptr или явное приведение типов
 D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\Board.h(62,1): warning C4715: FindPiece: значение возвращается не при всех путях выполнения
 D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 Black ONLINE\PawnClass.h(108,1): warning C4715: Pawn::CheckForPossibleMove: значение возвращается не при всех путях выполнения
   MainForm.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
