@@ -1502,27 +1502,27 @@ private: System::Windows::Forms::Button^ ServerStartButton;
             // ColorToMoveBox3
             // 
             this->ColorToMoveBox3->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-            this->ColorToMoveBox3->Location = System::Drawing::Point(553, 690);
+            this->ColorToMoveBox3->Location = System::Drawing::Point(554, 690);
             this->ColorToMoveBox3->Name = L"ColorToMoveBox3";
-            this->ColorToMoveBox3->Size = System::Drawing::Size(826, 10);
+            this->ColorToMoveBox3->Size = System::Drawing::Size(825, 10);
             this->ColorToMoveBox3->TabIndex = 104;
             this->ColorToMoveBox3->TabStop = false;
             // 
             // ColorToMoveBox2
             // 
             this->ColorToMoveBox2->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-            this->ColorToMoveBox2->Location = System::Drawing::Point(1369, 25);
+            this->ColorToMoveBox2->Location = System::Drawing::Point(1369, 13);
             this->ColorToMoveBox2->Name = L"ColorToMoveBox2";
-            this->ColorToMoveBox2->Size = System::Drawing::Size(10, 664);
+            this->ColorToMoveBox2->Size = System::Drawing::Size(10, 687);
             this->ColorToMoveBox2->TabIndex = 105;
             this->ColorToMoveBox2->TabStop = false;
             // 
             // ColorToMoveBox4
             // 
             this->ColorToMoveBox4->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-            this->ColorToMoveBox4->Location = System::Drawing::Point(554, 25);
+            this->ColorToMoveBox4->Location = System::Drawing::Point(554, 13);
             this->ColorToMoveBox4->Name = L"ColorToMoveBox4";
-            this->ColorToMoveBox4->Size = System::Drawing::Size(10, 664);
+            this->ColorToMoveBox4->Size = System::Drawing::Size(10, 687);
             this->ColorToMoveBox4->TabIndex = 106;
             this->ColorToMoveBox4->TabStop = false;
             // 
@@ -2260,7 +2260,7 @@ public:
 
            // integers for new pieces in case of pawns that changing
            // (1: w - white, b - balck; 2: q - queen, r - rook, b - bishop, k - knight; 3: k - default integer like i in for() loop)
-           int wqk = 0, wrk = 0, wbk = 0, wkk = 0, bqk = 0, brk = 0, bbk = 0, bkk = 0;
+           int wqk = 1, wrk = 1, wbk = 1, wkk = 1, bqk = 1, brk = 1, bbk = 1, bkk = 1;
 
            int PawnDoubleMoveSign = 0;
            int clickcountboard = 0;
@@ -2315,11 +2315,6 @@ void CheckMateDrawStealmate()   // Func for changing color of king cell in case 
                    kingCell->BackColor = Color::Red;
 
                    mate = IsMate(check, StartBoardPosition, NewPawn, NewKnight, NewBishop, NewRook, NewQueen, NewKing, moveSide);
-
-                   if (*mate != 0)
-                   {
-                       //massege box with text of mate
-                   }
                }
                else
                {
@@ -2364,7 +2359,101 @@ void CheckMateDrawStealmate()   // Func for changing color of king cell in case 
 private: System::Void SettingDataFromOtherPlayer() {
     System::Threading::Tasks::Task::Run(gcnew System::Action(this, &MyForm::ReceiveData));
 }
- 
+
+private: System::Void SendData(int NewPiece)
+{
+    if (cellTmp != nullptr && OldcellTmp != nullptr)
+    {
+        cellTmp->BackColor = NewCellColour;
+        OldcellTmp->BackColor = OldCellColour;
+    }
+
+    Oldcell->BackColor = Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
+    NewCellColour = cell->BackColor;
+    cell->BackColor = Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
+
+    clickcountboard = 0;
+    // Deleted
+    moveSide = !moveSide;
+
+    CheckMateDrawStealmate(); // Important function to check for mates or draws
+
+    ImagesToNull();
+    int X = cellCoordinatesX;
+    int Y = cellCoordinatesY;
+    int OlX = OldCoordinatesX;
+    int OlY = OldCoordinatesY;
+    int castl = *castling;
+    int che = *check;
+    int ma = *mate;
+    int capt = capture;
+    int steal = *stealmate;
+    int dra = *draw;
+
+    send(newConnection, reinterpret_cast<char*>(&NewPiece), sizeof(int), 0);
+
+    send(newConnection, reinterpret_cast<char*>(&capt), sizeof(int), 0);
+    send(newConnection, reinterpret_cast<char*>(&steal), sizeof(int), 0);
+    send(newConnection, reinterpret_cast<char*>(&dra), sizeof(int), 0);
+
+    send(newConnection, reinterpret_cast<char*>(&*SpecX), sizeof(int), 0);
+    send(newConnection, reinterpret_cast<char*>(&*SpecY), sizeof(int), 0);
+
+    send(newConnection, reinterpret_cast<char*>(&X), sizeof(int), 0);
+    send(newConnection, reinterpret_cast<char*>(&Y), sizeof(int), 0);
+    send(newConnection, reinterpret_cast<char*>(&OlX), sizeof(int), 0);
+    send(newConnection, reinterpret_cast<char*>(&OlY), sizeof(int), 0);
+
+    send(newConnection, reinterpret_cast<char*>(&castl), sizeof(int), 0);
+    send(newConnection, reinterpret_cast<char*>(&che), sizeof(int), 0);
+    send(newConnection, reinterpret_cast<char*>(&ma), sizeof(int), 0);
+
+    ColorToMoveBox1->BackColor = Color::SaddleBrown;
+    ColorToMoveBox2->BackColor = Color::SaddleBrown;
+    ColorToMoveBox3->BackColor = Color::SaddleBrown;
+    ColorToMoveBox4->BackColor = Color::SaddleBrown;
+
+    SettingDataFromOtherPlayer();
+
+    if (*mate != 0)
+    {
+        //message box with text of mate
+        if (*mate == 1)
+            MessageBox::Show(this, "Black has won, checkmate!", "CHECK AND MATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
+        else MessageBox::Show(this, "White has won, checkmate!", "CHECK AND MATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
+        clickcountboard = 3;
+        return;
+    }
+    if (*stealmate != 0)
+    {
+        MessageBox::Show(this, "Draw by stealmate\n  (-_-*)", "STEALMATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
+        clickcountboard = 3;
+    }
+    if (*draw != 0)
+    {
+        MessageBox::Show(this, "Two kings draw!", "DRAW", MessageBoxButtons::OK, MessageBoxIcon::Information);
+        clickcountboard = 3;
+    }
+
+    *castling = 0;
+    *check = 0;
+    capture = false;
+
+    if (*SpecX != 0)        // Changing special double pawn move sign after next move
+    {
+        PawnDoubleMoveSign++;
+        if (PawnDoubleMoveSign == 2)
+        {
+            PawnDoubleMoveSign = 0;
+            *SpecX = 0;
+            *SpecY = 0;
+        }
+    }
+
+    return;
+}
+
+
 private: System::Void ReceiveData() {
     int X;
     int Y;
@@ -2396,6 +2485,7 @@ private: System::Void ReceiveData() {
     recv(newConnection, reinterpret_cast<char*>(&che), sizeof(int), 0);
     recv(newConnection, reinterpret_cast<char*>(&ma), sizeof(int), 0);
 
+    
     if (capt != 0)
     {
         Label^ Temp;
@@ -2430,6 +2520,7 @@ private: System::Void ReceiveData() {
     cell->BackColor = NewCellColour;
 
     NewCellColour = pictureBox->BackColor;
+    //
     OldCellColour = pictureBoxOld->BackColor;
     pictureBox->BackColor = Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
     pictureBoxOld->BackColor = Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
@@ -2475,14 +2566,23 @@ private: System::Void ReceiveData() {
 
     if (che != 0)
     {
-        check = che;
+        *check = che;
         CheckMateDrawStealmate();
     }
 
-    if (blackCheck)
+    if (blackCheck && StartBoardPosition[X, Y] == 61)
+    {
+        OldCellColour = OldColorKing;
+        blackCheck = false;
+    }
+    else if (blackCheck)
     {
         kingCell->BackColor = OldColorKing;
         blackCheck = false;
+    }
+    else if (wasCheck && StartBoardPosition[X, Y] == 161)
+    {
+        OldCellColour = OldColorKing;
     }
 
     if (ma != 0)
@@ -3009,7 +3109,7 @@ ReturnPointForSameColorPiece:
                 }
             }
 
-            if ((cellCoordinatesX == *SpecX + 1 && cellCoordinatesY == *SpecY || cellCoordinatesX == *SpecX - 1 && cellCoordinatesY == *SpecY) && StartBoardPosition[cellCoordinatesX, cellCoordinatesY] == 0 && ((StartBoardPosition[OldCoordinatesX, OldCoordinatesY] > 10 && StartBoardPosition[OldCoordinatesX, OldCoordinatesY] < 20 && StartBoardPosition[*SpecX, *SpecY] > 110 && StartBoardPosition[*SpecX, *SpecY] < 120) || (StartBoardPosition[OldCoordinatesX, OldCoordinatesY] > 110 && StartBoardPosition[OldCoordinatesX, OldCoordinatesY] < 120 && StartBoardPosition[*SpecX, *SpecY] > 10 && StartBoardPosition[*SpecX, *SpecY] < 20)))
+            if ((OldCoordinatesX == *SpecX && cellCoordinatesX == *SpecX + 1 && cellCoordinatesY == *SpecY || cellCoordinatesX == *SpecX - 1 && cellCoordinatesY == *SpecY) && StartBoardPosition[cellCoordinatesX, cellCoordinatesY] == 0 && ((StartBoardPosition[OldCoordinatesX, OldCoordinatesY] > 10 && StartBoardPosition[OldCoordinatesX, OldCoordinatesY] < 20 && StartBoardPosition[*SpecX, *SpecY] > 110 && StartBoardPosition[*SpecX, *SpecY] < 120) || (StartBoardPosition[OldCoordinatesX, OldCoordinatesY] > 110 && StartBoardPosition[OldCoordinatesX, OldCoordinatesY] < 120 && StartBoardPosition[*SpecX, *SpecY] > 10 && StartBoardPosition[*SpecX, *SpecY] < 20)))
             {
                 String^ tmpCellName = String::Format("B{0}{1}", *SpecX, *SpecY);    // Special takes for double pawn moves
                 PictureBox^ tmpcell = (PictureBox^)this->Controls[tmpCellName];
@@ -3053,59 +3153,7 @@ ReturnPointForSameColorPiece:
             StartBoardPosition[cellCoordinatesX, cellCoordinatesY] = StartBoardPosition[OldCoordinatesX, OldCoordinatesY];   // Changing matrix after piece move or capture
             StartBoardPosition[OldCoordinatesX, OldCoordinatesY] = 0;
 
-            if (cellTmp != nullptr && OldcellTmp != nullptr)
-            {
-                cellTmp->BackColor = NewCellColour;
-                OldcellTmp->BackColor = OldCellColour;
-            }
-
-            Oldcell->BackColor = Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
-            NewCellColour = cell->BackColor;
-            cell->BackColor = Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)));
-
-            clickcountboard = 0;
-            // Deleted
-            moveSide = !moveSide;
-            
-            CheckMateDrawStealmate(); // Important function to check for mates or draws
-
-            ImagesToNull();
-            int X = cellCoordinatesX;
-            int Y = cellCoordinatesY;
-            int OlX = OldCoordinatesX;
-            int OlY = OldCoordinatesY;
-            int castl = *castling;
-            int che = *check;
-            int ma = *mate;
-            int capt = capture;
-            int steal = *stealmate;
-            int dra = *draw;
-            int nol = 1;
-
-            send(newConnection, reinterpret_cast<char*>(&nol), sizeof(int), 0);
-
-            send(newConnection, reinterpret_cast<char*>(&capt), sizeof(int), 0);
-            send(newConnection, reinterpret_cast<char*>(&steal), sizeof(int), 0);
-            send(newConnection, reinterpret_cast<char*>(&dra), sizeof(int), 0);
-
-            send(newConnection, reinterpret_cast<char*>(&*SpecX), sizeof(int), 0);
-            send(newConnection, reinterpret_cast<char*>(&*SpecY), sizeof(int), 0);
-            
-            send(newConnection, reinterpret_cast<char*>(&X), sizeof(int), 0);
-            send(newConnection, reinterpret_cast<char*>(&Y), sizeof(int), 0);
-            send(newConnection, reinterpret_cast<char*>(&OlX), sizeof(int), 0);
-            send(newConnection, reinterpret_cast<char*>(&OlY), sizeof(int), 0);
-
-            send(newConnection, reinterpret_cast<char*>(&castl), sizeof(int), 0);
-            send(newConnection, reinterpret_cast<char*>(&che), sizeof(int), 0);
-            send(newConnection, reinterpret_cast<char*>(&ma), sizeof(int), 0);
-
-            ColorToMoveBox1->BackColor = Color::SaddleBrown;
-            ColorToMoveBox2->BackColor = Color::SaddleBrown;
-            ColorToMoveBox3->BackColor = Color::SaddleBrown;
-            ColorToMoveBox4->BackColor = Color::SaddleBrown;
-
-            SettingDataFromOtherPlayer();
+            SendData(0);
 
             if (*mate != 0)
             {
@@ -3175,6 +3223,12 @@ ReturnPointForSameColorPiece:
             Oldcell = cell;
             OldCellColourMain = OldColor;
 
+            if (OldColor == Color::Red)
+            {
+                OldCellColourMain = OldColorKing;
+                OldColor = OldColorKing;
+            }
+
             String^ PieceImage = FindPiece(PieceToMove);
             IndicatePossibleMovesForPiece(PieceImage);
         }
@@ -3185,46 +3239,6 @@ ReturnPointForSameColorPiece:
             // Deleted
             return;
         }
-}
-
-System::Void Restart_Click(System::Object^ sender, System::EventArgs^ e) { // Button Restart
-    if (clickcount == 1)
-    {
-        ImagesToNull();
-        if (wasCheck)
-            kingCell->BackColor = OldColorKing;
-
-        Q->BackgroundImage = nullptr;
-        R->BackgroundImage = nullptr;
-        B->BackgroundImage = nullptr;
-        K->BackgroundImage = nullptr;
-        NewPieceText->Text = "";
-
-        this->CapturedWhiteKnights->Text = "0";
-        this->CapturedWhiteBishops->Text = "0";
-        this->CapturedWhiteRooks->Text = "0";
-        this->CapturedWhiteQueens->Text = "0";
-        this->CapturedBlackQueens->Text = "0";
-        this->CapturedBlackRooks->Text = "0";
-        this->CapturedBlackBishops->Text = "0";
-        this->CapturedBlackKnights->Text = "0";
-        this->CapturedBlackPawns->Text = "0";
-        this->CapturedWhitePawns->Text = "0";
-
-        check = 0;
-        mate = 0;
-        clickcount = 0;
-        wqk = 0, wrk = 0, wbk = 0, wkk = 0, bqk = 0, brk = 0, bbk = 0, bkk = 0;
-
-        if (clickcountboard == 1)
-            Oldcell->BackColor = OldColor;
-        clickcountboard = 0;
-
-        moveSide = true;
-        NewPieceMaking = false;
-
-        Start_Click(sender, e);
-    }
 }
 
 System::Void PieceChanging_Click(System::Object^ sender, System::EventArgs^ e) {       // Function to change pawn after click on piece
@@ -3313,9 +3327,6 @@ System::Void PieceChanging_Click(System::Object^ sender, System::EventArgs^ e) {
         K->BackgroundImage = nullptr;
         NewPieceText->Text = "";
 
-        moveSide = !moveSide;
-        clickcountboard = 0;
-
         NewPieceMaking = false;
         
         if(Name == "K")
@@ -3327,81 +3338,7 @@ System::Void PieceChanging_Click(System::Object^ sender, System::EventArgs^ e) {
         if (Name == "Q")
             check = NewQueen.IsCheck(StartBoardPosition[cellCoordinatesX, cellCoordinatesY], StartBoardPosition, cellCoordinatesX, cellCoordinatesY);
 
-        CheckMateDrawStealmate();
-
-        int X = cellCoordinatesX;
-        int Y = cellCoordinatesY;
-        int OlX = OldCoordinatesX;
-        int OlY = OldCoordinatesY;
-        int castl = *castling;
-        int che = *check;
-        int ma = *mate;
-        int capt = capture;
-        int steal = *stealmate;
-        int dra = *draw;
-        int NewPiece = StartBoardPosition[cellCoordinatesX, cellCoordinatesY];
-
-        send(newConnection, reinterpret_cast<char*>(&NewPiece), sizeof(int), 0);
-
-        send(newConnection, reinterpret_cast<char*>(&capt), sizeof(int), 0);
-        send(newConnection, reinterpret_cast<char*>(&steal), sizeof(int), 0);
-        send(newConnection, reinterpret_cast<char*>(&dra), sizeof(int), 0);
-
-        send(newConnection, reinterpret_cast<char*>(SpecX), sizeof(int), 0);
-        send(newConnection, reinterpret_cast<char*>(SpecY), sizeof(int), 0);
-
-        send(newConnection, reinterpret_cast<char*>(&X), sizeof(int), 0);
-        send(newConnection, reinterpret_cast<char*>(&Y), sizeof(int), 0);
-        send(newConnection, reinterpret_cast<char*>(&OlX), sizeof(int), 0);
-        send(newConnection, reinterpret_cast<char*>(&OlY), sizeof(int), 0);
-
-        send(newConnection, reinterpret_cast<char*>(&castl), sizeof(int), 0);
-        send(newConnection, reinterpret_cast<char*>(&che), sizeof(int), 0);
-        send(newConnection, reinterpret_cast<char*>(&ma), sizeof(int), 0);
-
-        ColorToMoveBox1->BackColor = Color::NavajoWhite;
-        ColorToMoveBox2->BackColor = Color::NavajoWhite;
-        ColorToMoveBox3->BackColor = Color::NavajoWhite;
-        ColorToMoveBox4->BackColor = Color::NavajoWhite;
-
-        SettingDataFromOtherPlayer();
-
-        if (*mate != 0)
-        {
-            //message box with text of mate
-            if (*mate == 1)
-                MessageBox::Show(this, "Black has won, checkmate!", "CHECK AND MATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
-            else MessageBox::Show(this, "White has won, checkmate!", "CHECK AND MATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
-            clickcountboard = 3;
-            return;
-        }
-        if (*stealmate != 0)
-        {
-            MessageBox::Show(this, "Draw by stealmate\n  (-_-*)", "STEALMATE", MessageBoxButtons::OK, MessageBoxIcon::Information);
-            clickcountboard = 3;
-        }
-        if (*draw != 0)
-        {
-            MessageBox::Show(this, "Two kings draw!", "DRAW", MessageBoxButtons::OK, MessageBoxIcon::Information);
-            clickcountboard = 3;
-        }
-
-        *castling = 0;
-        *check = 0;
-        capture = false;
-
-        if (*SpecX != 0)        // Changing special double pawn move sign after next move
-        {
-            PawnDoubleMoveSign++;
-            if (PawnDoubleMoveSign == 2)
-            {
-                PawnDoubleMoveSign = 0;
-                *SpecX = 0;
-                *SpecY = 0;
-            }
-        }
-
-        return;
+        SendData(StartBoardPosition[cellCoordinatesX, cellCoordinatesY]);
     }
 }
 
