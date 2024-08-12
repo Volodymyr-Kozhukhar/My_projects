@@ -1,3 +1,0 @@
-C:\Prog\My_repo_proj\MyChess3.0\MyChess3.0\x64\Release\MyChess3.0.vcxproj.AssemblyReference.cache
-C:\Prog\My_repo_proj\MyChess3.0\MyChess3.0\x64\Release\MyChess30.MyForm.resources
-C:\Prog\My_repo_proj\MyChess3.0\MyChess3.0\x64\Release\MyChess3.0.vcxproj.GenerateResource.cache

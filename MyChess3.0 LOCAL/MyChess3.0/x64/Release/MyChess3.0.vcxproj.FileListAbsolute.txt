@@ -1,0 +1,9 @@
+C:\Prog\My_repo_proj\MyChess3.0\MyChess3.0\x64\Release\MyChess3.0.vcxproj.AssemblyReference.cache
+C:\Prog\My_repo_proj\MyChess3.0\MyChess3.0\x64\Release\MyChess30.MyForm.resources
+C:\Prog\My_repo_proj\MyChess3.0\MyChess3.0\x64\Release\MyChess3.0.vcxproj.GenerateResource.cache
+C:\Prog\My_repo_proj\MyChess3.0 LOCAL\MyChess3.0\x64\Release\MyChess3.0.vcxproj.AssemblyReference.cache
+C:\Prog\My_repo_proj\MyChess3.0 LOCAL\MyChess3.0\x64\Release\MyChess30.MyForm.resources
+C:\Prog\My_repo_proj\MyChess3.0 LOCAL\MyChess3.0\x64\Release\MyChess3.0.vcxproj.GenerateResource.cache
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 LOCAL\MyChess3.0\x64\Release\MyChess3.0.vcxproj.AssemblyReference.cache
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 LOCAL\MyChess3.0\x64\Release\MyChess30.MyForm.resources
+D:\Labs_Prodjects_Education\My_repo_proj\MyChess3.0 LOCAL\MyChess3.0\x64\Release\MyChess3.0.vcxproj.GenerateResource.cache
